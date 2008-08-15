@@ -1,0 +1,35 @@
+1. Intro
+  - systems biology
+    - very brief description of systems biology in general
+    - more detailed focus on flux balance analysis
+    - highlight uses of flux balance analysis models
+  - evolutionary systems biology
+    - why combine SB to predict evolution
+    - examples in the literature => mainly Balazs, Csaba, and Lawrence Hirst
+  - estimating importance of objects in a system may reflect the selection pressures on them during evolution
+    - importance of reaction in a system => gene dosage effects and sequence evolution (Ch 3 & 5)
+    - importance of metabolite => amino acid cost (Ch 4)
+
+2. Using FBA to estimate importance of objects in a system
+  - In detail description of the methods I used in my analysis
+  - Why I used them
+  - How close in silico estimations may be to in vivo reality
+
+3. Role of biosynthetic cost in gene expression
+  - Slot in manuscript
+
+4. Is there any evidence in sequence evolution of optimisation of amino acid cost?
+  - Does the amino acid transition matrix across all proteins show cost related trends?
+  - Does the cost of a protein affect it's rate of evolution?
+  - Is biosynthetic cost a predictor of the site wise amino acid evolutionary rate ?
+  - Does the selection pressure for cost change according to the expression level of the amino acid?
+  - Do paralogs with a difference in expression level show a similar difference in cost?
+  - Does the selection pressure for cost correlate with the in silico predicted flux sensitivity of the reaction?
+  - Is cost more important inside or outside of protein domains?
+  - Are the cheapest hydrophobic/hydrophilic amino acids being use in core/surface regions?
+  - Are cost selection trends present in intra-population variability data also?
+
+5. Open Notebook Science
+  - Short chapter about sharing research online. Why?
+  
+
