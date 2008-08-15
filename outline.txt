@@ -29,7 +29,12 @@
   - Are the cheapest hydrophobic/hydrophilic amino acids being use in core/surface regions?
   - Are cost selection trends present in intra-population variability data also?
 
-5. Open Notebook Science
+5. Discussion
+  - Discuss the impact of the work.
+  - Combining systems biology to prediction selection pressures in evolution.
+  - Summarise the results of each paper again.
+
+6. Open Notebook Science
   - Short chapter about sharing research online. Why?
   
 
