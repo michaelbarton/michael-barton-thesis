@@ -1,40 +1,92 @@
-1. Intro
-  - systems biology
-    - very brief description of systems biology in general
-    - more detailed focus on flux balance analysis
-    - highlight uses of flux balance analysis models
-  - evolutionary systems biology
-    - why combine SB to predict evolution
+General Introduction:
+  systems biology:
+    - systems biology can provide insight into the cell
+    - insights not found by examining objects in isolation
+    - examples using metabolic control analysis
+    - genome scale models provide deeper insight
+    - includes much of metabolism and takes into account many network effects
+    - make predictions based on different environments
+    - give examples of FBA based research
+  evolutionary systems biology:
+    - use deeper understanding of the cell to predict network effects
     - examples in the literature => mainly Balazs, Csaba, and Lawrence Hirst
-  - estimating importance of objects in a system may reflect the selection pressures on them during evolution
-    - importance of reaction in a system => gene dosage effects and sequence evolution (Ch 3 & 5)
-    - importance of metabolite => amino acid cost (Ch 4)
+  summary of results in thesis:
+    - estimating importance of objects in a system may reflect the selection pressures on them during evolution
+    - importance of reaction in a system => gene dosage effects and sequence evolution
+    - importance of metabolite => amino acid cost
 
-2. Using FBA to estimate importance of objects in a system
-  - In detail description of the methods I used in my analysis
-  - Why I used them
-  - How close in silico estimations may be to in vivo reality
+Using FBA to estimate importance of objects in a system:
+  introduction:
+    - systems biology predicted effects
+    - can they be used to predict selective pressures
+    - estimate two measures of importance in a system
+    - cost of amino acid supply to the system
+      - shadow prices as precedent
+    - effect of reduction in reaction rate on the system.
+      - metabolic control analysis as precedent
+  results:
+    amino acid cost:
+      - sensitivity of amino acid demand on growth rate
+      - different environments => costs change depending on environment
+      - correlation with other amino acid costs, and atomic content
+    reaction flux sensitivity:
+      - sensitivity of the reaction flux on the growth rate
+      - different environments again, different reaction importance
+      - compare with haploinsufficiency effects
+      - compare with evolutionary rates
+    discussion:
+      - accuracy of these measures to in vivo conditions
+      - stoichiometric rather than kinetic models
+      - maximisation of growth rate may not be optimal strategy
+      - comparison with previous measures
+      - agreement for amino acid cost prediction
+      - no agreement with evolutionary rate of haploinsufficiency
+      - more accurate model will lead to more accurate predictions
+      - many complex effects still not modelled
+    methods:
+      - description of FBA
+      - amino acid cost estimation
+      - reaction sensitivity estimation
+      
+Role of amino acid biosynthetic cost in gene expression:
+  introduction:
+    - highlight previous work on amino acid cost in genome evolution and gene expression
+    - would expect cost to a factor in gene expression
+    - previous work use proxies for gene expression
+    - no work on using real data
+    - consider all levels of the cell hierarchy where cost may a factor
+  results:
+    - transcriptome
+    - proteome
+    - metabolome
+  discussion:
+    - weak correlation with transcript and proteome levels
+    - stronger correlation with metabolome levels
+    - similar discussion that used in manuscript
+  methods:
+    - multiple regression
+    - datasets used
 
-3. Role of biosynthetic cost in gene expression
-  - Slot in manuscript
+Is there any evidence in sequence evolution of optimisation of amino acid cost?
+    introduction:
+      - expect amino acid biosynthetic cost to be a force in protein evolution
+      - where there is not selection pressure for function, cost minimisation may become important
+      - expensive amino acids may be fixed, because they would be selected out quickly
+    results:
+      - compare rate of evolution of protein with its average cost
+      - comparing site wise evolutionary rate with cost of amino acids
+      - slice evolutionary rates by domain, gene expression, hydrophobicity, and predicted reaction flux
+      - compare across paralogs to control for structure
+      - intra population data if time permits
+    discussion:
+      - update this as results are produced
+    methods:
 
-4. Is there any evidence in sequence evolution of optimisation of amino acid cost?
-  - Does the amino acid transition matrix across all proteins show cost related trends?
-  - Does the cost of a protein affect it's rate of evolution?
-  - Is biosynthetic cost a predictor of the site wise amino acid evolutionary rate ?
-  - Does the selection pressure for cost change according to the expression level of the amino acid?
-  - Do paralogs with a difference in expression level show a similar difference in cost?
-  - Does the selection pressure for cost correlate with the in silico predicted flux sensitivity of the reaction?
-  - Is cost more important inside or outside of protein domains?
-  - Are the cheapest hydrophobic/hydrophilic amino acids being use in core/surface regions?
-  - Are cost selection trends present in intra-population variability data also?
-
-5. Discussion
+General Discussion
   - Discuss the impact of the work.
   - Combining systems biology to prediction selection pressures in evolution.
   - Summarise the results of each paper again.
+  - Outline future work
 
-6. Open Notebook Science
+Open Notebook Science
   - Short chapter about sharing research online. Why?
-  
-
