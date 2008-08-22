@@ -1,0 +1,33 @@
+\ProvidesPackage{titlepage_manchester}[2008/08/20]
+\RequirePackage{graphicx}
+\newsavebox{\acidfreepaper}
+\DeclareOption{acidfree}{
+\sbox{\acidfreepaper}{\rmfamily Produced on acid-free paper}
+}
+\DeclareOption*{
+\sbox{\acidfreepaper}{}
+}
+\ProcessOptions
+\renewcommand{\maketitle}{
+\thispagestyle{empty}
+\begin{center}
+\includegraphics[scale=0.65]{manchester_crest}\\
+\vspace{2cm}
+{\sffamily\Huge \@title}\\
+\vspace{1cm}
+{\rmfamily\Large \@author}\\
+\vspace{1cm}
+{\rmfamily Submitted in total fulfilment of the requirements}\\
+{\rmfamily of the degree of Doctor of Philosophy}\\
+\vspace{1cm}
+{\rmfamily \@date}\\
+\vspace{1cm}
+{\rmfamily Faculty of Life Sciences}\\
+{\rmfamily The University of Manchester}\\
+\vspace{5cm}
+%\usebox{\acidfreepaper}
+\end{center}
+\cleardoublepage
+\setcounter{page}{1}
+}
+
