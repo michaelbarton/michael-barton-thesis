@@ -451,7 +451,7 @@ of \degreetitle.
 
 \def\beforeabstract{
         \pagenumbering{arabic}
-        \pagestyle{plain}
+ %       \pagestyle{plain}
         \titlep
         \ifsigpage\signaturepage\fi
         \tableofcontents
@@ -487,14 +487,13 @@ of \degreetitle.
 %% The \addvspace business below is to avoid the extra space that gets put
 %% in the tables of figures and tables between chapters (it makes no sense
 %% now that the numbering is continuous)
-\def\afterpreface{\newpage
-        \pagestyle{headings}}
-
-\pagestyle{headings}
 
 %% This produces the chapter title at the top of each page. It can be
 %% changed in the obvious way, e.g., \pagestyle{empty} or \pagestyle{plain}
 %%
+
+\def\afterpreface{\newpage}
+
 
 %%% DPC 15/9/93 Make the bibliography generate an entry in the table
 %%% of contents.
