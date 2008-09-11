@@ -20,6 +20,7 @@ mkdir $TEMP
 cp $SRC/* $TEMP
 cp $LIB/* $TEMP
 cp $IMAGE/* $TEMP
+cp $IMAGE/*/* $TEMP
 
 # Create the pdf and ps files
 make thesis -C $TEMP
