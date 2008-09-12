@@ -1,4 +1,4 @@
-General Introduction:
+Chapter I. General Introduction:
   systems biology:
     - systems biology can provide insight into the cell
     - insights not found by examining objects in isolation
@@ -9,13 +9,13 @@ General Introduction:
     - give examples of FBA based research
   evolutionary systems biology:
     - use deeper understanding of the cell to predict network effects
-    - examples in the literature => mainly Balazs, Csaba, and Lawrence Hirst
+    - examples in the literature => mainly Balazs, Csaba, and Lawrence Hurst
   summary of results in thesis:
     - estimating importance of objects in a system may reflect the selection pressures on them during evolution
     - importance of reaction in a system => gene dosage effects and sequence evolution
     - importance of metabolite => amino acid cost
 
-Using FBA to estimate importance of objects in a system:
+Chapter II. Using FBA to estimate importance of objects in a system:
   introduction:
     - systems biology predicted effects
     - can they be used to predict selective pressures
@@ -48,7 +48,7 @@ Using FBA to estimate importance of objects in a system:
       - amino acid cost estimation
       - reaction sensitivity estimation
       
-Role of amino acid biosynthetic cost in gene expression:
+Chapter III. Role of amino acid biosynthetic cost in gene expression:
   introduction:
     - highlight previous work on amino acid cost in genome evolution and gene expression
     - would expect cost to a factor in gene expression
@@ -67,7 +67,7 @@ Role of amino acid biosynthetic cost in gene expression:
     - multiple regression
     - datasets used
 
-Is there any evidence in sequence evolution of optimisation of amino acid cost?
+Chapter IV. Is there any evidence in sequence evolution of optimisation of amino acid cost?
     introduction:
       - expect amino acid biosynthetic cost to be a force in protein evolution
       - where there is not selection pressure for function, cost minimisation may become important
@@ -82,11 +82,11 @@ Is there any evidence in sequence evolution of optimisation of amino acid cost?
       - update this as results are produced
     methods:
 
-General Discussion
+Chapter V. General Discussion
   - Discuss the impact of the work.
   - Combining systems biology to prediction selection pressures in evolution.
   - Summarise the results of each paper again.
   - Outline future work
 
-Open Notebook Science
+Appendix. Open Notebook Science
   - Short chapter about sharing research online. Why?
