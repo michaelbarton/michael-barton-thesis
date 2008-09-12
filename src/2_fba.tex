@@ -23,11 +23,17 @@ This section highlights the methods and results used in this analysis for trying
 As discussed, metabolic control analysis can be used to estimate the importance of an object in a kinetic model. In this section I will show similar priciples of can be used to estimate the sensitivity of growth rate to the changes in amino acid requirements in biomass. The biomass equation in a flux balance analysis model describes the estimated requirements and stoichiomettry of metabolites required for the production of a biomass, which is equivalent to growth. For instance in the biomass reaction in the \emph{S. cerevisiae} model, the requirements include fats such as trigliceride and ergosterol, sugars such as glucose and mannose, as well as smaller metabolites such as sulphate and water. The stoichiometry of the biomass equation is derived from the dry weight biomass of the \emph{S. cerevisiae} cell \cite{duarte2004}. The protein content of a yeast cell is also included in the biomass equation as the twenty individual amino acids that make up protein, with the inclusion of theses amino acids in the biomass equation, the reaction stiochiometries of each can be manipulated to estimate the effect on biomass production.
 
 \begin{figure}
-\psfrag{change}[B][B]{Relative change in tryptophan requirement}
-\psfrag{biomass}[B][B]{Nutrient uptake flux}
-\includegraphics*{curve_estimation.eps}
-\label{figure:curve_estimation}
-\caption[Curve estimation]{Curve estimatation}
+  \subfloat[Structure of Tryptophan]{
+    \label{figure:curve_estimation:b}
+    \includegraphics*[width=5cm]{tryptophan.eps}
+  }
+  \hfill
+  \subfloat[Demand elasticity]{
+    \label{figure:curve_estimation:c}
+    \psfrag{change}[B][B]{Relative change in tryptophan requirement}
+    \psfrag{biomass}[B][B]{Nutrient uptake flux}
+    \includegraphics*[width=5cm]{curve_estimation.eps}
+  }
 \end{figure}
 
 \begin{sidewaysfigure}
