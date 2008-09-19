@@ -2,7 +2,7 @@ rm(list=ls())
 library(lattice)
 
 data <- data.frame(
-  cost        = c(11.96460,7.30842,1.53572,5.00001,14.99990,9.99939),
+  cost        = c(11.96460,7.30842,1.53572,9.99939,14.99990,5.00001),
   environment = c("Carbon Limited","Carbon Limited","Carbon Limited","Nitrogen Limited","Nitrogen Limited","Nitrogen Limited"),
   acid        = c("Tryptophan","Histidine","Glycine","Tryptophan","Histidine","Glycine")
 )
