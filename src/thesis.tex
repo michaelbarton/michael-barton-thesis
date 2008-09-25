@@ -10,6 +10,7 @@
 \usepackage{subfig}
 \usepackage{psfrag}
 \usepackage{varioref}
+\usepackage{appendix}
 
 \begin{document}
 
@@ -36,10 +37,15 @@ I would like to thank...
 \include{4_evolution}
 \chapter{Discussion}
 \include{5_discussion}
-\chapter{Science and the Web}
-\include{6_web}
 
 \bibliography{thesis}
 \bibliographystyle{bmc_article}
 
+\appendix
+\addappheadtotoc
+\appendixpage
+\chapter{Science and the Web}
+\include{6_web}
+\chapter{Costs and Elasticities}
+\include{7_costs_elasticies}
 \end{document}
