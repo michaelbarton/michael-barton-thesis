@@ -1,3 +1,9 @@
+\section*{Summary}
+
+Using genome scale models to estimate cost has precedent in the estimates of oxygen related shadow prices in the work of Varma \emph{et al.} \cite{varma1993}. In chapter I have illustrated how similar methods can be used to estimate amino acid costs and how these costs show a high degree of similarity with previous measures of energetic cost, or atomic content. Furthermore new measures of amino acid cost have been estimated taking into consideration the estimated quantity of the amino acid present in biomass.
+
+\clearpage
+
 \section{Introduction}
 
 Many scientific articles confirm the predictive power of quantitative models of biological systems. Kinetic models are some of the most detailed biological models and contain detailed reaction properties that allow predictions of both reaction fluxes and metabolite levels will be, given a set of model parameters. An early example of a kinetic model is that of the Teusink \emph{et al.} \cite{teusink2000} kinetic model of yeast glycolysis, which with updating of branching reactions was able to predict the \emph{in vivo} flux of half the model reactions to within a factor of 2. In comparison, stoichiometric models of biological systems don't contain enzyme kinetic parameters but instead focus solely on which metabolites participate in which reactions. The iND750 version of the \emph{S.cerevisiae} genome scale model \cite{duarte2004} contains 750 reactions, and the growth rate of the model is simulated by maximising a given objective reaction such as the production of biomass. The growth rate is then defined in the combination of internal reaction fluxes.
@@ -23,6 +29,11 @@ This section highlights the methods and results used in this analysis for trying
 As discussed, metabolic control analysis can be used to estimate the importance of an object in a kinetic model. In this section I will show similar principles of can be used to estimate the sensitivity of growth rate to the changes in amino acid requirements in biomass. The biomass equation in a flux balance analysis model describes the estimated requirements and stoichiometry of metabolites required for the production of a biomass, which is equivalent to growth. For instance in the biomass reaction in the \emph{S. cerevisiae} model, the requirements include fats such as triglyceride and ergosterol, sugars such as glucose and mannose, as well as smaller metabolites such as sulphate and water. The stoichiometry of the biomass equation is derived from the dry weight biomass of the \emph{S. cerevisiae} cell \cite{duarte2004}. The protein content of a yeast cell is also included in the biomass equation as the twenty individual amino acids that make up protein, with the inclusion of theses amino acids in the biomass equation, the reaction stoichiometries of each can be manipulated to estimate the effect on biomass production.
 
 \begin{figure}
+  \subfloat[Cost estimation in glucose limited conditions]{
+    \label{figure:curve_estimation:schematic}
+    \includegraphics*[width=6cm]{cost_schematic.eps}
+  }
+  \hfill
   \subfloat[Supply-demand elasticity for tryptophan]{
     \label{figure:curve_estimation:curve}
   %  \psfrag{change}[B][B]{Relative change in tryptophan requirement}
@@ -71,7 +82,3 @@ The comparison of relative measures of cost illustrates the small degree of corr
 \section{Discussion}
 
 This chapter illustrated the methods used to estimate amino acid cost, and further showed the correspondence of these amino acid costs with previously described measures of amino acid cost.
-
-\section{Summary}
-
-Using genome scale models to estimate cost has precedent in the estimates of oxygen related shadow prices in the work of Varma \emph{et al.} \cite{varma1993}. In chapter I have illustrated how similar methods can be used to estimate amino acid costs and how these costs show a high degree of similarity with previous measures of energetic cost, or atomic content. Furthermore new measures of amino acid cost have been estimated taking into consideration the estimated quantity of the amino acid present in biomass.
