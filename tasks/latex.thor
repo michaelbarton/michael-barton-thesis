@@ -28,13 +28,16 @@ class Latex < Thor
       error_free = system("yes X | bibtex #{file} >> #{log}") if error_free
       error_free = system("yes X | latex #{file} >> #{log}") if error_free
       error_free = system("yes X | latex #{file} >> #{log}") if error_free
+
+      error_free = system("dvipdf #{file}.dvi") if error_free
     end
     if error_free
+      FileUtils.cp("#{tmp}/#{file}.pdf",dest)
+      FileUtils.rm_rf(tmp)
       puts "Document built successfully"
     else
       puts "Error building document"
     end
-    
   end
 
   private
