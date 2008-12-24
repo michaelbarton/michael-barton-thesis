@@ -115,3 +115,17 @@ An interesting point is that the $R_{glucose}$ and $R_{ammonium}$ costs have a h
 \subsection{Reaction elasticity estimation}
 
 \section{Materials and Methods}
+
+\subsubsection{Genome scale metabolic models}
+
+The genome scale models used in this work were \emph{S.cerevisiae} iND750 \cite{duarte2004a} and \emph{E.coli} iJR904 \cite{reed2003}. Flux balance analysis was performed using the COBRA toolbox \cite{becker2007} using the lpsolve optimistation library \cite{lpsolve}.
+
+Each flux balance analysis model is represented by an $m $\times$ n$ sized matrix names $S$. The matrix $S$ represents the reactions in the metabolism and the metabolites that participate in the reactions. The size of of $m$ is the total number of metabolites in the model, and $n$ is the total number of reactions. The position $S_{ij}$ is the participation of metabolic $i$ in reaction $j$. Positive values of $S_{ij}$ indicate the metabolite is produced by the reaction, negative values mean the metabolite is consumed by the reaction. A zero value indicates the metabolite does not participate in the reaction.
+
+Flux balance analysis is performed by solving the value of $v$ for the equation $S \bullet v = 0$ where $v$ represents the a vector of flux values for each reaction in $S$ and is of the size $n$. Using flux balance analysis, a value $v_{i}$ is optimised for the solution of $S \bullet v = 0$, where $v_{i}$ representes a reaction of interest. For example if $v_{i}$ represents the conversion of metabolites to the production of a new unit of biomass, then solving $v$ for the maximisation of $v_{i}$ represents maximimum growth rate. Additional constraints can be placed on the optimisation of the flux balance analysis model, such as upper an lower boundaries at for reaction fluxes. By constraing a reaction to be $\geq 0$ the reaction may only proceed in the forward direction in the optimised solution.
+
+For this analysis the biomass reaction was fixed at a constant value through constraining the upper and lower boundaries to the same value. When optimising the model the objective function was the minimisation of the flux entering the cell of a given nutrient. Performing all flux balance analysis with a fixed growth rate allows are results to be scaled to the same growth rate. Minimisation of a given nutrient flux can be used to simulate starvation of the nutrient, where the nutrient is the limiting factor for growth.
+
+\subsubsection{Calculation of amino acid cost}
+
+Estimation of amino acid cost was performed by changing the of $S_{ij}$ where $i$ is the amino acid and $j$ is the biomass reaction in the model. After flux balance analysis each change in $S_{ij}$ results in a correspong change in the nutrient uptake flux for which the model is being optimised.
