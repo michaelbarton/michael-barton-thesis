@@ -27,6 +27,26 @@ The importance of each variable in the multivariate regression was analysed by r
   \label{figure:regression_analysis}
 \end{figure}
 
+\begin{table}
+  \centering
+  \begin{footnotesize}
+    \begin{tabular}{ l *{4}{ p{2cm}} }
+      \toprule
+      Cost type                          & Transcripts  & Proteins & Amino Acids \\ \midrule
+      \emph{S. cerevisiae} $A_{glucose}$ & 0.389        & 0.406    & 0.782       \\
+      \emph{S. cerevisiae} $R_{glucose}$ & 0.383        & 0.408    & 0.875       \\
+      Akashi \& Gojobori (2002)          & 0.398        & 0.405    & 0.805       \\
+      Craig \& Weber (1998) Energy       & 0.416        & 0.40     & 0.835       \\
+      Craig \& Weber (1998) Steps        & 0.375        & 0.404    & 0.866       \\
+      Wagner (2005) Respiratory          & 0.382        & 0.405    & 0.822       \\
+      Wagner (2005) Fermentative         & 0.377        & 0.406    & 0.851       \\
+      Molecular Weight                   & 0.422        & 0.405    & 0.767       \\ \bottomrule
+    \end{tabular}
+  \end{footnotesize}
+  \caption[Variation explained by multivariate regression model fitting of transcriptomic, proteomic, and metabolomic datasets.]{Variation explained by multivariate regression model fitting of transcriptomic, proteomic, and metabolomic datasets. Each value in the table is the $R^2$ for the complete multivariate regression model using the indicated cost type, and including the carbon, nitrogen, sulphur content of the amino acid, average tRNA count, and codon adaptation index for the transcript and protein data. The transcript and metabolomic data are described by Castrillo \emph{et al}. \cite{castrillo2007}. The proteomic data is described by Ghaemmaghami \emph{et al}. \cite{ghaemmaghami2003}.}
+  \label{table:regression_analysis}
+\end{table}
+
 \paragraph{Transcriptome analysis}
 
 \paragraph{Proteome analysis}
