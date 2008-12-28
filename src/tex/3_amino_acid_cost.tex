@@ -21,10 +21,10 @@ Average carbon, nitrogen and sulphur content represents the total content for ea
 The importance of each variable in the multivariate regression was analysed by removing the variable then comparing the reduced model with the model containing all the variables. Akaiki's information criterion (AIC) \cite{akaiki} was used to the compare the explanatory power of the two models. The AIC is a log likelihood score for the regression, which penalises models with more parameters. This allows models with differing numbers of parameters to be compared. For each regression, a complete model was fitted containing all interaction terms, stepwise automated variable removal was then used to reduce interactions and variables based on the AIC score. A negative AIC score indicates the reduced model should be used as it is more parsimonious. A positive score indicates the larger model provides a better fit to the data. The results of this analysis for each dataset are shown in Figure~\vref{figure:regression_analysis} and in Table~\vref{table:regression_analysis}.
 
 \begin{figure}
-\centering
-\includegraphics*[width=10cm]{regression_analysis.eps}
-\caption[Multivariate regression of transcriptomic, proteomic and metabolomic data.]{}
-\label{figure:regression_analysis}
+  \centering
+  \includegraphics*[height=18cm]{regression_analysis.eps}
+  \caption[Transcript, proteomic and metabolomic multivariate regression results.]{Transcript, proteomic and metabolomic multivariate regression results. The y-axis indicates the variable removed from the multivariate regression. The x-axis indicates the log$_{10}$ AIC difference between the complete model, and the model with all variables included. The legend indicates which amino acid cost type was used to calculate the per-residue cost. The transcript and metabolomic data are described by Castrillo \emph{et al}. \cite{castrillo2007}. The proteomic data is described by Ghaemmaghami \emph{et al}. \cite{ghaemmaghami2003}.}
+  \label{figure:regression_analysis}
 \end{figure}
 
 \paragraph{Transcriptome analysis}
