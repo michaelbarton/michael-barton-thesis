@@ -47,11 +47,19 @@ The importance of each variable in the multivariate regression was analysed by r
   \label{table:regression_analysis}
 \end{table}
 
-\paragraph{Transcriptome analysis}
+\paragraph{Transcriptome and proteome analysis}
 
-\paragraph{Proteome analysis}
+The regression analysis of the transcript data from Castrillo \emph{et al.} \cite{castrillo2007} and the proteome data from \cite{ghaemmaghami2003} yielded similar results. In both these data codon adaptation index was the strongest predictor of measure levels of either transcript or protein. Figure~\ref{figure:regression_analysis} shows the CAI of the transcript was approximately half a magnitude greater as a predictor of transcription than the other included factors. In the protein data CAI was a full magnitude greater as a predictor of protein production. Together these results indicate the optimisation of a transcript for translation is a strong predictor of both transcript and protein levels.
+
+Comparing other factors in the regression, amino acid cost, carbon content and nitrogen appear to show a similar level of importance in explaining variation in both transcript and protein data. The variables for tRNA count and and sulphur content appear slightly less important. Overall all though the regression analysis indicates that the majority of the variation in the transcript and protein data is explained by codon adaption index of the transcript, as opposed to the variables of costs, carbon, nitrogen, sulphur content, or corresponding genome encoded tRNAs.
+
+As the first two columns of Table~\vref{table:regression_analysis} show, each of the different amino acid cost types had little effect on the $R^2$ of the multivariate regression of transcript and protein data. The difference in which cost type used in the transcript analysis was 4.7\%, ranging from 37.5\% for the regression using Craig \& Weber's step cost measures \cite{craig1998}, to 42.2\% for the regression using molecular weight as suggested Seligmann \cite{seligmann2004}. In the analysis of the protein data, the difference in variation explained dependent of the cost measure was even smaller 0.8\% with all cost measures having approximately the same effect in the multivariate regression of the proteome data.
 
 \paragraph{Metabolome analysis}
+
+In the regression of the metabolome data from Castrillo \emph{et al.} \cite{castrillo2007} codon adaptation index is not applicable and therefore the regression is based on genome encoded tRNAs, estimated cost and carbon, nitrogen and sulphur content of the amino acid. The third plot of Figure~\ref{figure:regression_analysis} illustrates that in the majority of each regression each of these factors appears to contribute equally to model fitting of free amino acid data in yeast. The exception to this is sulphur content which in half the regressions explains less regression than the other factors.
+
+Compared with the multivariate regression of the transcript and protein data, the multivariate regression of the metabolite regression of the free amino acid data was able to explain a much larger degree of variation. The variation explained differed by 10.8\% between the best and worst regression model. The regression that explained the least used molecular weight for amino acid cost, while the best fit used $R_{glucose}$ explaining 87.5\%. This result indicates that a large degree of the variation in amino acid levels can be explained based on their cost, atomic content, and the corresponding tRNAs encoded in the genome.
 
 \subsection{The role of amino acid cost in yeast gene evolution}
 
