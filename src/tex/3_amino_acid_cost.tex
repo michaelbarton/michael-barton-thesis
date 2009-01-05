@@ -74,3 +74,23 @@ Compared with the multivariate regression of the transcript and protein data, th
 \subsection{Amino acid cost is a small factor in yeast protein evolution}
 
 \section{Materials and Methods}
+
+\subsubsection{Amino acid characteristics}
+
+\emph{S. cerevisiae} codon adaptation index (CAI) data was produced by Wall \emph{et al.} \cite{wall2005}. Genome encoded tRNA count data was produced by Akashi \cite{akashi_trna}. The $A_{glucose}$ and $R_{glucose}$ costs used were those described in the previous chapter. The other amino acid costs used are reported in the literature by Craig \& Weber \cite{craig1998}, Akashi \& Gojobori \cite{akashi2002}, Wagner \cite{wagner2005} and Seligmann \cite{seligmann2004}. Atomic content for each amino acid was taken according to universally available descriptions.
+
+\subsubsection{Experimental data}
+
+The transcript and metabolomic data used in this analysis was taken from Castrillo \emph{et al.} \cite{castrillo2007}. The data was measured from \emph{S. cerevisiae} cultured continuously in a chemostat. Each measurement was taken at one of three dilution rates 0.1h$^-1$, 0.2h$^-1$ and 0.3h$^-1$ and four different nutrient limiting conditions, glucose, ammonium, sulphate and phosphate. The transcript data was produced from replicate microarray measurements of total RNA. Following measurement the RNA data was processed using with RMA quantile normalisation \cite{RMA}. The metabolite data was measured using Gas chromatography followed by time of flight mass spectrometry (GC/TOF-MS). The metabolite data was normalised using median absolute deviation. Missing metabolite data were inferred from replicates in the same conditions.
+
+The protein data used were produced by Ghaemmaghami \emph{et al.} \cite{ghaemmaghami2003}. These data were derived from tandem affinity purification of TAP-tagged \emph{S.cerevisiae} ORFs. Each tagged ORF was measured using antibody quantification of the encoded tag. Absolute levels of protein per cell were estimated by comparing the \emph{S.cerevisiae} gene measurements with a purified E. coli INFA-TAP construct scale.
+
+\subsubsection{Multivariate regression}
+
+Each variable used in the regression transformed by the natural logarithm.  The exception to this was the transcript data which was logged during the original processing of the data. The sulphur content of individual amino acids contained zero values, therefore a small value (0.0001) was added so the logarithm could be taken. All datasets were scaled to have the same mean and variance. The aim of this data processing was to minimise heteroscedasticity or over-variation in any of the data influencing regression fitting. The metabolite data was averaged for each set of experimental parameters to prevent pseudo-replication resulting from the inference of missing values.
+
+The multivariate regression was performed using the R language for statistical computing \cite{R}. For each dataset, transcript, protein or metabolite, the measured level of the entity in the cell was the response variable in the regression equation. The explanatory variables in the regression equation were carbon, nitrogen, and sulphur content, amino acid cost, codon adaptation index. Environment and dilution rate were also included for the transcript and metabolite data.
+
+For each dataset the complete model equation was fitted including all factors and interactions between factors. The R function \emph{lm} was used as the regression function. Stepwise interaction/variable removable was then performed where interactions were removed from the compete model, to produce a reduced model. The reduced model was compare with the previous complete model, and if the reduced model was considered more parsimonious based on the AIC difference, then the reduced model was then used as the current model. This process was repeated until no more interactions could be removed.
+
+The importance of each explanatory variable in the regression equation was assessed by by repeating the above process but with one of the explanatory variables removed. The regression model with the variable removed was then compared to the complete regression model with all factors included. The AIC difference between the two equations was used as a measure of importance for the removed variable. This process was repeated, where each of the cost types was cycled between those in the introduction.
