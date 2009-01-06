@@ -1,3 +1,9 @@
+\section*{Summary}
+
+Summary of the chapter...
+
+\clearpage
+
 \section{Introduction}
 
 \subsection{Measuring amino acid cost in gene expression}
@@ -71,6 +77,18 @@ Compared with the multivariate regression of the transcript and protein data, th
 
 \subsection{Amino acid cost is a small factor in yeast gene expression}
 
+\subsubsection{Predictors of transcript and protein levels}
+
+The multivariate analysis indicated that amino acid cost is a small factor explanatory factor in the analysed \emph{S. cerevisiae} transcript and protein data. Regardless of which cost type was used in the regression the CAI of the encoding transcript was the most important variable for predicting transcript and protein levels.  The importance of codon adaptation for predicting transcript levels is not a new discovery, but this analysis compares codon adaptation  with other predictors of transcript and protein levels to show that codon adaptation is a much greater predictor of transcript and protein levels than factors such as amino acid costs \cite{akashi2002}, atomic content \cite{atomic content}, or tRNA levels \cite{akashi_trna}.
+
+After codon adaptation is considered the other factors in the regression all appear to play approximately a similar role in explaining variation in protein and transcript expression. In general across each cost regression model of the transcript data cost carbon and nitrogen appear more important than tRNA or sulphur content. There is more variation in the protein data, but a similar trend across these variables is apparent. In some cases the removal of tRNA or sulphur content, and even carbon content in one instance produces a more parsimonious regression model. 
+
+Interpreting the results of the cost regression analysis, codon adaptation is the strongest predictor of both the transcript and protein expression data. The other factors in the regression equation, while do show some effect in prediction are much less important than that of codon adaptation.
+
+\subsubsection{Predictors of metabolite levels}
+
+Codon adaptation is not applicable to metabolite levels, and therefore all explanatory power is based on amino acid cost, genome encoded tRNA, and carbon, nitrogen and sulphur content. The variation explained in the metabolite data was much greater than that of the transcript and protein data, more than twice as much depending on which cost measure was used. This result indicates that the combination of factors used in that analysis are strong predictors of the variation in metabolomic data, and that amino acids are maintained in the cell at levels related to cost, atomic content and genome encoded tRNA levels.
+
 \subsection{Amino acid cost is a small factor in yeast protein evolution}
 
 \section{Materials and Methods}
@@ -83,7 +101,7 @@ Compared with the multivariate regression of the transcript and protein data, th
 
 The transcript and metabolomic data used in this analysis was taken from Castrillo \emph{et al.} \cite{castrillo2007}. The data was measured from \emph{S. cerevisiae} cultured continuously in a chemostat. Each measurement was taken at one of three dilution rates 0.1h$^-1$, 0.2h$^-1$ and 0.3h$^-1$ and four different nutrient limiting conditions, glucose, ammonium, sulphate and phosphate. The transcript data was produced from replicate microarray measurements of total RNA. Following measurement the RNA data was processed using with RMA quantile normalisation \cite{RMA}. The metabolite data was measured using Gas chromatography followed by time of flight mass spectrometry (GC/TOF-MS). The metabolite data was normalised using median absolute deviation. Missing metabolite data were inferred from replicates in the same conditions.
 
-The protein data used were produced by Ghaemmaghami \emph{et al.} \cite{ghaemmaghami2003}. These data were derived from tandem affinity purification of TAP-tagged \emph{S.cerevisiae} ORFs. Each tagged ORF was measured using antibody quantification of the encoded tag. Absolute levels of protein per cell were estimated by comparing the \emph{S.cerevisiae} gene measurements with a purified E. coli INFA-TAP construct scale.
+The protein data used were produced by Ghaemmaghami \emph{et al.} \cite{ghaemmaghami2003}. These data were derived from tandem affinity purification of TAP-tagged \emph{S.cerevisiae} ORFs. Each tagged ORF was measured using antibody quantification of the encoded tag. Absolute levels of protein per cell were estimated by comparing the \emph{S.cerevisiae} gene measurements with a purified \emph{E. coli} INFA-TAP construct scale.
 
 \subsubsection{Multivariate regression}
 
