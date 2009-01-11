@@ -6,27 +6,53 @@ Using genome scale models to estimate cost has precedent in the estimates of oxy
 
 \section{Introduction}
 
-Many scientific articles confirm the predictive power of quantitative models of biological systems. Kinetic models are some of the most detailed biological models and contain detailed reaction properties that allow predictions of both reaction fluxes and metabolite levels will be, given a set of model parameters. An early example of a kinetic model is that of the Teusink \emph{et al.} \cite{teusink2000} kinetic model of yeast glycolysis, which with updating of branching reactions was able to predict the \emph{in vivo} flux of half the model reactions to within a factor of 2. In comparison, stoichiometric models of biological systems don't contain enzyme kinetic parameters but instead focus solely on which metabolites participate in which reactions. The iND750 version of the \emph{S.cerevisiae} genome scale model \cite{duarte2004a} contains 750 reactions, and the growth rate of the model is simulated by maximising a given objective reaction such as the production of biomass. The growth rate is then defined in the combination of internal reaction fluxes.
+\subsection{Understanding biological systems}
 
-Regardless of which type of model used, a common objective is then to analyse, simulate and test the model to observe what predictions the model can make about the corresponding real-life biological system. One avenue of analysis of kinetic biological model is metabolic control analysis, or MCA \cite{fell1997}. One of the key points of MCA is there is not single rate limiting step in a set of reactions, but instead each reaction and metabolite in a system may share a portion of control over the other reaction rates and metabolite levels in the system. As an example the amount of control an enzyme has over a pathway can be estimated by measuring the flux through the system, then reducing the activity of the same enzyme and examining the difference in system flux. This is described in Eq. \ref{fcc}, where $J$ and $Block$ are the fluxes at reaction $m$ and system $i$ respectively. The sign $C_{Block_i}^{J_m}$ is the flux control coefficient, a measure of how sensitive the pathway is to changes in flux through the reaction, $J_{m}$. The flux control coefficients will sum to 1 over a linear pathway as shown in Eq. \ref{summation_theorum}, the summation theorem.
+Early enzymology predicted rate limiting steps in biological pathways. The slowest step in the pathway will limit the rate at which the pathway acts. If the rate of the slowest step is increased, then intuition suggests that the rate of the entire pathway will increase proportionally. When attempting to modulate the flux through the tryptophan biosynthetic pathway in yeast Niederberger \emph{et. al} \cite{niederberger1992} found that individual up or down regulation of specific enzymes had little overall effect on tryptophan biosynthesis. Instead the rate of the biosynthetic pathway could instead be increased by increasing the quantity of five related enzymes in tandem. This research is an example control in a biological system being distributed over the system as a whole rather than focuesed at individual points.
+
+The theory of metabolic control analysis \cite{fell} states that there are no rate limiting steps in biological sytems, but instead that each part of the systems shares a measure of control, with some parts having more control than others. The control an enzyme has on the rest of the system can determined by measuring the effect of its up or down modulation on the reaction in question. For example in metabolic control analysis the control of enzyme X on reaction Y can be described mathematically as follows.
 
 \begin{equation}\label{fcc}
-C_{Block_i}^{J_m} = \frac{dJ_m}{J_m}\div\frac{dBlock_i}{Block_i}
+C_{X}^{Y} = \frac{dX}{X}\div\frac{dY}{Y}
 \end{equation}
 
-\begin{equation}\label{summation_theorum}
-\sum_{i=1}^{n}C_{Block_i}^{J_m} = 1
-\end{equation}
+The function $\frac{dX}{X}$ represents the effect of a small change in the reaction flux through reaction X, given the original flux. The function $\div\frac{dY}{Y}$ represents the proportional change in Y resulting from the change in X. Metabolic control analysis defines the ratio of these two fuctions as the flux control coefficinet of reaction X on reaction Y using the nomemclature $C_{X}^{Y}$. Larger values of $C_{X}^{Y}$ indicate that reaction X has a high degree of control on reaction Y. Smaller values indicate that reaction Y experiences only small change in flux in response to changes in X.
 
-An example of how metabolic control analysis can be successfully applied to real biological systems is the examination of tryptophan biosynthesis carried out by Niederberger \emph{et al.} \cite{niederberger1992}. Using a five-enzyme pathway model involved in the production of tryptophan, it was shown that increasing/decreasing levels of individual enzymes has very little effect on the overall flux through the pathway. This was explained as an effect of the distribution of flux control over the length of the pathway, with no particular enzyme having a large flux control coefficient. However, increasing the concentration of all five enzymes, and therefore the flux through their catalysed reactions, resulted in a synergistic increase in tryptophan flux - much greater than would be expected if the increased enzyme fluxes were only cumulative.
+Determining a numeric value for the relationships betweeen reactions in a metabolic network allows properties of biological systems to be explored. For example Westerhoff \emph{et al.} \cite{hierarchical_control} predicted with an \emph{in silico} model of yeast glycolysis \cite{teusink} which reaction were controlled via changes in enzyme quantity and which were controlled by increasing in metabolite concentations.
 
-The number of enzyme parameter needed to produce a kinetic model mean that the number of reactions included can be a magnitude smaller than that of genome scale models. The small number of reactions therefore means that the estimation of  control coefficients are limited to the small number of available reactions. For instance, at the time of writing this thesis, there exists no model where it would be possible to derive control coefficients for reactions across different parts of the cell metabolism such as both energy metabolism and amino acid. Existing genome scale models contain reactions contain the majority of the central metabolism for the organism they describe, which solves the problem of limited model size. The restriction of genome scale models is that they do not contain enzyme kinetic data, and so it is not possible to estimate metabolic control coefficients in the same way as kinetic models.
+WAS TEUSINK MODEL USED?
+INSERT EXAMPLES OF MCA USE
 
-This section highlights the methods and results used in this analysis for trying to estimate the importance and sensitivity of the parts of the genome scale models to simulated perturbations in their activity.
+Other aspects of metabolic control theory is the prediction of metabolite control coefficients, whereby metabolite concentations will have a degree of control on the rate of reactions.
 
-\subsection{Nutrient cost of amino acids}
+INSERT EXAMPLES OF MCC use.
 
-\subsection{Elasticity of reaction function on growth}
+\subsection{Stoichiometric approaches}
+
+\emph{In silico} kinetic models require specific information about enzyme activity for each reaction. In the case of an enzyme that follows simple Michalis-Menten kinetics paramters such as Km and Vmax are sufficient. To model more complex enzymatic reactions requires larger numbers of paramter sets which require more experimental effort to derive. This means that kinetic model of biological processes are often small with a limited number of reaction sets, due to the difficulty in finding sufficient enzymatic data for the reactions in the system. Stoichiometric models do not require kinetic data but instead only the connetivity between reactions, the participating metabolites and the \emph{in vivo} direction of the reaction.
+
+Requiring less data for construction, stiochiometric models are much larger than kinetic models. Genome scale stiochiometric models can be constructed from the genome sequence of the organism through identifying the presence of enzymes, and connecting the encoded reactions based on metabolic maps. An iterative process of simulation can identify possible missing reactions required for viable growth \cite{genome_model_construction}. The growth rate of the model is simulated through of linear optimisation problem to maximise a given objective reaction such as the production of biomass defined in the combination of internal reaction and the available nutrients.
+
+Genome scale models can be used to predict which \emph{in silico} single \cite{single_knockout} or double \cite{double_knockout} gene deletions lead to an \emph{in vivo} lethal or sick phenotype. Further \emph{in silico} analysis predicts that additional genes making a significant contribution to growth could be identified through multiple gene knockout \cite{deutscher2008}.
+
+INSERT FURTHER FBA EXAMPLES HERE
+
+Similar to the calculation of metabolite control coefficients described in the previous section, stoichiometric models can be used to calculate the shadow price of a molecule. In economics the shadow price, for example of a sold product, represents the effect in changes of prices on the market. Varma \emph{et al.} \cite{varma1993} transfered the use of shadow prices to biology and used this in the estimation of the shadow price of oxygen on \emph{E. coli} energy metabolism. Through simulating a decrease in the availability of oxygen the researchers identified how the shadow prices of the redox carriers changed with the availablity of oxygen. The research showed that with decreasing availability of oxygen, the shadow price of oxygen use rises, this leads to a decrease in the shadow price of ethanol for energy production decreases as it becomes instead used to elimate redox and secreted.
+
+\subsection{Estimating the cost of amino acids}
+
+The article by Varma \emph{et al.} highlights how systems biology models can be used to estimate the importance of a set of metabolites to cell growth. Related to this is the question of how much it costs the cell to synthesise and use amino acids. Craig \& Weber \cite{craig1998} estimated the cost of the twenty amino acids as the sum of how many high energy phosphate bonds (e.g. ATP) and reducing molecutes (e.g. NADPH) are diverted from the available energy pool in the synthesis of each amino acid from glucose. The aim of deriving these costs was to estimate the importance of amino acid cost the evolution of a set of \emph{E. coli} proteins.
+
+Akashi \& Gojobori \cite{akashi2002} explored a similar approach calculating cost on a range different energy sources to estimate the importance of amino acid cost in predicted \emph{E. coli} and \emph{B. subtilis} gene expression. Heizer \emph{et al.} \cite{heizer} exapanded this estimating amino acid cost for inorganic sources in their analysis of the genomes of four prokeyotic species including photoautotrophs. These estimates of cost are based on the curation of the metabolic network to account for the ependiture of high energy molecules during synthesis. Seligmann argued \cite{seligmann2004} ...
+
+DOUBLE CHECK AKASHI PAPER
+HOW IS WAGNER'S COST DIFFERENT
+  
+\subsection{Summary of results}
+
+This section highlights the methods and results used in this analysis for trying to estimate the importance and sensitivity of the parts of the genome scale models to simulated perturbations in their activity. 
+
+\clearpage
 
 \section{Results}
 
@@ -113,6 +139,8 @@ The relative amino acid cost estimations represent the absolute cost of an amino
 An interesting point is that the $R_{glucose}$ and $R_{ammonium}$ costs have a high correlation (Spearman R = 0.63). This leads to the possibility that optimisation of energy/carbon based costs in the proteome also results in optimisation of the nitrogen cost. The benefits of this are intuitive where selective advantages for the optimisation of a given amino acid in carbon limitation will have advantages for nitrogen limitation. If there was little or negative correlation between carbon and nitrogen based costs, then optimisation of a protein for carbon, could result in the unoptimisation for nitrogen.
 
 \subsection{Reaction elasticity estimation}
+
+The number of enzyme parameter needed to produce a kinetic model mean that the number of reactions included can be a magnitude smaller than that of genome scale models. The small number of reactions therefore means that the estimation of  control coefficients are limited to the small number of available reactions. For instance, at the time of writing this thesis, there exists no model where it would be possible to derive control coefficients for reactions across different parts of the cell metabolism such as both energy metabolism and amino acid. Existing genome scale models contain reactions contain the majority of the central metabolism for the organism they describe, which solves the problem of limited model size. The restriction of genome scale models is that they do not contain enzyme kinetic data, and so it is not possible to estimate metabolic control coefficients in the same way as kinetic models.
 
 \section{Materials and Methods}
 
