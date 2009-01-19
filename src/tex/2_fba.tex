@@ -162,6 +162,23 @@ Flux balance analysis is performed by solving the value of $v$ for the equation 
 
 For this analysis the biomass reaction was fixed at a constant value through constraining the upper and lower boundaries to the same value. When optimising the model the objective function was the minimisation of the flux entering the cell of a given nutrient. Performing all flux balance analysis with a fixed growth rate allows are results to be scaled to the same growth rate. Minimisation of a given nutrient flux can be used to simulate starvation of the nutrient, where the nutrient is the limiting factor for growth.
 
+\subsubsection{Simulation of environmental limitation}
+
 \subsubsection{Calculation of amino acid cost}
 
 Estimation of amino acid cost was performed by changing the of $S_{ij}$ where $i$ is the amino acid and $j$ is the biomass reaction in the model. After flux balance analysis each change in $S_{ij}$ results in a corresponding change in the nutrient uptake flux for which the model is being optimised.
+
+\subsubsection{Estimation of gene cost}
+
+A subset of the reactions in the \emph{S. cerevisiae} metabolic model have a gene association. This annotation defines if there is one or genes known to encode an enzyme which catalyses the reaction. This association can include multimeric enzymes where multiple gene products form an enzyme complex. The relationship of gene to reaction is not always 1-to-1 where multiple genes products catalyse the same reaction, or a single gene product catalyses multiple reactions. 
+
+The COBRA toolbox used in the analysis defines a matrix specifying which genes are associated with which reactions. The matrix is size XXX by 1266, where there are XXX annotated genes and 1266 reactions. The matrix is sparse as not all reactions have an associated gene. This matrix was parsed to determine rows which contain only a single 1 value indicating that only a single gene catalyses the reaction. The matrix was also parsed to determine if this value was also the only value appearing in the corresponding column, indicating the gene catalyses no other reactions. This method was used to determine a list of reactions that have a 1:1 gene annotation.
+
+The yeast model was then optimised for the given set of conditions. Each condition solution was examined to determine if the reaction participated in the solution, i.e. a non zero flux. Reactions at the maximum allowable flux in solution i.e. -1000 or 1000 were also determined. The cost of either of these types of reactions was not determined as they do not participate, or are at the edge of the solution space.
+
+The flux variability of each of the remaining reactions was assessed. The aim was to determine if the reaction could vary in the solution space give the fixed growth rate requirement. To determine the variability of each of the remaining reactions, in each case the model was re-optimised with the objective function to minimise the absolute reaction flux. If the reaction could not be minimised, this indicated the reaction was constrained in the solution space, and no cost measure could be estimated.
+
+To estimate the gene cost of the remaining reactions, the flux through each reaction was fixed at the original flux value in the initial optimisation but reduced by a small constant. The model was then optimised for a given nutrient limitation. Optimisation was performed using minimisation of metabolic adjustment (MOMA). The log change in the objective flux was divided by the log change in reaction flux to give the cost for the reaction in question.
+
+IS DIVISION CORRECT?
+WHAT UNITS?
