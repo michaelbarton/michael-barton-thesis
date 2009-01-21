@@ -132,25 +132,49 @@ The comparison of relative measures of cost illustrates the small degree of corr
 
 \subsection{Gene cost estimation}
 
+This section outlines the methods used to estimated the cost of \emph{S. cerevisiae} genes using flux balance analysis. The gene cost is estimated based on testing the reaction associated with the gene in the iND704 genome scale model.
+
 \subsubsection{Simulating fermentation}
 
 \subsubsection{Association of genes to reactions}
 
+To determine the metabolic cost of a gene, corresponding reactions in the genome scale model must be determined. The \emph{S.cerevisiae} model is annotated with 750 genes. Figure~\vref{figure:gene_associations} illustrates the number and types of associations of genes to reactions in the model. Each reaction in the model can be categorised based on the type gene associations.
+
 \begin{figure}
 \centering
-\includegraphics*[width=13cm]{gene_associations.eps}
-\caption[Short caption]{Long caption}
+\includegraphics*[width=10cm]{gene_associations.eps}
+\caption[Gene associations in the \emph{S. cerevisiae} iND750 model]{Comparison of the associations of \emph{S. cerevisiae} genes to reactions in the \emph{S. cerevisiae} iND750 model. The total number of ``All'' reactions defined in the model is 1266. Category A represents reactions that have at least one gene associated. Category B reactions are those with only a single gene associated. Category C reactions have only a single gene associated, and the gene is not associated with any other reactions. Each category is a subset of the previous category.}}
 \label{figure:gene_associations}
 \end{figure}
 
+Category A describes reactions with many-to-many gene associations, where one gene may may be associated with multiple reactions, and one reaction may be associated with multiple genes. This category includes reactions that may be catalysed by paralogs and/or multimeric enzymes, and genes that are associated with multiple reactions. Category B one-to-many gene associations where one one may associated with many reactions, but each reaction has only one gene association. This category excludes paralogs and multimeric enzymes, but still includes enzymes associated with multiple reactions. Category C represents one-to-one gene associations, where each gene is associated with a single reaction, and each reaction has only a single gene association. This category represents 262 genes which have only a single point of the effect defined in the model.
+
 \subsubsection{Determination of gene use in solution space}
+
+The above described 262 single-gene encoded reactions was assessed in various solutions spaces. The simulations used were glucose and ammonia nutrient limitations in using either a respiratory or fermentative growth model. All simulations were performed at a fixed growth rate of 0.3$hr^{-1}$. The use of each gene in the resulting model optimised solution space can be divided in four types based on the flux distribution in the model. Figure~\vref{figure:reaction_constraints} illustrates these types.
 
 \begin{figure}
 \centering
-\includegraphics*[width=13cm]{reaction_constraints.eps}
-\caption[Short caption]{Long caption}
+\includegraphics*[width=10cm]{reaction_constraints.eps}
+\caption[Gene use in model optimised solution space]{The use of 1:1 gene associated reactions in four environmental solution spaces. Two types of nutrient limitation are shown: glucose and ammonia. Each limitation is explored using either a yeast respiratory, or fermentative growth. Four types of reaction uses are described: at maximum, constrained, variable, or zero flux. Maximum reactions are at the positive or negative limit of the allowable flux for the model optimisation. Constrained reactions are fixed at the current flux and absolute flux cannot be reduced to satisfy the model growth rate. Variable reactions' flux rate can be reduced whilst still maintaining the model growth rate. Zero flux reactions are not used in the given solution. All reaction estimates are performed at a fixed growth rate of 0.3hr$^{-1}$. }
 \label{figure:reaction_constraints}
 \end{figure}
+
+\paragraph{Reaction rate at maximum}
+
+The reactions are at the allowable limit for any reaction in the solution. The flux through the reaction the reaction is either at -1000/1000 mmol$^{-1}$ gDW$^{-1}$ hr$^{-1}$. The number of these types of reactions was limited where only six total exist across all the model solutions.
+
+\paragraph{Constrained reaction rate}
+
+These reactions are constrained in their use in the given solution. The reaction is used in the solution, but the absolute reaction rate cannot be reduced whilst still maintaining maintaining a viable solution for a model growth rate at 0.3hr$^{-1}$ The number of these reactions ranged from 58 to 63 reactions.
+
+\paragraph{Variable reaction rate}
+
+These reactions are used in the solution, and the absolute reaction flux can be reduced whilst still maintaining the fixed growth rate. The number of these reactions ranged from 30 to 42.
+
+\paragraph{Reaction unused}
+
+This type of reaction was not used in the solution and had a reaction rate of zero. This is the largest proportion of reactions across all simulations ranging from 163 to 166.
 
 \section{Discussion}
 
@@ -166,9 +190,21 @@ The relative amino acid cost estimations represent the absolute cost of an amino
 
 An interesting point is that the $R_{glucose}$ and $R_{ammonium}$ costs have a high correlation (Spearman R = 0.63). This leads to the possibility that optimisation of energy/carbon based costs in the proteome also results in optimisation of the nitrogen cost. The benefits of this are intuitive where selective advantages for the optimisation of a given amino acid in carbon limitation will have advantages for nitrogen limitation. If there was little or negative correlation between carbon and nitrogen based costs, then optimisation of a protein for carbon, could result in the unoptimisation for nitrogen.
 
-\subsection{Reaction elasticity estimation}
+\subsection{Gene cost estimation}
 
 The number of enzyme parameter needed to produce a kinetic model mean that the number of reactions included can be a magnitude smaller than that of genome scale models. The small number of reactions therefore means that the estimation of  control coefficients are limited to the small number of available reactions. For instance, at the time of writing this thesis, there exists no model where it would be possible to derive control coefficients for reactions across different parts of the cell metabolism such as both energy metabolism and amino acid. Existing genome scale models contain reactions contain the majority of the central metabolism for the organism they describe, which solves the problem of limited model size. The restriction of genome scale models is that they do not contain enzyme kinetic data, and so it is not possible to estimate metabolic control coefficients in the same way as kinetic models.
+
+\subsubsection{Simulating fermentation}
+
+\subsubsection{Determining gene associations}
+
+Estimating the cost of a gene on metabolism first requires determining the points of effect the gene has on the metabolic network. This analysis aimed to first determine which reactions have a single effect on metabolism, and thereby allowing a simpler analysis of their cost. The focus on 1:1 associations of gene to reactions excluded 488 genes but did allow a much simpler analysis of gene cost, where any effect on the gene may be expected to have a direct effect on single reaction which can then be analysed in through the effect on the corresponding phenotype.
+
+Alternative approaches used in gene knockout studies have treated the reaction as unaffected if an associated paralog is still available, or have removed the reaction if the one unit of a multimeric enzyme is deleted \cite{pal2006}.
+
+ANY OTHER KNOCKOUT STUDIES CAN BE CITED?
+
+HOW DID OTHER KNOCKOUT STUDIES TREAT PARALOGS?
 
 \section{Materials and Methods}
 
