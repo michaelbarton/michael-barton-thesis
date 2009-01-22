@@ -143,7 +143,7 @@ To determine the metabolic cost of a gene, corresponding reactions in the genome
 \begin{figure}
 \centering
 \includegraphics*[width=10cm]{gene_associations.eps}
-\caption[Gene associations in the \emph{S. cerevisiae} iND750 model]{Comparison of the associations of \emph{S. cerevisiae} genes to reactions in the \emph{S. cerevisiae} iND750 model. The total number of ``All'' reactions defined in the model is 1266. Category A represents reactions that have at least one gene associated. Category B reactions are those with only a single gene associated. Category C reactions have only a single gene associated, and the gene is not associated with any other reactions. Each category is a subset of the previous category.}}
+\caption[Gene associations in the \emph{S. cerevisiae} iND750 model]{Comparison of the associations of \emph{S. cerevisiae} genes to reactions in the \emph{S. cerevisiae} iND750 model. The total number of ``All'' reactions defined in the model is 1266. Category A represents reactions that have at least one gene associated. Category B reactions are those with only a single gene associated. Category C reactions have only a single gene associated, and the gene is not associated with any other reactions. Each category is a subset of the previous category.}
 \label{figure:gene_associations}
 \end{figure}
 
@@ -200,11 +200,27 @@ The number of enzyme parameter needed to produce a kinetic model mean that the n
 
 Estimating the cost of a gene on metabolism first requires determining the points of effect the gene has on the metabolic network. This analysis aimed to first determine which reactions have a single effect on metabolism, and thereby allowing a simpler analysis of their cost. The focus on 1:1 associations of gene to reactions excluded 488 genes but did allow a much simpler analysis of gene cost, where any effect on the gene may be expected to have a direct effect on single reaction which can then be analysed in through the effect on the corresponding phenotype.
 
-Alternative approaches used in gene knockout studies have treated the reaction as unaffected if an associated paralog is still available, or have removed the reaction if the one unit of a multimeric enzyme is deleted \cite{pal2006}.
+Alternative approaches used in gene knockout studies have treated the reaction as unaffected if an associated paralog is still available, or have removed the reaction if the one unit of a multimeric enzyme is deleted \cite{pal2006}. In this analysis reactions are not being removed, but instead their effect on the model objective function estimated. There while it can be assumed that the removal of a enzyme subunit will render the complete enzyme ineffective, the same cannot by said by of reducing the effect of a single gene product within an multimeric enzyme. For considering paralogs catalysing the same reaction it could be assumed that a deficiency in one paralog will not affect the reaction rate, this may not necessarily be the case as some paralogs may only expressed under certain conditions \cite{carlsson,enviro_paralogs}.
+
+ENVIRONMENTAL PARALOGS
 
 ANY OTHER KNOCKOUT STUDIES CAN BE CITED?
 
 HOW DID OTHER KNOCKOUT STUDIES TREAT PARALOGS?
+
+\subsubsection{Estimation of reaction constraints}
+
+The reactions at maximum flux represent edges in solution space, where any reaction cannot exceed an absolute flux of 1000 mmol$^{-1}$ gDW$^{-1}$ hr$^{-1}$. If the artificial constraint of reaction flux is increased the likely outcome is that the flux of these reactions would also increase, and the flux through the reactions is of an artificial limit imposed by the model optimisation, rather than because of the simulation of a biological phenotype. Therefore these reactions are not considered further in the analysis. The number of reactions at the limit is low, six across all conditions, and removal from the gene cost data set is not a significant impact on the size.
+
+The constrained reactions represent those whose flux is constrained in the solution space. Forced reduction of the flux through any of these reactions results in a model will fail find an optimal solution. As the flux cannot be reduced, these reactions all represent inviable knockout mutants where removal from the model will prevent the model being optimised \cite{in_silico_knockout}. These reactions may represent singleton pathways, the only available reactions for producing a required nutrient.
+
+The variable reactions whose flux can be reduced and still maintain a viable model solution. Reasons that these fluxes can be reduced may be because optimisation finds an alternate pathway for the production of a required nutrient. Whether any of these reactions can be compeltely deleted from the model is not clear, only that the model is viable if the reactionflux is reduced.
+
+The zero flux reactions are unused in the solution space and represent the majority of reactions. These reactions could be removed from the model without any effect on the model solution. Thse reactions could represent environment or nutrient specific reactions, required only when a specific nutrient is present.
+
+The determination of each of these reaction phenotypes relies on the optimisation of the model. The solution space produced by the model may be over constrained the determination of the optimum. The \emph{in vivo} flux distribution may be more relaxed as highly constrained reaction fluxes may prodive a competitive disadvantage in response to any environmental or genetic perturbations. Another consideration is whether \emph{in vivo} conditions are able to reach the optimised peak of the solution space, or instead reaching a point very close to the optimum but still maintaining a measure of flexibility in the metabolic network. This theory is discussed Someone \emph{et al.} \cite{suboptimal_solutions} where reaction fluxes are instead considered over a range of suboptimal solutions near the optimal. Future work could consider using testing the use of reactions over a range of suboptimal solutions to consider if this provides a different view of reactions use and constraint.
+
+SUBOPTIMAL SOLUTION REFERENCES
 
 \section{Materials and Methods}
 
