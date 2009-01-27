@@ -8,24 +8,19 @@ Using genome scale models to estimate cost has precedent in the estimates of oxy
 
 \subsection{Understanding biological systems}
 
-Early enzymology predicted rate limiting steps in biological pathways. The slowest step in the pathway will limit the rate at which the pathway acts. If the rate of the slowest step is increased, then intuition suggests that the rate of the entire pathway will increase proportionally. When attempting to modulate the flux through the tryptophan biosynthetic pathway in yeast Niederberger \emph{et. al} \cite{niederberger1992} found that individual up or down regulation of specific enzymes had little overall effect on tryptophan biosynthesis. Instead the rate of the biosynthetic pathway could instead be increased by increasing the quantity of five related enzymes in tandem. This research is an example control in a biological system being distributed over the system as a whole rather than focused at individual points.
+Early enzymology assumed the existence of rate limiting steps in biological pathways. The intuition is that the rate of a pathway will be the spead of the slowest step. When the rate of the slowest step increases, the rate of the whole pathway will also increase until another step becomes rate limiting. Testing this assumption Niederberger \emph{et. al} \cite{niederberger1992} found that individual up or down regulation of specific enzymes had little overall effect on tryptophan biosynthesis in \emph{S cerevisiae}. The rate of the pathway could instead be accelarated by increasing the quantity of five related enzymes in tandem. This research is an example control in a biological system being distributed over the system as a whole rather than focused at individual steps.
 
-The theory of metabolic control analysis \cite{fell} states that there are no rate limiting steps in biological systems, but instead that each part of the systems shares a measure of control, with some parts having more control than others. The control an enzyme has on the rest of the system can determined by measuring the effect of its up or down modulation on the reaction in question. For example in metabolic control analysis the control of enzyme X on reaction Y can be described mathematically as follows.
+The theory of metabolic control analysis \cite{fellbook,fellpaper} states that there are no rate limiting steps in biological systems, but instead that each part of the system shares a measure of control, with each part having more or less. The control reaction $x$ has on any other reaction in the system can determined by measuring the effect of an up or down in reaction $x$ has on reaction $y$. In metabolic control analysis this is described as the flux control of reaction $x$ on reaction $y$. The coefficinet of this control uses the symbol $C_{X}^{Y}$, is described in Equation~\vref{fcc}.
 
 \begin{equation}\label{fcc}
 C_{X}^{Y} = \frac{dX}{X}\div\frac{dY}{Y}
 \end{equation}
 
-The function $\frac{dX}{X}$ represents the effect of a small change in the reaction flux through reaction X, given the original flux. The function $\div\frac{dY}{Y}$ represents the proportional change in Y resulting from the change in X. Metabolic control analysis defines the ratio of these two functions as the flux control coefficient of reaction X on reaction Y using the nomenclature $C_{X}^{Y}$. Larger values of $C_{X}^{Y}$ indicate that reaction X has a high degree of control on reaction Y. Smaller values indicate that reaction Y experiences only small change in flux in response to changes in X.
+The function $\frac{dx}{x}$ represents the effect of a small change in the reaction flux through reaction $x$, given the original flux. The function $\div\frac{dy}{y}$ represents the corresponding change in $y$ resulting from the change in $x$, given the original flux of $y$. Larger values of $C_{X}^{Y}$ indicate that reaction $x$ has a high degree of control on reaction $y$. Smaller values indicate that reaction $y$ experiences only small change in flux in response to changes in $x$.
 
-Determining a numeric value for the relationships between reactions in a metabolic network allows properties of biological systems to be explored. For example Westerhoff \emph{et al.} \cite{hierarchical_control} predicted with an \emph{in silico} model of yeast glycolysis \cite{teusink} which reaction were controlled via changes in enzyme quantity and which were controlled by increasing in metabolite concentrations.
+Determining a numeric value for the relationships between reactions in a metabolic network allows properties of biological systems to be explored. In addition to increasing the secretion of commercial by products \cite{niederberger1992}, understanding the quantitivate control at points in a metabolic network can lead to the development of drugs targetting the combinations of reactions with a high degree of control in the network \cite{lehar2008,hopkins2008}. Furthermore understanding the control exerted by corresponding orthologues in both the host-pathogen can allow the difference in control coefficients to be compared so that specific reactions may be targetted in host with minimal impact in the host \cite{hornberg2007}. Outside the development of commercial products or identifcation of drug targets, the determination of which steps are controlled through substrate concentration or changes in enzyme activity predictions can be made of the the role of gene expression in the control metabolic systems \cite{rossell2006,daran-lapujade2007}.
 
-WAS TEUSINK MODEL USED?
-INSERT EXAMPLES OF MCA USE
-
-Other aspects of metabolic control theory is the prediction of metabolite control coefficients, whereby metabolite concentrations will have a degree of control on the rate of reactions.
-
-INSERT EXAMPLES OF MCC use.
+READ HOPKINS, LEHAR PAPERS
 
 \subsection{Stoichiometric approaches}
 
