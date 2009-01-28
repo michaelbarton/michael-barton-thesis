@@ -8,31 +8,47 @@ Using genome scale models to estimate cost has precedent in the estimates of oxy
 
 \subsection{Understanding biological systems}
 
-Early enzymology assumed the existence of rate limiting steps in biological pathways. The intuition is that the rate of a pathway will be the spead of the slowest step. When the rate of the slowest step increases, the rate of the whole pathway will also increase until another step becomes rate limiting. Testing this assumption Niederberger \emph{et. al} \cite{niederberger1992} found that individual up or down regulation of specific enzymes had little overall effect on tryptophan biosynthesis in \emph{S cerevisiae}. The rate of the pathway could instead be accelarated by increasing the quantity of five related enzymes in tandem. This research is an example control in a biological system being distributed over the system as a whole rather than focused at individual steps.
+Early enzymology assumed the existence of rate limiting steps in biological pathways. The intuition is that the rate of a pathway will be the speed of the slowest step. When the rate of the slowest step increases, the rate of the whole pathway will also increase until another step becomes rate limiting. Testing this assumption Niederberger \emph{et. al} \cite{niederberger1992} found that individual up or down regulation of specific enzymes had little overall effect on tryptophan biosynthesis in \emph{S cerevisiae}. The rate of the pathway could instead be accelerated by increasing the quantity of five related enzymes in tandem. This research is an example control in a biological system being distributed over the system as a whole rather than focused at individual steps.
 
-The theory of metabolic control analysis \cite{fellbook,fellpaper} states that there are no rate limiting steps in biological systems, but instead that each part of the system shares a measure of control, with each part having more or less. The control reaction $x$ has on any other reaction in the system can determined by measuring the effect of an up or down in reaction $x$ has on reaction $y$. In metabolic control analysis this is described as the flux control of reaction $x$ on reaction $y$. The coefficinet of this control uses the symbol $C_{X}^{Y}$, is described in Equation~\vref{fcc}.
+The theory of metabolic control analysis \cite{fell1992,fell1997} states that there are no rate limiting steps in biological systems, but instead that each part of the system shares a measure of more or less control. The control reaction $x$ has on any other reaction in the system can determined by measuring the effect of an up or down in reaction $x$ has on reaction $y$. In metabolic control analysis this is described as the flux control of reaction $x$ on reaction $y$. The coefficient of this control uses the symbol $C_{X}^{Y}$, is described in Equation~\vref{fcc}.
 
 \begin{equation}\label{fcc}
 C_{X}^{Y} = \frac{dX}{X}\div\frac{dY}{Y}
 \end{equation}
 
-The function $\frac{dx}{x}$ represents the effect of a small change in the reaction flux through reaction $x$, given the original flux. The function $\div\frac{dy}{y}$ represents the corresponding change in $y$ resulting from the change in $x$, given the original flux of $y$. Larger values of $C_{X}^{Y}$ indicate that reaction $x$ has a high degree of control on reaction $y$. Smaller values indicate that reaction $y$ experiences only small change in flux in response to changes in $x$.
+The function $\frac{dx}{x}$ represents the effect of a small change in the reaction flux through reaction $x$, given the original flux. The function $\frac{dy}{y}$ represents the corresponding change in $y$ resulting from the change in $x$, given the original flux of $y$. Larger values of $C_{X}^{Y}$ indicate that reaction $x$ has a high degree of control on reaction $y$. Smaller values indicate that reaction $y$ experiences only small change in flux in response to changes in $x$.
 
-Determining a numeric value for the relationships between reactions in a metabolic network allows properties of biological systems to be explored. In addition to increasing the secretion of commercial by products \cite{niederberger1992}, understanding the quantitivate control at points in a metabolic network can lead to the development of drugs targetting the combinations of reactions with a high degree of control in the network \cite{lehar2008,hopkins2008}. Furthermore understanding the control exerted by corresponding orthologues in both the host-pathogen can allow the difference in control coefficients to be compared so that specific reactions may be targetted in host with minimal impact in the host \cite{hornberg2007}. Outside the development of commercial products or identifcation of drug targets, the determination of which steps are controlled through substrate concentration or changes in enzyme activity predictions can be made of the the role of gene expression in the control metabolic systems \cite{rossell2006,daran-lapujade2007}.
+Determining a numeric value for the relationships between reactions in a metabolic network allows properties of biological systems to be explored. In addition to increasing the secretion of commercial by products \cite{niederberger1992}, understanding the quantitative control at points in a metabolic network can lead to the development of drugs targeting the combinations of reactions with a high degree of control in the network \cite{lehar2008,hopkins2008}. Furthermore understanding the control exerted by corresponding orthologs in both the host-pathogen can allow the difference in control coefficients to be compared so that specific reactions may be targeted in host with minimal impact in the host \cite{hornberg2007}. Outside the development of commercial products or identification of drug targets, the determination of which steps are controlled through substrate concentration or changes in enzyme activity predictions can be made of the the role of gene expression in the control metabolic systems \cite{rossell2006,daran-lapujade2007}.
 
 READ HOPKINS, LEHAR PAPERS
 
-\subsection{Stoichiometric approaches}
+\subsection{Genome scale modelling}
 
-\emph{In silico} kinetic models require specific information about enzyme activity for each reaction. In the case of an enzyme that follows simple Michalis-Menten kinetics parameters such as Km and Vmax are sufficient. To model more complex enzymatic reactions requires larger numbers of parameter sets which require more experimental effort to derive. This means that kinetic model of biological processes are often small with a limited number of reaction sets, due to the difficulty in finding sufficient enzymatic data for the reactions in the system. Stoichiometric models do not require kinetic data but instead only the connectivity between reactions, the participating metabolites and the \emph{in vivo} direction of the reaction.
+Derivation of a flux control coefficient \emph{in silico} requires a kinetic model with specific information about enzyme activity for each reaction. In the case of an enzyme that follows simple Michalis-Menten kinetics parameters such as Km and Vmax may be sufficient. To model more complex enzymatic reactions requires larger numbers of parameter sets which require more experimental effort to derive. Furthermore even with experimentally derived kinetic parameters, the model must be tested to determination matches expected \emph{in vivo} behaviour \cite{teusink2000}. This means that kinetic model of biological processes are often small with a limited number of reaction sets, due to the difficulty in finding sufficient enzymatic data for the reactions in the system \cite{steuer2007}.
 
-Requiring less data for construction, stoichiometric models are much larger than kinetic models. Genome scale stoichiometric models can be constructed from the genome sequence of the organism through identifying the presence of enzymes, and connecting the encoded reactions based on metabolic maps. An iterative process of simulation can identify possible missing reactions required for viable growth \cite{genome_model_construction}. The growth rate of the model is simulated through of linear optimisation problem to maximise a given objective reaction such as the production of biomass defined in the combination of internal reaction and the available nutrients.
+CHECK STEUER PAPER
 
-Genome scale models can be used to predict which \emph{in silico} single \cite{single_knockout} or double \cite{double_knockout} gene deletions lead to an \emph{in vivo} lethal or sick phenotype. Further \emph{in silico} analysis predicts that additional genes making a significant contribution to growth could be identified through multiple gene knockout \cite{deutscher2008}.
+Stoichiometric models on the other hand do not require kinetic data but instead only the connectivity between reactions, the participating metabolites and the \emph{in vivo} direction of the reaction. The growth rate of the model is simulated through of linear optimisation problem to maximise a given objective reaction such as the production of biomass defined in the combination of internal reaction and the available nutrients. Stoichiometric models are much larger than kinetic models as they require less data for construction. Large representations of an organisms metabolism have be created, described as genome scale models. The construction of genome scale metabolic model is reviewed in detail by Feist \emph{et al.} \cite{feist2009} but the process is outlined in brief here. Construction of an genome scale metabolic model begins with existing annotations of enzymes available in databases such as BRENDA \cite{schomburg2004} and KEGG \cite{kaneshisa2000}, or those specific to an individual organism such as the Saccharomyces Genome Database \cite{sgd}. A mathematical representation of the organism is created from the derived enzyme lists and their connectivity. A biomass objective function is required to simulate the model, determined from the quantities of lipids, proteins, nucleic acids and other cofactors required to create a new cell.
 
-INSERT FURTHER FBA EXAMPLES HERE
+The initial stages of a genome scale model construction can be automated computationally but simulation and validation of the model will require manually curation to identify gaps in the model network. Domain specific knowledge of the organism in question aid questions of the specific existence of metabolic reactions that are expected in metabolism, but may not appear in an enzyme database. This particularly the case for organisms with extreme growth environments \cite{strauer_cyano}. The final step in the construction of a metabolic model requires validation against \emph{in vivo} phenotypes, where \emph{in silico} predictions should mimic that of \emph{in vivo} observations as closely as possible \cite{famili2003}.
 
-Similar to the calculation of metabolite control coefficients described in the previous section, stoichiometric models can be used to calculate the shadow price of a molecule. In economics the shadow price, for example of a sold product, represents the effect in changes of prices on the market. Varma \emph{et al.} \cite{varma1993} transfered the use of shadow prices to biology and used this in the estimation of the shadow price of oxygen on \emph{E. coli} energy metabolism. Through simulating a decrease in the availability of oxygen the researchers identified how the shadow prices of the redox carriers changed with the availability of oxygen. The research showed that with decreasing availability of oxygen, the shadow price of oxygen use rises, this leads to a decrease in the shadow price of ethanol for energy production decreases as it becomes instead used to eliminate redox and secreted.
+The \emph{Esherichia coli} construction is almost 20 years old \cite{feist2008}, a simplified model of acetate production was described by Majewski \emph{et al.} in 1990, and the 2007 model accounts for 1260 open reading frames \cite{feist2007}. The range of genome scale models continues to expand ranging from small parasites with minimal genomes \cite{genitalium}, to attempts to create a human cell reconstruction \cite{human}. The field of genome scale model construction unfortunately suffers from the lack of a single standard for construction and format of models. This can make model interchange and comparison difficult. There are however attempts to create a unified \emph{S. cerevisiae} model \cite{herrgard} using existing standards such are MIRIAM \cite{miriam}, where computationally readable identifiers such a InChi codes for the representation of chemical entities \cite{inchi}. Genome scale modelling however will not be the last computation field to suffer from a lack of agreed standards.
+
+Simulation of a genome scale model for a given objective function, the solution of a genome scale model is determining the combination of network fluxes that maximise of minimise the objective. This is a linear optimisation problem and requires the use of a specific linear programming library. In addition to a mathematical library tools exist that provide specific help for the use and manipulation of genome scale metabolic models \cite{becker2007}. Optimisation of a metabolic can be carried out by linear programming of the objective function, additional methods may be used when making perturbations to metabolic models. Minimisation of metabolic adjustment \cite{moma,becker_update} optimises for the objective function, while minimising the sum change in flux adjustment between the unperturbed and perturbed models. A related approach minimises the number of on-off fluxes changes, whereby the number of reactions that switch between active or inactive between solutions is minimised \cite{schlomi2005}.
+
+READ MOMA, MOMA UPDATE, AND ROOM
+
+ALTERNATE OPTIMA?
+
+\subsubsection{Control in genome scale models}
+
+The first section of this introduction described the importance of quantitative metabolic control analysis in determining the points of control in biological systems. The larger size of genome scale models would mean that quantitative analysis of this type would yield much greater datasets than similar analysis in smaller kinetic models.
+
+The estimation of control coefficients using stoichiometric models is difficult as the flux the through the reaction is determined by linear optimisation and any contraints defined in the model, rather than enzyme kinetic parameters. The classic approach to estimating the importannce of a reaction in a genome scale model is to remove the reaction from the model, and compared the resulting solution with the original. \emph{in silico} single gene deletions were calculated \emph{S.cerevisiae} and compared with \emph{in vivo} estimations, where the correspondence was ~85\% depending on the simulated media \cite{famili2003,forstner2003}. Reactions with buffer the effects of each other can be determined by comparing all possible double deletions and finding the pairs with no phenotypic effect when deleted individually, but predict a sick or lethal phenotype when deleted simultaneously \cite{harrison2007}. This can be further extended with multiple reaction knockouts \cite{deutscher2008}. Reactions which may be active in a specific range of conditions can be assessed through deletion of reactions in a wide range of simulated conditions, where a deletion may result in a fitness effect in only a small range of biologically feasible conditions \cite{papp2004}.
+
+Using gene deletion as an estimate of gene control depends on the interpretation of resulting phenotypic effect. For reaction deletion may be considered to confer a fitness effect if there is a reduction below a certain threshold \cite{pal2006}, while a reaction may be considered essential removel results in no possible solution for the given objective \cite{becker2008}, removal results in a fitness effect of less than half of the original objective flux \cite{papp2004}, or from interpretation of a ratio of knockout to wildtype growth rates \cite{wang2009}.
+
+The work described above focuesed on estimating the importance of a reaction to a biological objective function, such as growth. The use of genome scale metabolic models can also be used to estimate the importance of metabolites to an objective function based on the use of shadow prices. In economics the shadow price, for example of a sold product, characterises the size of the  effect of a change product price on the market in which it is sold. Varma \emph{et al.} \cite{varma1993} simulation this approach in the estimation of the shadow price of oxygen on a stiochiometric model of \emph{E. coli} energy metabolism. Through simulating a decrease in the availability of oxygen the researchers identified how the shadow prices of the redox carriers changed with the availability of oxygen. With the decreasing availability of oxygen and the corresponding rise in its price, the price of ethanol for energy production decreases as it becomes the cheapest electron acceptor for eliminating redox.
 
 \subsection{Estimating the cost of amino acids}
 
@@ -57,9 +73,104 @@ The second part of results section describes an experimental approach to estimat
 
 \clearpage
 
+\section{Materials and Methods}
+
+\subsubsection{Genome scale metabolic models}
+
+The genome scale models used in this work were \emph{S.cerevisiae} iND750 \cite{duarte2004a} and \emph{E.coli} iJR904 \cite{reed2003}. Flux balance analysis was performed using the COBRA toolbox \cite{becker2007} using the lpsolve optimisation library \cite{lpsolve}.
+
+Each flux balance analysis model is represented by an $m \times n$ sized matrix names $S$. The matrix $S$ represents the reactions in the metabolism and the metabolites that participate in the reactions. The size of of $m$ is the total number of metabolites in the model, and $n$ is the total number of reactions. The position $S_{ij}$ is the participation of metabolic $i$ in reaction $j$. Positive values of $S_{ij}$ indicate the metabolite is produced by the reaction, negative values mean the metabolite is consumed by the reaction. A zero value indicates the metabolite does not participate in the reaction.
+
+Flux balance analysis is performed by solving the value of $v$ for the equation $S \bullet v = 0$ where $v$ represents the a vector of flux values for each reaction in $S$ and is of the size $n$. Using flux balance analysis, a value $v_{i}$ is optimised for the solution of $S \bullet v = 0$, where $v_{i}$ represents a reaction of interest. For example if $v_{i}$ represents the conversion of metabolites to the production of a new unit of biomass, then solving $v$ for the maximisation of $v_{i}$ represents maximum growth rate. Additional constraints can be placed on the optimisation of the flux balance analysis model, such as upper an lower boundaries at for reaction fluxes. By constraining a reaction to be $\geq 0$ the reaction may only proceed in the forward direction in the optimised solution.
+
+For this analysis the biomass reaction was fixed at a constant value through constraining the upper and lower boundaries to the same value. When optimising the model the objective function was the minimisation of the flux entering the cell of a given nutrient. Performing all flux balance analysis with a fixed growth rate allows are results to be scaled to the same growth rate. Minimisation of a given nutrient flux can be used to simulate starvation of the nutrient, where the nutrient is the limiting factor for growth.
+
+\subsubsection{Simulation of environmental limitation}
+
+\subsubsection{Calculation of amino acid cost}
+
+Estimation of amino acid cost was performed by changing the of $S_{ij}$ where $i$ is the amino acid and $j$ is the biomass reaction in the model. After flux balance analysis each change in $S_{ij}$ results in a corresponding change in the nutrient uptake flux for which the model is being optimised.
+
+\subsubsection{Estimation of gene cost}
+
+A subset of the reactions in the \emph{S. cerevisiae} metabolic model have a gene association. This annotation defines if there is one or genes known to encode an enzyme which catalyses the reaction. This association can include multimeric enzymes where multiple gene products form an enzyme complex. The relationship of gene to reaction is not always 1-to-1 where multiple genes products catalyse the same reaction, or a single gene product catalyses multiple reactions. 
+
+The COBRA toolbox used in the analysis defines a matrix specifying which genes are associated with which reactions. The matrix is size XXX by 1266, where there are XXX annotated genes and 1266 reactions. The matrix is sparse as not all reactions have an associated gene. This matrix was parsed to determine rows which contain only a single 1 value indicating that only a single gene catalyses the reaction. The matrix was also parsed to determine if this value was also the only value appearing in the corresponding column, indicating the gene catalyses no other reactions. This method was used to determine a list of reactions that have a 1:1 gene annotation.
+
+The yeast model was then optimised for the given set of conditions. Each condition solution was examined to determine if the reaction participated in the solution, i.e. a non zero flux. Reactions at the maximum allowable flux in solution i.e. -1000 or 1000 were also determined. The cost of either of these types of reactions was not determined as they do not participate, or are at the edge of the solution space.
+
+The flux variability of each of the remaining reactions was assessed. The aim was to determine if the reaction could vary in the solution space give the fixed growth rate requirement. To determine the variability of each of the remaining reactions, in each case the model was re-optimised with the objective function to minimise the absolute reaction flux. If the reaction could not be minimised, this indicated the reaction was constrained in the solution space, and no cost measure could be estimated.
+
+To estimate the gene cost of the remaining reactions, the flux through each reaction was fixed at the original flux value in the initial optimisation but reduced by a small constant. The model was then optimised for a given nutrient limitation. Optimisation was performed using minimisation of metabolic adjustment (MOMA). The log change in the objective flux was divided by the log change in reaction flux to give the cost for the reaction in question.
+
+IS DIVISION CORRECT?
+WHAT UNITS?
+
+\clearpage
+
 \section{Results}
 
 The biomass equation in a flux balance analysis model describes the estimated requirements and stoichiometry of metabolites required growth. In the biomass reaction in the \emph{S. cerevisiae} model, the requirements include fats such as triglyceride and ergosterol, sugars such as glucose and mannose, as well as smaller metabolites sulphate and water. The stoichiometry of the biomass equation is derived from the dry weight biomass of the \emph{S. cerevisiae} cell \cite{duarte2004}. The units of each metabolite requirement are mmols per gram of dry weight biomass (mmol $^-1$ gDW $^-1$). In addition to the previous described metabolites, the yeast biomass reaction includes the twenty proteogenic amino acids. Each amino acid stoichiometric requirement can be manipulated to estimate the effect on biomass production. Figure~\vref{figure:curve_estimation} outlines this process.
+
+\subsection{Gene cost estimation}
+
+This section outlines the methods used to estimated the cost of \emph{S. cerevisiae} genes using flux balance analysis. The gene cost is estimated based on testing the reaction associated with the gene in the iND704 genome scale model.
+
+\subsubsection{Simulating fermentation}
+
+\begin{figure}
+  \centering
+  \includegraphics*[width=10cm]{fermentation_density.eps}
+  \caption[Short caption]{Long caption}
+  \label{figure:fermentation_density}
+\end{figure}
+
+\begin{sidewaysfigure}
+  \centering
+  \includegraphics*[width=15cm]{most_changing_reactions.eps}
+  \caption[Short caption]{Long caption}
+  \label{figure:most_changing_reactions}
+\end{sidewaysfigure}
+
+\subsubsection{Association of genes to reactions}
+
+To determine the metabolic cost of a gene, corresponding reactions in the genome scale model must be determined. The \emph{S.cerevisiae} model is annotated with 750 genes. Figure~\vref{figure:gene_associations} illustrates the number and types of associations of genes to reactions in the model. Each reaction in the model can be categorised based on the type gene associations.
+
+\begin{figure}
+\centering
+\includegraphics*[width=10cm]{gene_associations.eps}
+\caption[Gene associations in the \emph{S. cerevisiae} iND750 model]{Comparison of the associations of \emph{S. cerevisiae} genes to reactions in the \emph{S. cerevisiae} iND750 model. The total number of ``All'' reactions defined in the model is 1266. Category A represents reactions that have at least one gene associated. Category B reactions are those with only a single gene associated. Category C reactions have only a single gene associated, and the gene is not associated with any other reactions. Each category is a subset of the previous category.}
+\label{figure:gene_associations}
+\end{figure}
+
+Category A describes reactions with many-to-many gene associations, where one gene may may be associated with multiple reactions, and one reaction may be associated with multiple genes. This category includes reactions that may be catalysed by paralogs and/or multimeric enzymes, and genes that are associated with multiple reactions. Category B one-to-many gene associations where one one may associated with many reactions, but each reaction has only one gene association. This category excludes paralogs and multimeric enzymes, but still includes enzymes associated with multiple reactions. Category C represents one-to-one gene associations, where each gene is associated with a single reaction, and each reaction has only a single gene association. This category represents 262 genes which have only a single point of the effect defined in the model.
+
+\subsubsection{Determination of gene use in solution space}
+
+The above described 262 single-gene encoded reactions was assessed in various solutions spaces. The simulations used were glucose and ammonia nutrient limitations in using either a respiratory or fermentative growth model. All simulations were performed at a fixed growth rate of 0.3$hr^{-1}$. The use of each gene in the resulting model optimised solution space can be divided in four types based on the flux distribution in the model. Figure~\vref{figure:reaction_constraints} illustrates these types.
+
+\begin{figure}
+\centering
+\includegraphics*[width=10cm]{reaction_constraints.eps}
+\caption[Gene use in model optimised solution space]{The use of 1:1 gene associated reactions in four environmental solution spaces. Two types of nutrient limitation are shown: glucose and ammonia. Each limitation is explored using either a yeast respiratory, or fermentative growth. Four types of reaction uses are described: at maximum, constrained, variable, or zero flux. Maximum reactions are at the positive or negative limit of the allowable flux for the model optimisation. Constrained reactions are fixed at the current flux and absolute flux cannot be reduced to satisfy the model growth rate. Variable reactions' flux rate can be reduced whilst still maintaining the model growth rate. Zero flux reactions are not used in the given solution. All reaction estimates are performed at a fixed growth rate of 0.3hr$^{-1}$. }
+\label{figure:reaction_constraints}
+\end{figure}
+
+\paragraph{Reaction rate at maximum}
+
+The reactions are at the allowable limit for any reaction in the solution. The flux through the reaction the reaction is either at -1000/1000 mmol$^{-1}$ gDW$^{-1}$ hr$^{-1}$. The number of these types of reactions was limited where only six total exist across all the model solutions.
+
+\paragraph{Constrained reaction rate}
+
+These reactions are constrained in their use in the given solution. The reaction is used in the solution, but the absolute reaction rate cannot be reduced whilst still maintaining maintaining a viable solution for a model growth rate at 0.3hr$^{-1}$ The number of these reactions ranged from 58 to 63 reactions.
+
+\paragraph{Variable reaction rate}
+
+These reactions are used in the solution, and the absolute reaction flux can be reduced whilst still maintaining the fixed growth rate. The number of these reactions ranged from 30 to 42.
+
+\paragraph{Reaction unused}
+
+This type of reaction was not used in the solution and had a reaction rate of zero. This is the largest proportion of reactions across all simulations ranging from 163 to 166.
 
 \subsection{Amino acid cost estimation}\label{section:amino_acid_cost_estimation}
 
@@ -125,51 +236,7 @@ Figure~\ref{figure:amino_acid_costs_scatterplot} shows that the both the absolut
 
 The comparison of relative measures of cost illustrates the small degree of correlation with previous estimates of cost. For the both the molecular weight and ATP+NADH cost estimates, neither \emph{E. coli} or \emph{S. cerevisiae} relative cost estimates show any relationship, and furthermore the figure illustrates the disparity in estimated costs between the species models.
 
-\subsection{Gene cost estimation}
-
-This section outlines the methods used to estimated the cost of \emph{S. cerevisiae} genes using flux balance analysis. The gene cost is estimated based on testing the reaction associated with the gene in the iND704 genome scale model.
-
-\subsubsection{Simulating fermentation}
-
-\subsubsection{Association of genes to reactions}
-
-To determine the metabolic cost of a gene, corresponding reactions in the genome scale model must be determined. The \emph{S.cerevisiae} model is annotated with 750 genes. Figure~\vref{figure:gene_associations} illustrates the number and types of associations of genes to reactions in the model. Each reaction in the model can be categorised based on the type gene associations.
-
-\begin{figure}
-\centering
-\includegraphics*[width=10cm]{gene_associations.eps}
-\caption[Gene associations in the \emph{S. cerevisiae} iND750 model]{Comparison of the associations of \emph{S. cerevisiae} genes to reactions in the \emph{S. cerevisiae} iND750 model. The total number of ``All'' reactions defined in the model is 1266. Category A represents reactions that have at least one gene associated. Category B reactions are those with only a single gene associated. Category C reactions have only a single gene associated, and the gene is not associated with any other reactions. Each category is a subset of the previous category.}
-\label{figure:gene_associations}
-\end{figure}
-
-Category A describes reactions with many-to-many gene associations, where one gene may may be associated with multiple reactions, and one reaction may be associated with multiple genes. This category includes reactions that may be catalysed by paralogs and/or multimeric enzymes, and genes that are associated with multiple reactions. Category B one-to-many gene associations where one one may associated with many reactions, but each reaction has only one gene association. This category excludes paralogs and multimeric enzymes, but still includes enzymes associated with multiple reactions. Category C represents one-to-one gene associations, where each gene is associated with a single reaction, and each reaction has only a single gene association. This category represents 262 genes which have only a single point of the effect defined in the model.
-
-\subsubsection{Determination of gene use in solution space}
-
-The above described 262 single-gene encoded reactions was assessed in various solutions spaces. The simulations used were glucose and ammonia nutrient limitations in using either a respiratory or fermentative growth model. All simulations were performed at a fixed growth rate of 0.3$hr^{-1}$. The use of each gene in the resulting model optimised solution space can be divided in four types based on the flux distribution in the model. Figure~\vref{figure:reaction_constraints} illustrates these types.
-
-\begin{figure}
-\centering
-\includegraphics*[width=10cm]{reaction_constraints.eps}
-\caption[Gene use in model optimised solution space]{The use of 1:1 gene associated reactions in four environmental solution spaces. Two types of nutrient limitation are shown: glucose and ammonia. Each limitation is explored using either a yeast respiratory, or fermentative growth. Four types of reaction uses are described: at maximum, constrained, variable, or zero flux. Maximum reactions are at the positive or negative limit of the allowable flux for the model optimisation. Constrained reactions are fixed at the current flux and absolute flux cannot be reduced to satisfy the model growth rate. Variable reactions' flux rate can be reduced whilst still maintaining the model growth rate. Zero flux reactions are not used in the given solution. All reaction estimates are performed at a fixed growth rate of 0.3hr$^{-1}$. }
-\label{figure:reaction_constraints}
-\end{figure}
-
-\paragraph{Reaction rate at maximum}
-
-The reactions are at the allowable limit for any reaction in the solution. The flux through the reaction the reaction is either at -1000/1000 mmol$^{-1}$ gDW$^{-1}$ hr$^{-1}$. The number of these types of reactions was limited where only six total exist across all the model solutions.
-
-\paragraph{Constrained reaction rate}
-
-These reactions are constrained in their use in the given solution. The reaction is used in the solution, but the absolute reaction rate cannot be reduced whilst still maintaining maintaining a viable solution for a model growth rate at 0.3hr$^{-1}$ The number of these reactions ranged from 58 to 63 reactions.
-
-\paragraph{Variable reaction rate}
-
-These reactions are used in the solution, and the absolute reaction flux can be reduced whilst still maintaining the fixed growth rate. The number of these reactions ranged from 30 to 42.
-
-\paragraph{Reaction unused}
-
-This type of reaction was not used in the solution and had a reaction rate of zero. This is the largest proportion of reactions across all simulations ranging from 163 to 166.
+\clearpage
 
 \section{Discussion}
 
@@ -216,36 +283,3 @@ The zero flux reactions are unused in the solution space and represent the major
 The determination of each of these reaction phenotypes relies on the optimisation of the model. The solution space produced by the model may be over constrained the determination of the optimum. The \emph{in vivo} flux distribution may be more relaxed as highly constrained reaction fluxes may prodive a competitive disadvantage in response to any environmental or genetic perturbations. Another consideration is whether \emph{in vivo} conditions are able to reach the optimised peak of the solution space, or instead reaching a point very close to the optimum but still maintaining a measure of flexibility in the metabolic network. This theory is discussed Someone \emph{et al.} \cite{suboptimal_solutions} where reaction fluxes are instead considered over a range of suboptimal solutions near the optimal. Future work could consider using testing the use of reactions over a range of suboptimal solutions to consider if this provides a different view of reactions use and constraint.
 
 SUBOPTIMAL SOLUTION REFERENCES
-
-\section{Materials and Methods}
-
-\subsubsection{Genome scale metabolic models}
-
-The genome scale models used in this work were \emph{S.cerevisiae} iND750 \cite{duarte2004a} and \emph{E.coli} iJR904 \cite{reed2003}. Flux balance analysis was performed using the COBRA toolbox \cite{becker2007} using the lpsolve optimisation library \cite{lpsolve}.
-
-Each flux balance analysis model is represented by an $m \times n$ sized matrix names $S$. The matrix $S$ represents the reactions in the metabolism and the metabolites that participate in the reactions. The size of of $m$ is the total number of metabolites in the model, and $n$ is the total number of reactions. The position $S_{ij}$ is the participation of metabolic $i$ in reaction $j$. Positive values of $S_{ij}$ indicate the metabolite is produced by the reaction, negative values mean the metabolite is consumed by the reaction. A zero value indicates the metabolite does not participate in the reaction.
-
-Flux balance analysis is performed by solving the value of $v$ for the equation $S \bullet v = 0$ where $v$ represents the a vector of flux values for each reaction in $S$ and is of the size $n$. Using flux balance analysis, a value $v_{i}$ is optimised for the solution of $S \bullet v = 0$, where $v_{i}$ represents a reaction of interest. For example if $v_{i}$ represents the conversion of metabolites to the production of a new unit of biomass, then solving $v$ for the maximisation of $v_{i}$ represents maximum growth rate. Additional constraints can be placed on the optimisation of the flux balance analysis model, such as upper an lower boundaries at for reaction fluxes. By constraining a reaction to be $\geq 0$ the reaction may only proceed in the forward direction in the optimised solution.
-
-For this analysis the biomass reaction was fixed at a constant value through constraining the upper and lower boundaries to the same value. When optimising the model the objective function was the minimisation of the flux entering the cell of a given nutrient. Performing all flux balance analysis with a fixed growth rate allows are results to be scaled to the same growth rate. Minimisation of a given nutrient flux can be used to simulate starvation of the nutrient, where the nutrient is the limiting factor for growth.
-
-\subsubsection{Simulation of environmental limitation}
-
-\subsubsection{Calculation of amino acid cost}
-
-Estimation of amino acid cost was performed by changing the of $S_{ij}$ where $i$ is the amino acid and $j$ is the biomass reaction in the model. After flux balance analysis each change in $S_{ij}$ results in a corresponding change in the nutrient uptake flux for which the model is being optimised.
-
-\subsubsection{Estimation of gene cost}
-
-A subset of the reactions in the \emph{S. cerevisiae} metabolic model have a gene association. This annotation defines if there is one or genes known to encode an enzyme which catalyses the reaction. This association can include multimeric enzymes where multiple gene products form an enzyme complex. The relationship of gene to reaction is not always 1-to-1 where multiple genes products catalyse the same reaction, or a single gene product catalyses multiple reactions. 
-
-The COBRA toolbox used in the analysis defines a matrix specifying which genes are associated with which reactions. The matrix is size XXX by 1266, where there are XXX annotated genes and 1266 reactions. The matrix is sparse as not all reactions have an associated gene. This matrix was parsed to determine rows which contain only a single 1 value indicating that only a single gene catalyses the reaction. The matrix was also parsed to determine if this value was also the only value appearing in the corresponding column, indicating the gene catalyses no other reactions. This method was used to determine a list of reactions that have a 1:1 gene annotation.
-
-The yeast model was then optimised for the given set of conditions. Each condition solution was examined to determine if the reaction participated in the solution, i.e. a non zero flux. Reactions at the maximum allowable flux in solution i.e. -1000 or 1000 were also determined. The cost of either of these types of reactions was not determined as they do not participate, or are at the edge of the solution space.
-
-The flux variability of each of the remaining reactions was assessed. The aim was to determine if the reaction could vary in the solution space give the fixed growth rate requirement. To determine the variability of each of the remaining reactions, in each case the model was re-optimised with the objective function to minimise the absolute reaction flux. If the reaction could not be minimised, this indicated the reaction was constrained in the solution space, and no cost measure could be estimated.
-
-To estimate the gene cost of the remaining reactions, the flux through each reaction was fixed at the original flux value in the initial optimisation but reduced by a small constant. The model was then optimised for a given nutrient limitation. Optimisation was performed using minimisation of metabolic adjustment (MOMA). The log change in the objective flux was divided by the log change in reaction flux to give the cost for the reaction in question.
-
-IS DIVISION CORRECT?
-WHAT UNITS?
