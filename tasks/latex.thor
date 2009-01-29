@@ -3,6 +3,11 @@ require 'find'
 
 class Latex < Thor
 
+  desc "missing", "finds missing citations"
+  def missing(log)
+    system "grep \"Citation\" #{log} | awk '{print $4}' | sort | uniq"
+  end
+
   desc "build","builds thesis document"
   method_options :src  => 'src',
                  :dest => 'out',
