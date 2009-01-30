@@ -33,9 +33,9 @@ class Latex < Thor
     error_free = true
     FileUtils.cd(tmp) do
       error_free = system("yes X | latex #{file} > #{log_file}")
-      error_free = system("yes X | bibtex #{file} >> #{log_file}") if error_free
-      error_free = system("yes X | latex #{file} >> #{log_file}") if error_free
-      error_free = system("yes X | latex #{file} >> #{log_file}") if error_free
+      error_free = system("yes X | bibtex #{file} > #{log_file}") if error_free
+      error_free = system("yes X | latex #{file} > #{log_file}") if error_free
+      error_free = system("yes X | latex #{file} > #{log_file}") if error_free
 
       error_free = system("dvipdf #{file}.dvi") if error_free
     end
