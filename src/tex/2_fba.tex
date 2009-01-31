@@ -110,45 +110,6 @@ WHAT UNITS?
 
 \section{Results}
 
-The biomass equation in a flux balance analysis model describes the estimated requirements and stoichiometry of metabolites required growth. In the biomass reaction in the \emph{S. cerevisiae} model, the requirements include fats such as triglyceride and ergosterol, sugars such as glucose and mannose, as well as smaller metabolites sulphate and water. The stoichiometry of the biomass equation is derived from the dry weight biomass of the \emph{S. cerevisiae} cell \cite{duarte2004}. The units of each metabolite requirement are mmols per gram of dry weight biomass (mmol $^-1$ gDW $^-1$). In addition to the previous described metabolites, the yeast biomass reaction includes the twenty proteogenic amino acids. Each amino acid stoichiometric requirement can be manipulated to estimate the effect on biomass production. Figure~\vref{figure:curve_estimation} outlines this process.
-
-\subsection{Gene cost estimation}
-
-This section outlines the methods used to estimated the cost of \emph{S. cerevisiae} genes using flux balance analysis. The gene cost is estimated based on testing the reaction associated with the gene in the iND704 genome scale model.
-
-\subsubsection{Simulating fermentation}
-
-\begin{figure}
-  \centering
-  \includegraphics*[width=10cm]{fermentation_density.eps}
-  \caption[Short caption]{Long caption}
-  \label{figure:fermentation_density}
-\end{figure}
-
-\begin{sidewaysfigure}
-  \centering
-  \includegraphics*[width=15cm]{most_changing_reactions.eps}
-  \caption[Short caption]{Long caption}
-  \label{figure:most_changing_reactions}
-\end{sidewaysfigure}
-
-\subsubsection{Association of genes to reactions}
-
-To determine the metabolic cost of a gene, corresponding reactions in the genome scale model must be determined. The \emph{S.cerevisiae} model is annotated with 750 genes. Figure~\vref{figure:gene_associations} illustrates the number and types of associations of genes to reactions in the model. Each reaction in the model can be categorised based on the type gene associations.
-
-\begin{figure}
-\centering
-\includegraphics*[width=10cm]{gene_associations.eps}
-\caption[Gene associations in the \emph{S. cerevisiae} iND750 model]{Comparison of the associations of \emph{S. cerevisiae} genes to reactions in the \emph{S. cerevisiae} iND750 model. The total number of ``All'' reactions defined in the model is 1266. Category A represents reactions that have at least one gene associated. Category B reactions are those with only a single gene associated. Category C reactions have only a single gene associated, and the gene is not associated with any other reactions. Each category is a subset of the previous category.}
-\label{figure:gene_associations}
-\end{figure}
-
-Category A describes reactions with many-to-many gene associations, where one gene may may be associated with multiple reactions, and one reaction may be associated with multiple genes. This category includes reactions that may be catalysed by paralogs and/or multimeric enzymes, and genes that are associated with multiple reactions. Category B one-to-many gene associations where one one may associated with many reactions, but each reaction has only one gene association. This category excludes paralogs and multimeric enzymes, but still includes enzymes associated with multiple reactions. Category C represents one-to-one gene associations, where each gene is associated with a single reaction, and each reaction has only a single gene association. This category represents 262 genes which have only a single point of the effect defined in the model.
-
-\subsubsection{Determination of gene use in solution space}
-
-The above described 262 single-gene encoded reactions was assessed in various solutions spaces. The simulations used were glucose and ammonia nutrient limitations in using either a respiratory or fermentative growth model. All simulations were performed at a fixed growth rate of 0.3$hr^{-1}$. The use of each gene in the resulting model optimised solution space can be divided in four types based on the flux distribution in the model. Figure~\vref{figure:reaction_constraints} illustrates these types.
-
 \begin{figure}
   \centering
   \subfloat[Frequency of gene associations]{
@@ -313,6 +274,57 @@ es have been been rescaled around their mean value to allow comparisons across s
 Figure~\ref{figure:amino_acid_costs_scatterplot} shows that the both the absolute costs show a small amount of variance in their correlation the example literature described cost measures. Both \emph{E. coli} and \emph{S. cerevisiae} absolute costs measures are particularly well correlated with the Akashi and Gojobori described measure of cost \cite{akashi2002}, however the relationship shows a parabolic relationship. In comparison molecular weight shows a linear relationship with the absolute measures of costs, but shows a greater degree of variation.
 
 The comparison of relative measures of cost illustrates the small degree of correlation with previous estimates of cost. For the both the molecular weight and ATP+NADH cost estimates, neither \emph{E. coli} or \emph{S. cerevisiae} relative cost estimates show any relationship, and furthermore the figure illustrates the disparity in estimated costs between the species models.
+
+\subsection{Gene cost estimation}
+
+\subsubsection{Simulating model growth}
+
+\emph{S. cerevisiae} is known to use fermentative energy production over that of oxidation of respiration. At high levels of glucose \emph{S. cerevisae} will use a high flux glycolytic metabolism resulting in the production of ethanol. At very low glucose levels yeast under goes a diauxic shift, or Crabtree effect, where metabolism is readjusted to perfrom oxidative respiration through the tricarboxilic acid cycle using oxygen as the electron acceptor \cite{kolkman2005,kolkman2006}.
+
+Any attempt to replicate an \emph{in silico} fitness effect in response to a change in gene function must rely on the accurate simulation of \emph{in vivo} behavior. Naive optimisation of in glucose limiting conditions results in the use of the energy efficient repiratory metabolism over the \emph{in vivo} preferred fermentative metabolism. The reason for this is respiratory metabolism provides a more optimal solution. Previous attempts to simulate fermentation using the yeast genome scale model have focused on the use of oxygen as the electron acceptor. Methods of \emph{in silico} fermentation include minimal oxygen use as the objective function \cite{cakir2007}, or a growth rate dependent maximum on the oxygen update by the model \cite{famili2003}.
+
+In this analysis ...
+
+\begin{sidewaysfigure}
+  \centering
+  \includegraphics*[width=15cm]{most_changing_reactions.eps}
+  \caption[Reaction changes between respiratory and fermentative growth]{Summary of five largest changes in reaction flux between respiratory and fermentative growth. Each bar represents the change in the reaction between the optimised (fermentative) model, and the minimal oxygen (pseudo-fermentative) model. Dark bars represent a decrease in reaction rate, and pale an increase. The first figure the first case where oxygen is minimised at smallest allowable level, and the two models are compared. In the second figure transport reactions into the cell for malate, oxoglutarate, and alpha-ketoglutarate are blocked. In the third figure MOMA \cite{segre2002} is used to generate the pseudo-fermentative solution from the optimised model.}
+  \label{figure:most_changing_reactions}
+\end{sidewaysfigure}
+
+\begin{figure}
+  \centering
+  \includegraphics*[width=10cm]{fermentation_density.eps}
+  \caption[Short caption]{Long caption}
+  \label{figure:fermentation_density}
+\end{figure}
+
+\subsubsection{Gene use}
+
+The above described 262 single-gene encoded reactions was assessed in various solutions spaces. The simulations used were glucose and ammonia nutrient limitations in using either a respiratory or fermentative growth model. All simulations were performed at a fixed growth rate of 0.3$hr^{-1}$. The use of each gene in the resulting model optimised solution space can be divided in four types based on the flux distribution in the model. Figure~\vref{figure:reaction_constraints} illustrates these types.
+
+\begin{figure}
+\centering
+\includegraphics*[width=10cm]{reaction_constraints.eps}
+\caption[Gene use in model optimised solution space]{The use of 1:1 gene associated reactions in four environmental solution spaces. Two types of nutrient limitation are shown: glucose and ammonia. Each limitation is explored using either a yeast respiratory, or fermentative growth. Four types of reaction uses are described: at maximum, constrained, variable, or zero flux. Maximum reactions are at the positive or negative limit of the allowable flux for the model optimisation. Constrained reactions are fixed at the current flux and absolute flux cannot be reduced to satisfy the model growth rate. Variable reactions' flux rate can be reduced whilst still maintaining the model growth rate. Zero flux reactions are not used in the given solution. All reaction estimates are performed at a fixed growth rate of 0.3hr$^{-1}$. }
+\label{figure:reaction_constraints}
+\end{figure}
+
+\paragraph{Reaction rate at maximum}
+
+The reactions are at the allowable limit for any reaction in the solution. The flux through the reaction the reaction is either at -1000/1000 mmol$^{-1}$ gDW$^{-1}$ hr$^{-1}$. The number of these types of reactions was limited where only six total exist across all the model solutions.
+
+\paragraph{Constrained reaction rate}
+
+These reactions are constrained in their use in the given solution. The reaction is used in the solution, but the absolute reaction rate cannot be reduced whilst still maintaining maintaining a viable solution for a model growth rate at 0.3hr$^{-1}$ The number of these reactions ranged from 58 to 63 reactions.
+
+\paragraph{Variable reaction rate}
+
+These reactions are used in the solution, and the absolute reaction flux can be reduced whilst still maintaining the fixed growth rate. The number of these reactions ranged from 30 to 42.
+
+\paragraph{Reaction unused}
+
+This type of reaction was not used in the solution and had a reaction rate of zero. This is the largest proportion of reactions across all simulations ranging from 163 to 166.
 
 \clearpage
 
