@@ -10,7 +10,12 @@ class Latex < Thor
 
   desc "headings", "lists the headings in the file"
   def headings(file)
-    system "grep section{ #{file}"
+    headings = %x|grep section{ #{file}|
+    headings.each do |line|
+      pattern = /^\\(.*)section\{([a-zA-Z\s]+)\}/
+      level, name = pattern.match(line)[1..2]
+      puts "+#{'-' * (level.length/3)} #{name}"
+    end
   end
 
   desc "build","builds thesis document"
