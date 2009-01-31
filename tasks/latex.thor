@@ -8,6 +8,11 @@ class Latex < Thor
     system "grep \"Citation\" #{log} | awk '{print $4}' | sort | uniq"
   end
 
+  desc "headings", "lists the headings in the file"
+  def headings(file)
+    system "grep section{ #{file}"
+  end
+
   desc "build","builds thesis document"
   method_options :src  => 'src',
                  :dest => 'out',
