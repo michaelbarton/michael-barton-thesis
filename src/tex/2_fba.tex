@@ -75,7 +75,7 @@ The second part of results section describes an experimental approach to estimat
 
 \section{Materials and Methods}
 
-\subsubsection{Genome scale metabolic models}
+\subsection{Genome scale metabolic models}
 
 The genome scale models used in this work were \emph{S.cerevisiae} iND750 \cite{duarte2004a} and \emph{E.coli} iJR904 \cite{reed2003}. Flux balance analysis was performed using the COBRA toolbox \cite{becker2007} using the lpsolve optimisation library \cite{lpsolve}.
 
@@ -85,13 +85,17 @@ Flux balance analysis is performed by solving the value of $v$ for the equation 
 
 For this analysis the biomass reaction was fixed at a constant value through constraining the upper and lower boundaries to the same value. When optimising the model the objective function was the minimisation of the flux entering the cell of a given nutrient. Performing all flux balance analysis with a fixed growth rate allows are results to be scaled to the same growth rate. Minimisation of a given nutrient flux can be used to simulate starvation of the nutrient, where the nutrient is the limiting factor for growth.
 
-\subsubsection{Simulation of environmental limitation}
+\subsection{Simulation of environmental limitation}
 
-\subsubsection{Calculation of amino acid cost}
+\subsection{Calculation of amino acid cost}
 
 Estimation of amino acid cost was performed by changing the of $S_{ij}$ where $i$ is the amino acid and $j$ is the biomass reaction in the model. After flux balance analysis each change in $S_{ij}$ results in a corresponding change in the nutrient uptake flux for which the model is being optimised.
 
-\subsubsection{Estimation of gene cost}
+\subsection{Simulation of fermentation}
+
+Description of fermentation goes here ...
+
+\subsection{Estimation of gene cost}
 
 A subset of the reactions in the \emph{S. cerevisiae} metabolic model have a gene association. This annotation defines if there is one or genes known to encode an enzyme which catalyses the reaction. This association can include multimeric enzymes where multiple gene products form an enzyme complex. The relationship of gene to reaction is not always 1-to-1 where multiple genes products catalyse the same reaction, or a single gene product catalyses multiple reactions. 
 
@@ -109,6 +113,10 @@ WHAT UNITS?
 \clearpage
 
 \section{Results}
+
+\subsection{Properties of genome scale models}
+
+\subsubsection{Reactions and genes}
 
 \begin{figure}
   \centering
@@ -131,6 +139,10 @@ WHAT UNITS?
   }
 \caption[Gene associations in the \emph{S. cerevisiae} iND750 model]{Comparison of the associations of \emph{S. cerevisiae} genes to reactions in the \emph{S. cerevisiae} iND750 model. The total number of ``All'' reactions defined in the model is 1266. Category A represents reactions that have at least one gene associated. Category B reactions are those with only a single gene associated. Category C reactions have only a single gene associated, and the gene is not associated with any other reactions. Each category is a subset of the previous category.}
 \end{figure}
+
+\subsubsection{Biomass requirement}
+
+Description of biomass here ...
 
 \subsection{Amino acid cost estimation}\label{section:amino_acid_cost_estimation}
 
