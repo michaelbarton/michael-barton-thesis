@@ -279,8 +279,8 @@ Documentation:
 \def\submitdate#1{\gdef\@submitdate{#1}}
 \def\copyrightyear#1{\gdef\@copyrightyear{#1}} % \author, \title in report
 \def\@title{}\def\@author{}
-\def\@dept{Faculty of Life Sciences}
-\def\@faculty{Faculty of Life Sciences}
+\def\@dept{Life Sciences}
+\def\@faculty{Life Sciences}
 \def\@principaladviser{}\def\@firstreader{}\def\@secondreader{}
 %\def\@submitdate{\ifcase\the\month\or
 %  January\or February\or March\or April\or May\or June\or
