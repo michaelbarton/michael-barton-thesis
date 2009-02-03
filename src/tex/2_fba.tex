@@ -122,7 +122,7 @@ For this analysis the biomass reaction was fixed at a constant value through con
 
 Estimation of amino acid cost was performed by changing the of $S_{ij}$ where $i$ is the amino acid and $j$ is the biomass reaction in the model. After flux balance analysis each change in $S_{ij}$ results in a corresponding change in the nutrient uptake flux for which the model is being optimised.
 
-\subsection{Simulation of fermentation}
+\subsection{Simulation of f such asermentation}
 
 Description of fermentation goes here ...
 
@@ -474,6 +474,12 @@ Amino acid synthesis will require energy to power each step in the metabolic net
 The number of enzyme parameter needed to produce a kinetic model mean that the number of reactions included can be a magnitude smaller than that of genome scale models. The small number of reactions therefore means that the estimation of  control coefficients are limited to the small number of available reactions. For instance, at the time of writing this thesis, there exists no model where it would be possible to derive control coefficients for reactions across different parts of the cell metabolism such as both energy metabolism and amino acid. Existing genome scale models contain reactions contain the majority of the central metabolism for the organism they describe, which solves the problem of limited model size. The restriction of genome scale models is that they do not contain enzyme kinetic data, and so it is not possible to estimate metabolic control coefficients in the same way as kinetic models.
 
 \subsubsection{Simulating fermentation}
+
+Making \emph{in silico} predictions of \emph{in vivo} \emph{S. cerevisiae} behavior is problematic as yeast prefer a less optimal energy strategy. The use or fermentation over respiration may a better evolutionary strategy as the secretion of ethanol may act as an antibiotic: a less efficient metabolism of sugar provides a more efficient competitive advantage.
+
+More accurate \emph{in silico} predictions are made when a genome scale model better predicts \emph{in vivo} behavior. Previous approaches to simulating fermentation focues on the availability of oxygen as the electron acceptor in electron transport chain. Reducing the availability of oxygen forces the use of less efficient electron acceptors such as ethanol. Cakir \emph{et al.} \cite{cakir2007} used minimal oxygen production as the objective function, while Famili \emph{et al.} \cite{famili2003} used a growth rate propotional upper boundary on oxygen uptake. In this analysis oxygen uptake was set an upper boundary based on a prior optimisation of the model for minmimal oxygen uptake. The analysis results showed minimising oxygen alone does not necessarily provide a realistic simulation of expected flux distribution of yeast where unusual changes in flux associated with amino acid synsthesis were observed.
+
+Using the minimisation of metabolic adustment technique (MOMA) more realistic flux changes associated with the use of fermentation. The increased fluxes included reactions associated with glycolysis and ethanol production, the decreased fluxes included TCA cycle associated fluxes and mitchochondrial water transport. MOMA may provide a more realistic simulation of fermentation as the optimisation process prevents the large scale metabolic changes in fluxes associated with finding a fermentative solution which distant from the solution using respiration. Instead a MOMA derived fermentative solution more closely mimics the \emph{in vivo} changes where reactions may under go smaller changes in steady state flux.
 
 \subsubsection{Determining gene associations}
 
