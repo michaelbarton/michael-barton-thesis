@@ -370,12 +370,58 @@ TODO Is PGM a TCA cycle step?
 
 TODO Are the transport reactions still being used?
 
-\begin{sidewaysfigure}
+\begin{figure}
   \centering
-  \includegraphics*[width=15cm]{most_changing_reactions.eps}
+  \subfloat[Original]{
+    \label{figure:most_changing_reactions:a}
+    \includegraphics*[width=6cm]{changing_reactions_1.eps}
+  }
+  \hfill
+  \subfloat[Closed Reactions]{
+    \label{figure:most_changing_reactions:b}
+    \includegraphics*[width=6cm]{changing_reactions_2.eps}
+  }
+  \subfloat[Closed Reactions + MOMA]{
+    \label{figure:most_changing_reactions:c}
+    \includegraphics*[width=6cm]{changing_reactions_3.eps}
+  }
   \caption[Reaction changes between respiratory and fermentative growth]{Summary of five largest changes in reaction flux between respiratory and fermentative growth. Each bar represents the change in the reaction between the optimised (fermentative) model, and the minimal oxygen (pseudo-fermentative) model. Reactions at identical flux in both solutions are ignored. Dark bars represent a decrease in reaction rate, and pale an increase. The first figure the first case where oxygen is minimised at smallest allowable level, and the two models are compared. In the second figure transport reactions into the cell for malate, oxoglutarate, and alpha-ketoglutarate are blocked. In the third figure MOMA \cite{segre2002} is used to generate the pseudo-fermentative solution from the optimised model.}
   \label{figure:most_changing_reactions}
-\end{sidewaysfigure}
+\end{figure}
+
+\begin{figure}
+  \ContinuedFloat
+  \centering
+  \subfloat[Reaction descriptions]{
+    \label{figure:most_changing_reactions:key}
+    \begin{footnotesize}
+    \begin{tabular}{l l l}
+                                                                                       \toprule
+      Reaction & Reaction                             & Function                    \\ \midrule
+      TYRTA    & Tyrosine transaminase                & Tyrosine metabolism         \\
+      TYRTAi   & Tyrosine transaminase                & Tyrosine metabolism         \\
+      OAAt2m   & Malateoxaloacetate shuttle           & Peroxisomal transport       \\
+      ASPTA    & Aspartate transaminase               & Aspartate metabolism        \\
+      34HPPt2m & Hydroxyphenylpyruvate oxidoreductase & Tyrosine metabolism         \\
+      TYRTAm   & Tyrosine transaminase                & Tyrosine metabolism         \\ \midrule
+      AKGMAL   & Ketoglutaratemalate transport        & Extracellular transport     \\
+      AKGt2r   & Oxoglutarate nuclear transport       & Nuclear transport           \\
+      MALt2r   & Malate transport                     & Extracellular transport     \\
+      TYRTA    & Tyrosine transaminase                & Tyrosine metabolism         \\
+      ADK1     & Adenylate kinase                     & Nucleotide salvage          \\
+      ADK4     & Adentylate kinase                    & Nucleotide salvage          \\ \midrule
+      H2Otm    & H$_2$O mitochondrial transport       & Mitochondrial transport     \\
+      PYK      & Pyruvate kinase                      & Glycolysis, gluconeogenesis \\
+      ENO      & Enolase                              & Glycolysis, gluconeogenesis \\
+      PGM      & Phosphoglycerate mutase              & Glycolysis, gluconeogenesis \\
+      ETOHt    & Ethanol transport                    & Extracellular transport     \\
+      ALCD2x   & Alcohol dehydrogenase                & Pyruvate metabolism         \\ \bottomrule
+    \end{tabular}
+    \end{footnotesize}
+  }
+  \caption[Reaction changes between respiratory and fermentative growth]{Continued}
+  \label{figure:most_changing_reactions}
+\end{figure}
 
 \subsubsection{Gene use}
 
