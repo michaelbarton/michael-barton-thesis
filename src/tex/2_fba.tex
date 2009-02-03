@@ -114,17 +114,19 @@ Each flux balance analysis model is represented by an $m \times n$ sized matrix 
 
 Flux balance analysis is performed by solving the value of $v$ for the equation $S \bullet v = 0$ where $v$ represents the a vector of flux values for each reaction in $S$ and is of the size $n$. Using flux balance analysis, a value $v_{i}$ is optimised for the solution of $S \bullet v = 0$, where $v_{i}$ represents a reaction of interest. For example if $v_{i}$ represents the conversion of metabolites to the production of a new unit of biomass, then solving $v$ for the maximisation of $v_{i}$ represents maximum growth rate. Additional constraints can be placed on the optimisation of the flux balance analysis model, such as upper an lower boundaries at for reaction fluxes. By constraining a reaction to be $\geq 0$ the reaction may only proceed in the forward direction in the optimised solution.
 
-For this analysis the biomass reaction was fixed at a constant value through constraining the upper and lower boundaries to the same value. When optimising the model the objective function was the minimisation of the flux entering the cell of a given nutrient. Performing all flux balance analysis with a fixed growth rate allows are results to be scaled to the same growth rate. Minimisation of a given nutrient flux can be used to simulate starvation of the nutrient, where the nutrient is the limiting factor for growth.
+\subsubsection{Simulation of environmental limitation}
 
-\subsection{Simulation of environmental limitation}
+The biomass reaction was fixed at a constant value through constraining the upper and lower boundaries to the same value. When optimising the model the objective function was the minimisation of the given nutrient flux entering the cell. Performing all flux balance analysis with a fixed growth rate allows are results to be scaled to the same growth rate. Minimisation of a given nutrient flux can be used to simulate starvation of the nutrient, where the nutrient is the limiting factor for growth.
+
+\subsubsection{Simulation of fermentation}
+
+Fermentation was simulated by first optimising the model for the minimal oxygen uptake for the given nutrient condition. The upper boundary on oxygen entering the cell was then fixed at this value. The model was then optimised using MOMA, where a respiratory model with unlimited oxygen was optimised, followed by optimisation the oxygen limited model. MOMA optimises the model for the given objective function, and minimises the Euclidean difference in flux distributions between the two models.
+
+The original implementation of MOMA relies on quadratic optimisation of both the objective function and the minimisation of flux difference \cite{segre2002}. The COBRA implementation of MOMA instead uses linear optimisation, using a bilevel optimisation procedure of the two objective functions proposed by Burgard \emph{et al.} \cite{burgard2003,becker2007}.
 
 \subsection{Calculation of amino acid cost}
 
-Estimation of amino acid cost was performed by changing the of $S_{ij}$ where $i$ is the amino acid and $j$ is the biomass reaction in the model. After flux balance analysis each change in $S_{ij}$ results in a corresponding change in the nutrient uptake flux for which the model is being optimised.
-
-\subsection{Simulation of f such asermentation}
-
-Description of fermentation goes here ...
+Estimation of amino acid cost was performed by making a percentage change to the requirement of amino acid at position $S_{ij}$ in the model matrix, where $i$ is the amino acid and $j$ is the biomass reaction. When the model is optimised each change in $S_{ij}$ results in a corresponding change in the nutrient uptake flux for which the model is being optimised. The slope between the change in amino acid requirements and the corresponding change nutrient uptake flux was taken as the relative cost of the amino acid. Division of the absolute cost by the original requirement results in an absolute estimate of amino acid cost.
 
 \subsection{Estimation of gene cost}
 
