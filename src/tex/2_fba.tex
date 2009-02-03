@@ -56,10 +56,45 @@ The work described above focuesed on estimating the importance of a reaction to 
 
 The article by Varma \emph{et al.} highlights how systems biology models can be used to estimate the importance of a set of metabolites to cell growth. Related to this is the question of how much it costs the cell to synthesise and use amino acids. Craig \& Weber \cite{craig1998} estimated the cost of the twenty amino acids as the sum of how many high energy phosphate bonds (e.g. ATP) and reducing molecules (e.g. NADPH) are diverted from the available energy pool in the synthesis of each amino acid from glucose. The aim of deriving these costs was to estimate the importance of amino acid cost the evolution of a set of \emph{E. coli} proteins.
 
-Akashi \& Gojobori \cite{akashi2002} explored a similar approach calculating cost on a range different energy sources to estimate the importance of amino acid cost in predicted \emph{E. coli} and \emph{B. subtilis} gene expression. Heizer \emph{et al.} \cite{heizer} expanded this estimating amino acid cost for inorganic sources in their analysis of the genomes of four prokaryotic species including photoautotrophs. These estimates of cost are based on the curation of the metabolic network to account for the expenditure of high energy molecules during synthesis. Seligmann argued \cite{seligmann2004} that the cost of amino acid biosynthesis must take into account more than just the energy required for synthesis. Seligmann used molecular weight as a proxy amino acid cost arguing that this may take into account investments in synthesising larger more complex amino acids. Using molecular weight also has the advantage where the metabolic network in not required to curate the number of high energy molecules used during synthesis.
+Akashi \& Gojobori \cite{akashi2002} explored a similar approach calculating cost on a range different energy sources to estimate the importance of amino acid cost in predicted \emph{E. coli} and \emph{B. subtilis} gene expression. Heizer \emph{et al.} \cite{heizer} expanded this estimating amino acid cost for inorganic sources in their analysis of the genomes of four prokaryotic species including photoautotrophs. These estimates of cost are based on the curation of the metabolic network to account for the expenditure of high energy molecules during synthesis. Seligmann argued \cite{seligmann2004} that the cost of amino acid biosynthesis must take into account more than just the energy required for synthesis. Seligmann used molecular weight as a proxy amino acid cost arguing that this may take into account investments in synthesising larger more complex amino acids. Using molecular weight also has the advantage where the metabolic network in not required to curate the number of high energy molecules used during synthesis. Table~\ref{table:literature_costs} highlights the various measures of amino acid cost.
 
-DOUBLE CHECK AKASHI PAPER
-HOW IS WAGNER'S COST DIFFERENT
+TODO: Check akashi paper re energy sources
+
+TODO: Add wager costs to intro
+
+TODO: How is wagner's cost different
+
+\begin{table}
+\begin{footnotesize}
+  \begin{tabular}{ p{1cm} *{6}{p{1.9cm}} }
+                                                                                \toprule
+          & A\&G   & C\&W   & C\&W  & Wager        & Wagner      & Seligmann \\
+          & Energy & Energy & Steps & Fermentative & Respiratory & Weight    \\ \midrule
+      ala & 11.7   & 12.5   & 1     & 2            & 14.5        & 89.1      \\
+      arg & 27.3   & 18.5   & 10    & 13           & 20.5        & 174.2     \\
+      asn & 14.7   & 4      & 1     & 6            & 18.5        & 132.1     \\
+      asp & 12.7   & 1      & 1     & 3            & 15.5        & 133.1     \\
+      cys & 24.7   & 24.5   & 9     & 13           & 26.5        & 121.2     \\
+      gln & 16.3   & 9.5    & 2     & 3            & 10.5        & 146.2     \\
+      glu & 15.3   & 8.5    & 1     & 2            & 9.5         & 147.1     \\
+      gly & 11.7   & 14.5   & 4     & 1            & 14.5        & 75.1      \\
+      his & 38.3   & 33     & 1     & 5            & 29          & 155.2     \\
+      ile & 32.3   & 20     & 11    & 14           & 38          & 131.2     \\
+      leu & 27.3   & 33     & 7     & 4            & 37          & 131.2     \\
+      lys & 30.3   & 18.5   & 10    & 12           & 36          & 146.2     \\
+      met & 34.3   & 18.5   & 9     & 24           & 36.5        & 149.2     \\
+      phe & 52     & 63     & 9     & 10           & 61          & 165.2     \\
+      pro & 20.3   & 12.5   & 4     & 7            & 14.5        & 115.1     \\
+      ser & 11.7   & 15     & 3     & 1            & 14.5        & 105.1     \\
+      thr & 18.7   & 6      & 6     & 9            & 21.5        & 119.1     \\
+      trp & 74.3   & 78.5   & 12    & 14           & 75.5        & 204.2     \\
+      tyr & 50     & 56.5   & 9     & 8            & 59          & 181.2     \\
+      val & 23.3   & 25     & 4     & 4            & 29          & 117.2     \\ \bottomrule
+  \end{tabular}
+\end{footnotesize}
+\caption[Amino acid costs described in the literature]{Amino acid costs described in the literature. The Akashi \& Gojobori \cite{akashi2002}, Craig \& Weber energy \cite{craig1998}, and the two Wagner \cite{wagner2005} data sets are based on the curation of the number of high-energy molecules used during synthesis, where a defined ratio is used to convert them into a single measures: usually ATP. The Craig \& Weber `steps' measure \cite{craig1998} is based on the number of the number of biosynthetic steps between central metabolism and the produced amino acid. Molecular weight is in Daltons.}
+\label{table:literature_costs}
+\end{table}
 
 \subsection{Summary of results}
 
@@ -247,7 +282,7 @@ The relative costs are derived from the slope in the unitless percentage change 
 
 \subsubsection{Estimated costs}
 
-Relative and absolute amino acid costs where estimated for all twenty amino acids in four simulated nutrient limiting conditions: glucose, ammonium, sulphate, and phosphate. For clarity costs are described as either $R_{nutrient}$ or $A_{nutrient}$ for relative and absolute costs respectively. The relative and absolute estimated costs for each of these amino acids is illustrated in Figure~\vref{figure:costs_dendrogram_dotplot} along with amino acid costs described in the literature. The estimated amino acid cost are provided in Table~\vref{table:estimated_costs}, the literature costs are provided in Table\vref{table:literature_costs}.
+Relative and absolute amino acid costs where estimated for all twenty amino acids in four simulated nutrient limiting conditions: glucose, ammonium, sulphate, and phosphate. For clarity costs are described as either $R_{nutrient}$ or $A_{nutrient}$ for relative and absolute costs respectively. The relative and absolute estimated costs for each of these amino acids is illustrated in Figure~\vref{figure:costs_dendrogram_dotplot} along with amino acid costs described in the literature. The estimated amino acid cost are provided in Table~\vref{table:estimated_costs}.
 
 \begin{table}
 \begin{footnotesize}
@@ -278,38 +313,6 @@ Relative and absolute amino acid costs where estimated for all twenty amino acid
 \end{footnotesize}
 \caption[\emph{S. cerevisiae} estimated absolute and relative amino acid costs]{The units of the absolute costs ($A_{uptake}$) are mmol of uptake nutrient per gram dry biomass per hour. The relative costs ($R_{uptake}$) are unitless. All costs are measured in the iND750 \emph{S. cerevisiae} model using the COBRA toolbox.} 
 \label{table:estimated_costs}
-\end{table}
-
-\begin{table}
-\begin{footnotesize}
-  \begin{tabular}{ p{1cm} *{6}{p{1.9cm}} }
-                                                                                \toprule
-          & A\&G   & C\&W   & C\&W  & Wager        & Wagner      & Seligmann \\
-          & Energy & Energy & Steps & Fermentative & Respiratory & Weight    \\ \midrule
-      ala & 11.7   & 12.5   & 1     & 2            & 14.5        & 89.1      \\
-      arg & 27.3   & 18.5   & 10    & 13           & 20.5        & 174.2     \\
-      asn & 14.7   & 4      & 1     & 6            & 18.5        & 132.1     \\
-      asp & 12.7   & 1      & 1     & 3            & 15.5        & 133.1     \\
-      cys & 24.7   & 24.5   & 9     & 13           & 26.5        & 121.2     \\
-      gln & 16.3   & 9.5    & 2     & 3            & 10.5        & 146.2     \\
-      glu & 15.3   & 8.5    & 1     & 2            & 9.5         & 147.1     \\
-      gly & 11.7   & 14.5   & 4     & 1            & 14.5        & 75.1      \\
-      his & 38.3   & 33     & 1     & 5            & 29          & 155.2     \\
-      ile & 32.3   & 20     & 11    & 14           & 38          & 131.2     \\
-      leu & 27.3   & 33     & 7     & 4            & 37          & 131.2     \\
-      lys & 30.3   & 18.5   & 10    & 12           & 36          & 146.2     \\
-      met & 34.3   & 18.5   & 9     & 24           & 36.5        & 149.2     \\
-      phe & 52     & 63     & 9     & 10           & 61          & 165.2     \\
-      pro & 20.3   & 12.5   & 4     & 7            & 14.5        & 115.1     \\
-      ser & 11.7   & 15     & 3     & 1            & 14.5        & 105.1     \\
-      thr & 18.7   & 6      & 6     & 9            & 21.5        & 119.1     \\
-      trp & 74.3   & 78.5   & 12    & 14           & 75.5        & 204.2     \\
-      tyr & 50     & 56.5   & 9     & 8            & 59          & 181.2     \\
-      val & 23.3   & 25     & 4     & 4            & 29          & 117.2     \\ \bottomrule
-  \end{tabular}
-\end{footnotesize}
-\caption[Amino acid costs described in the literature]{Amino acid costs described in the literature. The Akashi \& Gojobori \cite{akashi2002}, Craig \& Weber energy \cite{craig1998}, and the two Wagner \cite{wagner2005} data sets are based on the curation of the number of high-energy molecules used during synthesis, where a defined ratio is used to convert them into a single measures: usually ATP. The Craig \& Weber `steps' measure \cite{craig1998} is based on the number of the number of biosynthetic steps between central metabolism and the produced amino acid. Molecular weight is in Daltons.}
-\label{table:literature_costs}
 \end{table}
 
 \begin{sidewaysfigure}
