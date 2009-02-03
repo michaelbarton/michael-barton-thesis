@@ -20,15 +20,15 @@ The function $\frac{dx}{x}$ represents the effect of a small change in the react
 
 Determining a numeric value for the relationships between reactions in a metabolic network allows properties of biological systems to be explored. In addition to increasing the secretion of commercial by products \cite{niederberger1992}, understanding the quantitative control at points in a metabolic network can lead to the development of drugs targeting the combinations of reactions with a high degree of control in the network \cite{lehar2008,hopkins2008}. Furthermore understanding the control exerted by corresponding orthologs in both the host-pathogen can allow the difference in control coefficients to be compared so that specific reactions may be targeted in host with minimal impact in the host \cite{hornberg2007}. Outside the development of commercial products or identification of drug targets, the determination of which steps are controlled through substrate concentration or changes in enzyme activity predictions can be made of the the role of gene expression in the control metabolic systems \cite{rossell2006,daran-lapujade2007}.
 
-READ HOPKINS, LEHAR PAPERS
+TODO: read Hopkins, Lehar papers
 
 \subsection{Genome scale modelling}
 
 Derivation of a flux control coefficient \emph{in silico} requires a kinetic model with specific information about enzyme activity for each reaction. In the case of an enzyme that follows simple Michalis-Menten kinetics parameters such as Km and Vmax may be sufficient. To model more complex enzymatic reactions requires larger numbers of parameter sets which require more experimental effort to derive. Furthermore even with experimentally derived kinetic parameters, the model must be tested to determination matches expected \emph{in vivo} behaviour \cite{teusink2000}. This means that kinetic model of biological processes are often small with a limited number of reaction sets, due to the difficulty in finding sufficient enzymatic data for the reactions in the system \cite{steuer2007}.
 
-CHECK STEUER PAPER
+TODO: check Steuer paper
 
-Stoichiometric models on the other hand do not require kinetic data but instead only the connectivity between reactions, the participating metabolites and the \emph{in vivo} direction of the reaction. The growth rate of the model is simulated through of linear optimisation problem to maximise a given objective reaction such as the production of biomass defined in the combination of internal reaction and the available nutrients. Stoichiometric models are much larger than kinetic models as they require less data for construction. Large representations of an organisms metabolism have be created, described as genome scale models. The construction of genome scale metabolic model is reviewed in detail by Feist \emph{et al.} \cite{feist2009} but the process is outlined in brief here. Construction of an genome scale metabolic model begins with existing annotations of enzymes available in databases such as BRENDA \cite{chang2009} and KEGG \cite{okuda2008}, or those specific to an individual organism such as the Saccharomyces Genome Database \cite{cherry1997}. A mathematical representation of the organism is created from the derived enzyme lists and their connectivity. A biomass objective function is required to simulate the model, determined from the quantities of lipids, proteins, nucleic acids and other cofactors required to create a new cell.
+stoichiometric models on the other hand do not require kinetic data but instead only the connectivity between reactions, the participating metabolites and the \emph{in vivo} direction of the reaction. The growth rate of the model is simulated through of linear optimisation problem to maximise a given objective reaction such as the production of biomass defined in the combination of internal reaction and the available nutrients. Stoichiometric models are much larger than kinetic models as they require less data for construction. Large representations of an organisms metabolism have be created, described as genome scale models. The construction of genome scale metabolic model is reviewed in detail by Feist \emph{et al.} \cite{feist2009} but the process is outlined in brief here. Construction of an genome scale metabolic model begins with existing annotations of enzymes available in databases such as BRENDA \cite{chang2009} and KEGG \cite{okuda2008}, or those specific to an individual organism such as the Saccharomyces Genome Database \cite{cherry1997}. A mathematical representation of the organism is created from the derived enzyme lists and their connectivity. A biomass objective function is required to simulate the model, determined from the quantities of lipids, proteins, nucleic acids and other cofactors required to create a new cell.
 
 The initial stages of a genome scale model construction can be automated computationally but simulation and validation of the model will require manually curation to identify gaps in the model network. Domain specific knowledge of the organism in question aid questions of the specific existence of metabolic reactions that are expected in metabolism, but may not appear in an enzyme database. This particularly the case for organisms with extreme growth environments \cite{sun2009}. The final step in the construction of a metabolic model requires validation against \emph{in vivo} phenotypes, where \emph{in silico} predictions should mimic that of \emph{in vivo} observations as closely as possible \cite{famili2003}.
 
@@ -36,9 +36,7 @@ The \emph{Esherichia coli} construction is almost 20 years old \cite{feist2008},
 
 Simulation of a genome scale model for a given objective function, the solution of a genome scale model is determining the combination of network fluxes that maximise of minimise the objective. This is a linear optimisation problem and requires the use of a specific linear programming library. In addition to a mathematical library tools exist that provide specific help for the use and manipulation of genome scale metabolic models \cite{becker2007}. Optimisation of a metabolic can be carried out by linear programming of the objective function, additional methods may be used when making perturbations to metabolic models. Minimisation of metabolic adjustment \cite{segre2002,burgard2003} optimises for the objective function, while minimising the sum change in flux adjustment between the unperturbed and perturbed models. A related approach minimises the number of on-off fluxes changes, whereby the number of reactions that switch between active or inactive between solutions is minimised \cite{shlomi2005}.
 
-READ MOMA, MOMA UPDATE, AND ROOM
-
-ALTERNATE OPTIMA?
+TODO: read MOMA, MOMA update, and ROOM
 
 \subsubsection{Control in genome scale models}
 
@@ -140,8 +138,8 @@ The flux variability of each of the remaining reactions was assessed. The aim wa
 
 To estimate the gene cost of the remaining reactions, the flux through each reaction was fixed at the original flux value in the initial optimisation but reduced by a small constant. The model was then optimised for a given nutrient limitation. Optimisation was performed using minimisation of metabolic adjustment (MOMA). The log change in the objective flux was divided by the log change in reaction flux to give the cost for the reaction in question.
 
-IS DIVISION CORRECT?
-WHAT UNITS?
+TODO: is division correct?
+TODO: what units?
 
 \clearpage
 
@@ -367,9 +365,9 @@ Figure~\ref{figure:fermentation_density} shows a bimodal distribution of flux ch
 
 Figure~\vref{figure:most_changing_reactions} illustrates the most changing reactions between fermentative and respiratory solutions. The when using MOMA the change in flux are more representative of fermentative growth with increases in glycolytic glycolysis and ethanol secretion, and decreases in TCA cycle flux. This provides a realistic expectation of the changes that occur in fermentation when compared with the other larger changes associated with amino acid and nucleic acid metabolism.
 
-TODO Is PGM a TCA cycle step?
+TODO: Is PGM a TCA cycle step?
 
-TODO Are the transport reactions still being used?
+TODO: Are the transport reactions still being used?
 
 \begin{figure}
   \centering
@@ -489,9 +487,9 @@ Estimating the cost of a gene on metabolism first requires determining the point
 
 Alternative approaches used in gene knockout studies have treated the reaction as unaffected if an associated paralog is still available, or have removed the reaction if the one unit of a multimeric enzyme is deleted \cite{pal2006}. In this analysis reactions are not being removed, but instead their effect on the model objective function estimated. There while it can be assumed that the removal of a enzyme subunit will render the complete enzyme ineffective, the same cannot by said by of reducing the effect of a single gene product within an multimeric enzyme. For considering paralogs catalysing the same reaction it could be assumed that a deficiency in one paralog will not affect the reaction rate, this may not necessarily be the case as some paralogs may only expressed under certain conditions \cite{carlson2007,perez2008}.
 
-ANY OTHER KNOCKOUT STUDIES CAN BE CITED?
+TODO: Any other knockout studies can be cited?
 
-HOW DID OTHER KNOCKOUT STUDIES TREAT PARALOGS?
+TODO: How did other knockout studies treat paralogs?
 
 \subsubsection{Estimation of reaction constraints}
 
