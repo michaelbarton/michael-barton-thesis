@@ -200,6 +200,8 @@ Compared with the multivariate regression of the transcript and protein data, th
 
 \subsection{Amino acid cost in protein evolution}
 
+The percentage amino acid usage across seven \emph{Saccharomyces} species was calculated. Table~\vref{table:total_amino_acids} shows the total number of amino acids included for each species. Figure~\vref{figure:amino_acid_usage} compares the median percentage usage in the predicted proteome with the molecular weight of each amino acid.
+
 \begin{table}
   \centering
   \begin{tabular}{ l r }
@@ -217,7 +219,6 @@ Compared with the multivariate regression of the transcript and protein data, th
   \label{table:total_amino_acids}
 \end{table}
 
-
 \begin{figure}
   \centering
   \includegraphics*[height=10cm]{amino_acid_usage.eps}
@@ -225,27 +226,14 @@ Compared with the multivariate regression of the transcript and protein data, th
   \label{figure:amino_acid_usage}
 \end{figure}
 
+Figure~\ref{figure:amino_acid_usage} illustrates a weak trend between molecular weight and percentage usage in the \emph{Saccharomyces} genomes. Spearman's rank correlation indicates a non-significant correlation explaining 40\% of the variation in amino acid usage ($r = 0.4$,$p = 0.082$). The range of values for each point in the plot indicates variation in amino acid usage increases with molecular weight.
+
 \begin{figure}
   \centering
   \includegraphics*[height=10cm]{amino_acid_variance.eps}
   \caption[Comparison of deviation in amino acid usage with molecular weight]{Comparison of deviation in amino acid usage with molecular weight. Each point is the median absolute deviation in percentage amino acid usage across 6 \emph{Saccharomyces} species: \emph{cerevisiae}, \emph{paradoxus}, \emph{mikatae}, \emph{kudriavzevii}, \emph{bayanus}, \emph{castelli}, and \emph{kluyveri}. Loess smoothing is used to indicate trend.}
   \label{figure:amino_acid_variance}
 \end{figure}
-
-\begin{figure}
-  \centering
-  \includegraphics*[height=10cm]{heatmap.eps}
-  \caption[Amino acid usage heatmap]{Amino acid usage heatmap. Each block is the percentage amino acid usage for the species. Darker grey indicates greater usage. Each column is scaled by the column mean. The dendrogram highlights the correlation between amino acid usage. Correlation is performed using Spearman's Rank.}
-  \label{figure:phylogeny}
-\end{figure}
-
-\begin{figure}
-  \centering
-  \includegraphics*[height=10cm]{phylogeny.eps}
-  \caption[Hierarchical clustering of species amino acid usage]{Hierarchical clustering of percentage amino acid usage between \emph{Saccharomyces} species. The distance measure is Spearman's Rank correlation using percentage amino acid compostion. Hierarchical clustering is performed using the complete linkage algorithm.}
-  \label{figure:phylogeny}
-\end{figure}
-
 \clearpage
 
 \section{Discussion}
