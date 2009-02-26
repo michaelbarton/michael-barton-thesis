@@ -236,6 +236,36 @@ Figure~\vref{figure:amino_acid_variance} compares the median absolute deviation 
   \caption[Comparison of deviation in amino acid usage with molecular weight]{Comparison of deviation in amino acid usage with molecular weight. Each point is the median absolute deviation in percentage amino acid usage across seven \emph{Saccharomyces} species: \emph{cerevisiae}, \emph{paradoxus}, \emph{mikatae}, \emph{kudriavzevii}, \emph{bayanus}, \emph{castelli}, and \emph{kluyveri}. Loess smoothing is used to indicate trend.}
   \label{figure:amino_acid_variance}
 \end{figure}
+
+The usage of amino acids across each of the seven species is contrasted in Figure~\vref{figure:heat}. The usage of each amino acid is displayed as a color on the heatmap, each row is an amino acid and each column is a species. The darker grey the greater the relative usage of the amino acid in the genome. The two dendrograms in figure illustrates the hierarchical clustering of both amino acids and species based on the usage of each amino acid.
+
+\begin{figure}
+  \centering
+  \includegraphics*[height=15cm]{heatmap.eps}
+  \caption[Heatmap of amino acid usage across \emph{Saccharomyces} species]{Heatmap of amino acid usage across \emph{Saccharomyces} species. Each row is scaled by the mean where darker grey indicates a greater amino acid usage in that species relative to the other species. Agglomerative complete linkage hierarchical clustering produces dendgrams showing the Spearman's Rank relationship between both species, and individual amino acids.}
+  \label{figure:heat}
+\end{figure}
+
+The upper species dendrogram shows a partition of the yeast species with \emph{kluyveri} in one group and the remaining species in another. The yeast species do not follow a phylogenetic distribution \emph{kluyveri} and \emph{castelli} are the two outermost species in the hierarchy which does follow the phlogeny. The other species \emph{cerevisiae}, \emph{paradoxus}, \emph{mikatae}, \emph{kudriavzevii} and \emph{bayanus} appear at different postions in the hierarchy based on amino acid usage, compared to the hiercharchy based on genetic distance. This indicates amino acid usage may indicate broad speciation, but more smaller changes in amino acid usage may not necessarily relate to the species phylogeny.
+
+Singular value decomposition was performed on the amino acid usage matrix. The percentage variation explained by each of the singular values is shown in Figure~\vref{figure:components}. Each value of the first component is positive indicating for both rows and columns of the usage matrix indicating the first component does not descriminate between either amino acids or species based on usage. The size of the component indicates a broad trend for amino acid usage across species explaining ~90\% of the variation.
+
+\begin{figure}
+  \centering
+  \includegraphics*[height=10cm]{components.eps}
+  \caption[Components of amino acid usage singular value decomposition]{The percenage weight of each singular value of amino usage across seven \emph{Saccharomyces} species.}
+  \label{figure:components}
+\end{figure}
+
+The first singular value of the decomposition of amino acid usage contained no negative values and so does not discriminate between either amino acids or species. The second singular value is the first to contain both negative and positive loadings. The second and third component loadings for each amino acid are plotted in Figure~\vref{figure:acid_decomp}. Each amino acid in the figure is plotted by a symbol proportional in size to molecular weight. A circle is added to the lot to indicate the values with a high loading and therefore contribute most to the variation between species. There is no distinct trend, but the figure indicates smaller amino acids have larger absolute loadings and explain a greater degree in variation. The higher molecular weight amino acids cluster towards the origin, and therefore are fixed between species.
+
+\begin{figure}
+  \centering
+  \includegraphics*[height=10cm]{acid_difference.eps}
+  \caption[Amino acid projection onto first two discriminatory components of \emph{Saccharomyces} decompostion]{Amino acid projection onto first two discriminatory components of \emph{Saccharomyces} decompostion. The width of each square is proportional to amino acid molecular weight. The dotted lines indicate a loading of 0, where observations closer to 0 have a lesser contribution to the singular value. The dashed circle crosses both components at -0.3 and 0.3 and is added to highlight descriminatory observations.}
+  \label{figure:acid_decomp}
+\end{figure}
+
 \clearpage
 
 \section{Discussion}
