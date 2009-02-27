@@ -268,6 +268,23 @@ The first singular value of the decomposition of amino acid usage contained no n
   \label{figure:acid_decomp}
 \end{figure}
 
+\subsubsection{Cost trends in amino acid mutation rates}
+
+Per site mutation rates were calculated for all columns in protein sequence alignments used by Someone \emph{et. al} \cite{alignment}. The mutation rate was used to calculate a per-site cost of each alignment postion, weighted by the estimated amino acid fixation time at each site. The distribution evolutionary weighted cost is shown in Figure~\vref{figure:mutation_density}.
+
+TODO: How many protein alignments?
+TODO: How many alignment columns?
+TODO: How many ungapped alignment columns?
+
+\begin{figure}
+  \centering
+  \includegraphics*[height=18cm]{weight_density.eps}
+  \caption[Distribution of phylogeny-weighted residue cost.]{Distribution of phylogeny-weighted residue cost. The left figure represents the costs for all alignment columns excluding those with gaps. The figure on the right breaks the distribution into alignment columns that contain the same amino acid across all species (fixed), and alignment columns where the amino acid varies between species (varying). Molecular weight is used as the estimate of amino acid cost.}
+  \label{figure:mutation_density}
+\end{figure}
+
+When all ungapped alignment sites are compared distinct peaks highlight covserved use of an amino acid at the same site across all species, between the high density peaks are the regions where the amino acid used varies between species. The distribution of cost between fixed and vary sites is contrasted in the right hand plot of Figure~\ref{figure:mutation_density}. This shows that varying sites display a more guassian distribution phylogeny-weighted costs, though there are still visible peaks. The fixed sites, as expected, show the density costs of each twenty amino acids where amino acids with a similar cost are merged into the same peak.
+
 \clearpage
 
 \section{Discussion}
