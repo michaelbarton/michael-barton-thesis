@@ -288,16 +288,20 @@ When all ungapped alignment sites are compared distinct peaks highlight covserve
 \begin{figure}
   \centering
   \includegraphics*[height=10cm]{fixation.eps}
-  \caption[short caption]{long caption}
+  \caption[Comparison of amino acid fixation with molecular weight]{Comparison of amino acid fixation with molecular weight. Percentage fixation is the number of times the amino acid is used across all species in an alignment column, divided by the total number of times the amino is used in the \emph{Saccharomyces species}. Loess smoothing is used to indicate a trend line.}
   \label{figure:fixation_weight}
 \end{figure}
+
+The average percentage fixation rate across all each species in the alignment, was calculated for each residue in the \emph{S. cerevisiae} protein sequences. The percentage fixation of each amino acid is compared with molecular weight in Figure~\vref{figure:fixation_weight}. The figure indicates no clear relationship between the molecular weight of an amino acid and the level of site-fixation across species. The Spearman's Rank correlation between the two variable is 0.41, however the indicated relationshp may not be statistically significant ($p = 0.07$). This suggestion more expensive amino acids do not show a trend to be retained in protein sequences compared to less expensive amino acids.
 
 \begin{figure}
   \centering
   \includegraphics*[height=10cm]{mutation.eps}
-  \caption[short caption]{long caption}
+  \caption[Comparison of amino acid mean mutation rate with molecular weight]{Comparison of amino acid mean mutation rate with molecular weight. The mutation rate is the mean of each alignment column where the amino acid appears in the \emph{S. cerevisiae} sequence. Loess smoothing is used to indicate trend.}
   \label{figure:mutation_weight}
 \end{figure}
+
+The mean mutation rate of each amino acid in \emph{cerevisiae} across all alignment columns is compared with the molecular weight in Figure~\vref{figure:mutation_weight}. This figure suggests a clearer trend where the use of more expensive amino acids is correlated with a reduced mutation rate at the postion (Spearman R = -0.81, $p <$ 0.0001).
 
 \begin{figure}
   \centering
