@@ -305,21 +305,16 @@ The average percentage fixation rate across all each species in the alignment, w
   \label{figure:mutation_weight}
 \end{figure}
 
-The mean mutation rate of each amino acid in \emph{cerevisiae} across all alignment columns is compared with the molecular weight in Figure~\vref{figure:mutation_weight}. This figure suggests a clearer trend where the use of more expensive amino acids is correlated with a reduced mutation rate at the postion (Spearman R = -0.81, $p <$ 0.0001).
+The mean mutation rate of each amino acid in \emph{cerevisiae} across all alignment columns is compared with the molecular weight in Figure~\vref{figure:mutation_weight}. This figure suggests a clearer trend where the use of more expensive amino acids is correlated with a reduced mutation rate (Spearman R = -0.81, $p <$ 0.0001).
 
 \begin{figure}
   \centering
   \includegraphics*[height=10cm]{mutation_vs_fixed.eps}
-  \caption[short caption]{long caption}
+  \caption[Comparison of mutation rate with percentage sites fixed]{Comparison of mutation rate with percentage sites fixed. Mutation rate is the mean of each alignment column where the amino acid appears in the \emph{S. cerevisiae} sequence. Percentage fixation is the number of times the amino acid is used across all species in an alignment column, divided by the total number of times the amino is used in the \emph{Saccharomyces species}.Robust linear regression is used to indicate trend line.}
   \label{figure:mutation_vs_fixed}
 \end{figure}
 
-\begin{figure}
-  \centering
-  \includegraphics*[height=10cm]{ratio_mutation_vs_fixed.eps}
-  \caption[short caption]{long caption}
-  \label{figure:ratio_mutation_vs_fixed}
-\end{figure}
+Figure~\vref{figure:mutation_vs_fixed} compares the average mutation for each amino acid with percentage the usage of each amino acid is fixed. This figure shows that fixation rate do not show a strong correlation (Spearman R = -0.58, $p$ = 0.008) as may be expected from intuition. Robust linear regression is used to highlight the amino acids with a large residual from the predicted trend. The amino acids cysteine, proline, and glycine have a higher mutation rate than expected given the percentage of sites at which they are fixed across the alignments: at sites where the use of the amino acid is not fixed there is a high amino acid turnover across species. The amino acid glutamine has a smaller mutation rate given the number of sites fixed: if glutamine is not fixed at postion the rate of mutation is slower than would be expected on average. The large residual deviations may indicate a selection pressures associated with the functions of particular amino acids.
 
 \clearpage
 
