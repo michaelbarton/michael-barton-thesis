@@ -272,6 +272,21 @@ The first singular value of the decomposition of amino acid usage contained no n
   \label{figure:acid_decomp}
 \end{figure}
 
+\begin{figure}
+  \centering
+  \subfloat[Contribution of amino acid characteristics to first canonical correlation]{
+    \label{figure:canon_decomp:loadings}
+    \includegraphics*[height=8cm]{acid_correlation.eps}
+  }
+  \vfill
+  \subfloat[Comparison of \emph{S. cevevisiae} amino acid usage with derived amino acid cost]{
+    \label{figure:canon_decomp:usage}
+    \includegraphics*[height=8cm]{canonical_cost.eps}
+  }
+  \caption[Canonical correlation of amino acid usage]{Canonical correlation of amino acid usage across seven \emph{Saccharomyces} species. Figure a illustrates the contributions of each of the amino acid characteristics to the first canonical correlation with the amino acid usages across the species. Figure a illustrates the derived amino acid cost derived from the first canonical component with amino acid usage in \emph{S. cerevisiae}. Loess smoothing is used to indicate trend.}
+  \label{figure:canon_decomp}
+\end{figure}
+
 \subsubsection{Cost trends in amino acid mutation rates}
 
 Per site mutation rates were calculated for all columns in protein sequence alignments used by Someone \emph{et. al} \cite{alignment}. The mutation rate was used to calculate a per-site cost of each alignment postion, weighted by the estimated amino acid fixation time at each site. The distribution evolutionary weighted cost is shown in Figure~\vref{figure:mutation_density}.
