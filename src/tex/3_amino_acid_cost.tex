@@ -274,6 +274,10 @@ The first singular value of the decomposition of amino acid usage contained no n
   \label{figure:acid_decomp}
 \end{figure}
 
+Canonical correlation analysis was used to find the maximum correlation between a set of unobserved variables in the matrix amino acid usage across species and a matrix of amino acid characteristics consisiting of molecular weight $A_{glucose}$, $A_{ammonimum}$, and $A_{sulphur}$. The first canonical correlation explained 90\% of the variation between the two matrices. The weights for the amino acid characteristics are shown in Figure~\vref{figure:canon_decomp:loadings}. Glucose and sulphate are given similar high weights, while molecular weight and ammonium cost are relatively close to zero. This indicates amino acid usage trends across the \emph{Saccharomyces} species are best interpreted in terms of energy and sulphur content.
+
+TODO: Change figure, sulphur to sulphate
+
 \begin{figure}
   \centering
   \subfloat[Contribution of amino acid characteristics to first canonical correlation]{
@@ -288,6 +292,10 @@ The first singular value of the decomposition of amino acid usage contained no n
   \caption[Canonical correlation of amino acid usage]{Canonical correlation of amino acid usage across seven \emph{Saccharomyces} species. Figure a illustrates the contributions of each of the amino acid characteristics to the first canonical correlation with the amino acid usages across the species. Figure a illustrates the derived amino acid cost derived from the first canonical component with amino acid usage in \emph{S. cerevisiae}. Loess smoothing is used to indicate trend.}
   \label{figure:canon_decomp}
 \end{figure}
+
+An combined estimate of amino acid cost was derived from the canonical weights of each amino acid characteristic. This cost is compared with amino acid usage for \emph{S. cerevisiae} in Figure~\ref{figure:canon_decomp:usage}. The combined cost explains a greater degree of variation in amino acid usage (Spearman R = 0.55, $p$ = 0.013) than using molecular weight alone indicating that a combined cost dervived from multiple measures may provide the greatest predictor of the cost of amino acid use.
+
+TODO: Insert molecular weight correlation with usage
 
 \subsubsection{Cost trends in amino acid mutation rates}
 
