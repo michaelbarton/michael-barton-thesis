@@ -204,7 +204,7 @@ Compared with the multivariate regression of the transcript and protein data, th
 
 \subsection{Amino acid cost in protein evolution}
 
-\subsubsection{Cost trends between \emph{Saccharomyces} species}
+\subsubsection{Amino acid variance between \emph{Saccharomyces} species}
 
 The percentage amino acid usage across seven \emph{Saccharomyces} species was calculated. Table~\vref{table:total_amino_acids} shows the total number of amino acids included for each species. Figure~\vref{figure:amino_acid_usage} compares the median percentage usage in the predicted proteome with the molecular weight of each amino acid.
 
@@ -242,6 +242,8 @@ Figure~\vref{figure:amino_acid_variance} compares the median absolute deviation 
   \caption[Comparison of deviation in amino acid usage with molecular weight]{Comparison of deviation in amino acid usage with molecular weight. Each point is the median absolute deviation in percentage amino acid usage across seven \emph{Saccharomyces} species: \emph{cerevisiae}, \emph{paradoxus}, \emph{mikatae}, \emph{kudriavzevii}, \emph{bayanus}, \emph{castelli}, and \emph{kluyveri}. Loess smoothing is used to indicate trend.}
   \label{figure:amino_acid_variance}
 \end{figure}
+
+\subsubsection{Multivariate analysis of amino acid usage}
 
 The usage of amino acids across each of the seven species is contrasted in Figure~\vref{figure:heat}. The usage of each amino acid is displayed as a color on the heatmap, each row is an amino acid and each column is a species. The darker grey the greater the relative usage of the amino acid in the genome. The two dendrograms in figure illustrates the hierarchical clustering of both amino acids and species based on the usage of each amino acid.
 
@@ -355,4 +357,4 @@ Interpreting the results of the cost regression analysis, codon adaptation is th
 
 Codon adaptation is not applicable to metabolite levels, and therefore all explanatory power is based on amino acid cost, genome encoded tRNA, and carbon, nitrogen and sulphur content. The variation explained in the metabolite data was much greater than that of the transcript and protein data, more than twice as much depending on which cost measure was used. This result indicates that the combination of factors used in that analysis are strong predictors of the variation in metabolomic data, and that amino acids are maintained in the cell at levels related to cost, atomic content and genome encoded tRNA levels.
 
-\subsection{Amino acid cost is a small factor in yeast protein evolution}
+\subsection{Amino acid cost is a factor in protein sequence evolution}
