@@ -225,14 +225,14 @@ The percentage amino acid usage across seven \emph{Saccharomyces} species was ca
   \label{table:total_amino_acids}
 \end{table}
 
+Figure~\ref{figure:amino_acid_usage} illustrates a weak trend between molecular weight and percentage usage in the \emph{Saccharomyces} genomes. Spearman's rank correlation indicates a non-significant correlation explaining 40\% of the variation in amino acid usage ($r = 0.4$,$p = 0.082$). The range of values for each point in the plot indicates variation in amino acid usage increases with molecular weight.
+
 \begin{figure}
   \centering
   \includegraphics*[height=10cm]{amino_acid_usage.eps}
   \caption[Comparison of amino acid usage with molecular weight]{Comparison of amino acid usage with molecular weight. Each point is the median percentage amino acid usage across 6 \emph{Saccharomyces} species: \emph{cerevisiae}, \emph{paradoxus}, \emph{mikatae}, \emph{kudriavzevii}, \emph{bayanus}, \emph{castelli}, and \emph{kluyveri}. The grey line indicates the maximum and minimum values across species.}
   \label{figure:amino_acid_usage}
 \end{figure}
-
-Figure~\ref{figure:amino_acid_usage} illustrates a weak trend between molecular weight and percentage usage in the \emph{Saccharomyces} genomes. Spearman's rank correlation indicates a non-significant correlation explaining 40\% of the variation in amino acid usage ($r = 0.4$,$p = 0.082$). The range of values for each point in the plot indicates variation in amino acid usage increases with molecular weight.
 
 Figure~\vref{figure:amino_acid_variance} compares the median absolute deviation in percentage with molecular weight for each amino acid. Spearman's rank correlation indicates a stronger signifcant trend between the usage of amino acids in \emph{Saccharomyces} encoded proteomes and the molecular weight of the amino acid ($r = - 0.58$,$p = 0.0075$). This indicates a possible selection pressure to limit relatively more complex amino acids, while allowing greater variance in the use of simpler amino acids.
 
@@ -347,10 +347,6 @@ Figure~\vref{figure:mutation_vs_fixed} compares the average mutation for each am
 
 \section{Discussion}
 
-TODO: Metagenomics paper, variance in amino acid compostion not related to cost. Instead may related to limitation of sparse cofactors related to synthesis.
-
-TODO: Regulation vs cost minimisation. Peligbacter ublique has minimimal genome. Streamlined for minimal replication costs? Is cost minimisation become a greater adaptive advantage for organisms living in less varied environments? Otherwise adaptation to mulitple environments outweighs any specific advantage of cost. Attenuate cost across a broad range of environments as much as possible. Or just not important at all?
-
 \subsection{A small factor in yeast gene expression}
 
 \subsubsection{Predictors of transcript and protein levels}
@@ -381,6 +377,24 @@ Singular value decompostion of amino acid across the \emph{Saccharomyces} genus 
 
 The first two descrimintatory components of the decomposition show indicate that usage of smaller and cheaper amino acid explain the variation between species where smaller amino acids have a larger absolute singuler value weight than larger amino acids. This trend is however difficult to quantitatively measure and requires futher analysis to determine the exact nature and significance of cost to explaining the variation between species.
 
-Canonical correlation of amino acid characteristics and their usage between species highlights a strong trend related to biosynthesis from glucose and sulphate. Only two amino acids include a sulphur atom and therefore indicates that amino usage in the \emhp{Saccharomyces} genus is related to energy expenditure in synthesis plus sulphur usage where relevent. Nitrogen content and molecular weight made no large contribution to the first canonical correlation and suggests that neither nitrogen material costs or the additional burden of synthesising large complex amino acid are a signficant factor in amino acid synthesis.
+Canonical correlation of amino acid characteristics and their usage between species highlights a strong trend related to biosynthesis from glucose and sulphate. Only two amino acids include a sulphur atom and therefore indicates that amino usage in the \emph{Saccharomyces} genus is related to energy expenditure in synthesis plus sulphur usage where relevent. Nitrogen content and molecular weight made no large contribution to the first canonical correlation and suggests that neither nitrogen material costs or the additional burden of synthesising large complex amino acid are a signficant factor in amino acid synthesis.
 
 The use of a glucose and sulphate integrated cost is validated in the greater amount of variation explained in \emph{S. cerevisiae} amino acid levels contrasted with the variation explained using molecular weight alone. This result suggests an integrated multifactorial view of amino acid biosynthesis may be necessary to understand the importance of cost minimisation in shaping amino acid usage.
+
+\subsubsection{Amino acid cost affects mutation rate}
+
+Mutation rates in amino acid usage across the four \emph{Saccharomyces} species considered show a strong trend related to biosynthetic cost. This indicates cost selection may be a strong trend in the evolution of protein sequence. Biosynthetically expensive amino acids have a low mutation rate indicating a selection pressure against transitions to other amino acids at the same position. This may indicate that expensive amino acids are required and fixed in the genome for a specific functional role, and additional expensive amino acids are not included because of the cost burden of their synthesis. Biosynthetically cheaper amino acids may vary more because the cost burden association with random insertion into the genome is much less. The only constraint on cheaper amino acids may be their functional role in the protein structure or function.
+
+In contrast with mutation rate, the fixation of amino acids shows no trend with biosynthetic cost, unusual given that fixation rate does. The selection pressure behind this trend is unclear, though the cause may be that certain amino acid have a higher fixation rate for specific functional roles. Glycine for example is biosynthetically cheap but has a high fixation rate, the reason for this may be that glycine has a very small mass and therefore has specific functional roles in protein structure requiring such small size.
+
+Comparing mean mutation rate with percentage fixation highlights specific amino acids with greater or lesser than expected mutation rates given the level of fixation. In addition to glycine are the amino acids cysteine, proline, and glutamine with large difference in mutation and fixation. The causes underlying these differences may be attributed to specific functional purposes of the amino acid which therefore result in changes in selection pressures for particular amino acids.
+
+\subsubsection{Future work to understand the role of metabolic cost}
+
+The previous chapter showed amino acid metabolic cost varies between species and environment. A similar trend may also be infered for the importance of metabolic cost of sequence evolution. The \emph{Saccharomyces} genus examined in this analysis have an extensive regulatory network and show distinct cellular responses to a variety of conditions \cite{castrillo2007}. Therefore metabolic cost may not be as strong a selection pressure as the ability to adapt to a variety of conditions. Future analysis could consider small oceanic species invariant to environmental conditions where metabolic cost may be a much stronger selection pressure given the genome is streamlined for a single environment \cite{peligabacter}. Such species with compact genomes and limited number of paralogs may indicate that cost minimisation is inversely proportional to adaptation to multiple environments. Gene duplication is a factor in adaptation to new environments \cite{ryan,envirologs} and the the duplication of gene expression is above the threshold of negative selection \cite{swire2007}, therefore the paralog count may be key to identifying the relationship between cost selection and environmental adaptation.
+
+TODO: Metagenomics paper, variance in amino acid compostion not related to cost. Instead may related to limitation of sparse cofactors related to synthesis.
+
+\section{Conclusions}
+
+Is metabolic cost a force in protein sequence evolution? Analysis of transcript and protein production, or biomass composition suggests that cost minimisation explains a limited amount of variation in the data examined here, and is therefore a weak selection pressure is shaping sequence composition or cellular expression. Detailed analysis of the mutation rates of each amino acid reveals a strong trend related to amino acid biosynthetic cost indicating that cost minimisation is indeed a selection pressure in sequence evolution.
