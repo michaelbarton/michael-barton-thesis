@@ -67,3 +67,101 @@ In this chapter the estimated gene costs from Chapter 2 are compared with a numb
 \section{Discussion}
 
 \section{Materials and Methods}
+
+\section*{Fermentation}
+
+\subsubsection*{Simulation of fermentation METHODS}
+
+Fermentation was simulated by first optimising the model for the minimal oxygen uptake for the given nutrient condition. The upper boundary on oxygen entering the cell was then fixed at this value. The model was then optimised using MOMA, where a respiratory model with unlimited oxygen was optimised, followed by optimisation the oxygen limited model. MOMA optimises the model for the given objective function, and minimises the Euclidean difference in flux distributions between the two models.
+
+The original implementation of MOMA relies on quadratic optimisation of both the objective function and the minimisation of flux difference \cite{segre2002}. The COBRA implementation of MOMA instead uses linear optimisation, using a bilevel optimisation procedure of the two objective functions proposed by Burgard \emph{et al.} \cite{burgard2003,becker2007}.
+
+\subsubsection{Fermentation RESULTS}
+
+
+
+\emph{S. cerevisiae} is known to use fermentative energy production over that of oxidation of respiration. At high levels of glucose \emph{S. cerevisiae} will use a high flux glycolytic metabolism resulting in the production of ethanol. At very low glucose levels yeast under goes a diauxic shift, or Crabtree effect, where metabolism is readjusted to perform oxidative respiration through the tricarboxilic acid cycle using oxygen as the electron acceptor \cite{kolkman2005,kolkman2006}.
+
+Naive optimisation the yeast model results in a flux distribution using respiratory over fermentative energy production, because respiratory metabolism provides the most optimal solution. Previous attempts to simulate fermentation using the yeast genome scale model have focused on the use of oxygen as the electron acceptor. Methods of \emph{in silico} fermentation include minimal oxygen use as the objective function \cite{cakir2007}, or a growth rate dependent maximum on the oxygen update by the model \cite{famili2003}.
+
+In this analysis fermentative growth was simulated through fixing the oxygen uptake at the lowest allowable value. This requires a prior model optimisation to determine the minimal amount of oxygen for the given growth conditions. The upper boundary for oxygen entry into cell was set at this level. When simulating fermentation three reactions were discovered that allowed additional energy sources into the cell. The reactions were malate, oxoglutarate, and alpha-ketoglutarate. These reactions were closed to prevent their entry into the cell and providing additional energy, outside that of the restricted energy sources, e.g. glucose.
+
+Using simple model optimisation for fermentative growth resulted in large scale metabolic readjustment when comparing the flux distribution of respiratory and fermentative growth. Figure~\vref{figure:fermentation_density} shows the difference in flux between the two energy uses, dependent on the method used. The method optimisation method MOMA \cite{segre2002} minimises the difference in flux distribution between to stoichiometric model. Using MOMA to optimise the fermentative solution based on minimising the euclidean flux distance to the respiratory solution reduces the level of metabolic flux change between the two solutions.
+
+\begin{figure}
+  \centering
+  \includegraphics*[width=10cm]{fermentation_density.eps}
+  \caption[Flux changes between respiratory and fermentative growth]{Density plot of flux changes between respiratory and fermentative growth. The $x$ is the log$_2$ change in reaction flux between the same reaction in fermentative and respiratory growth. The original method of producing \emph{in silico} fermentation was simulated by fixing oxygen uptake at the lowest allowable value and optimising the model (dotted line). Simulation of fermentation was updated by closing intake reactions for malate, oxoglutarate, and alpha-ketoglutarate (dashed line). The final method used for simulating fermentation closed the previous reactions, and optimised the model using the minimisation of metabolic adjustment MOMA (continuous line) \cite{segre2002}. } 
+  \label{figure:fermentation_density}
+\end{figure}
+
+Figure~\ref{figure:fermentation_density} shows a bimodal distribution of flux changes between the two growth strategies. The peak on the left corresponds to tiny flux differences between reactions, for example fatty acyl ACP hydrolase is unused in the respiratory solution but has a tiny flux (< 10$^{-12}$) in the fermentative solution. The peak on the right indicates the substantial changes that define the changes of interest between the solutions. Figure~\ref{figure:fermentation_density} illustrates that using MOMA minimises both the minor and major changes in flux between the respiratory and fermentative growth solutions.
+
+Figure~\vref{figure:most_changing_reactions} illustrates the most changing reactions between fermentative and respiratory solutions. The when using MOMA the change in flux are more representative of fermentative growth with increases in glycolytic glycolysis and ethanol secretion, and decreases in TCA cycle flux. This provides a realistic expectation of the changes that occur in fermentation when compared with the other larger changes associated with amino acid and nucleic acid metabolism.
+
+TODO: Is PGM a TCA cycle step?
+
+TODO: Are the transport reactions still being used?
+
+\begin{figure}
+  \centering
+  \subfloat[Original]{
+    \label{figure:most_changing_reactions:a}
+    \includegraphics*[width=6cm]{changing_reactions_1.eps}
+  }
+  \hfill
+  \subfloat[Closed Reactions]{
+    \label{figure:most_changing_reactions:b}
+    \includegraphics*[width=6cm]{changing_reactions_2.eps}
+  }
+  \subfloat[Closed Reactions + MOMA]{
+    \label{figure:most_changing_reactions:c}
+    \includegraphics*[width=6cm]{changing_reactions_3.eps}
+  }
+  \caption[Reaction changes between respiratory and fermentative growth]{Summary of five largest changes in reaction flux between respiratory and fermentative growth. Each bar represents the change in the reaction between the optimised (fermentative) model, and the minimal oxygen (pseudo-fermentative) model. Reactions at identical flux in both solutions are ignored. Dark bars represent a decrease in reaction rate, and pale an increase. The first figure the first case where oxygen is minimised at smallest allowable level, and the two models are compared. In the second figure transport reactions into the cell for malate, oxoglutarate, and alpha-ketoglutarate are blocked. In the third figure MOMA \cite{segre2002} is used to generate the pseudo-fermentative solution from the optimised model.}
+  \label{figure:most_changing_reactions}
+\end{figure}
+
+\begin{figure}
+  \ContinuedFloat
+  \centering
+  \subfloat[Reaction descriptions]{
+    \label{figure:most_changing_reactions:key}
+    \begin{footnotesize}
+    \begin{tabular}{l l l}
+                                                                                       \toprule
+      Reaction & Reaction                             & Function                    \\ \midrule
+      TYRTA    & Tyrosine transaminase                & Tyrosine metabolism         \\
+      TYRTAi   & Tyrosine transaminase                & Tyrosine metabolism         \\
+      OAAt2m   & Malateoxaloacetate shuttle           & Peroxisomal transport       \\
+      ASPTA    & Aspartate transaminase               & Aspartate metabolism        \\
+      34HPPt2m & Hydroxyphenylpyruvate oxidoreductase & Tyrosine metabolism         \\
+      TYRTAm   & Tyrosine transaminase                & Tyrosine metabolism         \\ \midrule
+      AKGMAL   & Ketoglutaratemalate transport        & Extracellular transport     \\
+      AKGt2r   & Oxoglutarate nuclear transport       & Nuclear transport           \\
+      MALt2r   & Malate transport                     & Extracellular transport     \\
+      TYRTA    & Tyrosine transaminase                & Tyrosine metabolism         \\
+      ADK1     & Adenylate kinase                     & Nucleotide salvage          \\
+      ADK4     & Adentylate kinase                    & Nucleotide salvage          \\ \midrule
+      H2Otm    & H$_2$O mitochondrial transport       & Mitochondrial transport     \\
+      PYK      & Pyruvate kinase                      & Glycolysis, gluconeogenesis \\
+      ENO      & Enolase                              & Glycolysis, gluconeogenesis \\
+      PGM      & Phosphoglycerate mutase              & Glycolysis, gluconeogenesis \\
+      ETOHt    & Ethanol transport                    & Extracellular transport     \\
+      ALCD2x   & Alcohol dehydrogenase                & Pyruvate metabolism         \\ \bottomrule
+    \end{tabular}
+    \end{footnotesize}
+  }
+  \caption[Reaction changes between respiratory and fermentative growth]{Continued}
+  \label{figure:most_changing_reactions}
+\end{figure}
+
+\subsubsection{Simulating fermentation DISCUSSION}
+
+Making \emph{in silico} predictions of \emph{in vivo} \emph{S. cerevisiae} behaviour is problematic as yeast prefer a less optimal energy strategy. The use or fermentation over respiration may a better evolutionary strategy as the secretion of ethanol may act as an antibiotic: a less efficient metabolism of sugar provides a more efficient competitive advantage.
+
+More accurate \emph{in silico} predictions are made when a genome scale model better predicts \emph{in vivo} behaviour. Previous approaches to simulating fermentation focus on the availability of oxygen as the electron acceptor in electron transport chain. Reducing the availability of oxygen forces the use of less efficient electron acceptors such as ethanol. Cakir \emph{et al.} \cite{cakir2007} used minimal oxygen production as the objective function, while Famili \emph{et al.} \cite{famili2003} used a growth rate proportional upper boundary on oxygen uptake. In this analysis oxygen uptake was set an upper boundary based on a prior optimisation of the model for minimal oxygen uptake. The analysis results showed minimising oxygen alone does not necessarily provide a realistic simulation of expected flux distribution of yeast where unusual changes in flux associated with amino acid synthesis were observed.
+
+Using the minimisation of metabolic adjustment technique (MOMA) more realistic flux changes associated with the use of fermentation. The increased fluxes included reactions associated with glycolysis and ethanol production, the decreased fluxes included TCA cycle associated fluxes and mitochondrial water transport. MOMA may provide a more realistic simulation of fermentation as the optimisation process prevents the large scale metabolic changes in fluxes associated with finding a fermentative solution which distant from the solution using respiration. Instead a MOMA derived fermentative solution more closely mimics the \emph{in vivo} changes where reactions may under go smaller changes in steady state flux.
+
+
