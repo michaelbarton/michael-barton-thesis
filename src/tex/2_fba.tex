@@ -145,30 +145,22 @@ TODO: what units?
 
 \subsubsection{Numbers of reactions and genes}
 
-The \emph{S.cerevisiae} iND750 model contains 1266 reactions and is annotated with 750 genes. Figure~\vref{figure:gene_associations} illustrates the number and types of associations of genes to reactions in the model. Each reaction in the model can be categorised based on the type gene associations.
+The \emph{S.cerevisiae} iND750 model contains 1266 reactions and is annotated with 750 genes. Table~\vref{figure:gene_associations} illustrates the number and types of associations of genes to reactions in the model. Each reaction in the model can be categorised based on the type gene associations.
 
-\begin{figure}
+\begin{table}
   \centering
-  \subfloat[Frequency of gene associations]{
-    \label{figure:gene_associations:b}
-    \begin{tabular}{l c r}
-                                                                  \toprule
-      Description                        & Category & Number   \\ \midrule
-      Number of genes                    &          & 750      \\
-      Number of reactions                & All      & 1266     \\
-      Reactions with associations        & A        & 810      \\
-      Single association reactions       & B        & 579      \\
-      One-to-one reaction association    & C        & 262      \\ \bottomrule
-    \end{tabular}
-  }
-  \hfill
-  \subfloat[Gene associations barchart]{
-    \label{figure:gene_associations:a}
-    \includegraphics*[width=10cm]{gene_associations.eps}
-  }
-  \caption[Gene associations in the \emph{S. cerevisiae} iND750 model]{Comparison of the associations of \emph{S. cerevisiae} genes to reactions in the \emph{S. cerevisiae} iND750 model. The total number of ``All'' reactions defined in the model is 1266. Category A represents reactions that have at least one gene associated. Category B reactions are those with only a single gene associated. Category C reactions have only a single gene associated, and the gene is not associated with any other reactions. Each category is a subset of the previous category.}
+  \begin{tabular}{l r}
+                                                                   \toprule
+    Description                                      & Number   \\ \midrule
+    Genes                                            & 750      \\
+    Reactions                                        & 1266     \\
+    Reactions with at least one associated gene      & 810      \\
+    Reactions with a single gene associated          & 579      \\
+    One-to-one association between reaction and gene & 262      \\ \bottomrule
+  \end{tabular}
+  \caption[Gene associations in the \emph{S. cerevisiae} iND750 model]{Comparison of numbers and types of associations between genes and reactions in the \emph{S. cerevisiae} iND750 model. Each association category is a subset of the above category.}
   \label{figure:gene_associations}
-\end{figure}
+\end{table}
 
 Category A describes reactions with many-to-many gene associations, where one gene may may be associated with multiple reactions, and one reaction may be associated with multiple genes. This category includes reactions that may be catalysed by paralogs and/or multimeric enzymes, and genes that are associated with multiple reactions. Category B one-to-many gene associations where one one may associated with many reactions, but each reaction has only one gene association. This category excludes paralogs and multimeric enzymes, but still includes enzymes associated with multiple reactions. Category C represents one-to-one gene associations, where each gene is associated with a single reaction, and each reaction has only a single gene association. This category represents 262 genes which have only a single point of the effect defined in the model.
 
