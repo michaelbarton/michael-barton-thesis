@@ -1,4 +1,4 @@
-\section*{Outline}
+\section*{Chapter summary}
 
 In this chapter I illustrate how genome scale metabolic models can be used to estimate the importance of objects in a biological system, in this instance \emph{S. cerevisiae}. The background describes metabolic control analysis and how this has been used to study metabolism. This is followed by a description of genome scale models and an example of their use. The results and discussion of this chapter illustrate how principle of metabolic control analysis can be applied to genome scale metabolic models to estimate the importance of individual metabolites and gene-encoded reactions.
 
@@ -6,7 +6,7 @@ In this chapter I illustrate how genome scale metabolic models can be used to es
 
 \section{Introduction}
 
-\subsection{Understanding biological systems}
+\subsection{Determing control in biological systems}
 
 Early enzymology assumed the existence of rate limiting steps in biological pathways. The intuition is that the rate of a pathway will be the speed of the slowest step. When the rate of the slowest step increases, the rate of the whole pathway will also increase until another step becomes rate limiting. Testing this assumption Niederberger \emph{et. al} \cite{niederberger1992} found that individual up or down regulation of specific enzymes had little overall effect on tryptophan biosynthesis in \emph{S cerevisiae}. The rate of the pathway could instead be accelerated by increasing the quantity of five related enzymes in tandem. This research is an example control in a biological system being distributed over the system as a whole rather than focused at individual steps.
 
@@ -22,13 +22,17 @@ Determining a numeric value for the relationships between reactions in a metabol
 
 TODO: read Hopkins, Lehar papers
 
-\subsection{Genome scale modelling}
+\subsection{Genome scale metabolic modelling}
 
 Derivation of a flux control coefficient \emph{in silico} requires a kinetic model with specific information about enzyme activity for each reaction. In the case of an enzyme that follows simple Michalis-Menten kinetics parameters such as Km and Vmax may be sufficient. To model more complex enzymatic reactions requires larger numbers of parameter sets which require more experimental effort to derive. Furthermore even with experimentally derived kinetic parameters, the model must be tested to determination matches expected \emph{in vivo} behaviour \cite{teusink2000}. This means that kinetic model of biological processes are often small with a limited number of reaction sets, due to the difficulty in finding sufficient enzymatic data for the reactions in the system \cite{steuer2007}.
 
 TODO: check Steuer paper
 
-stoichiometric models on the other hand do not require kinetic data but instead only the connectivity between reactions, the participating metabolites and the \emph{in vivo} direction of the reaction. The growth rate of the model is simulated through of linear optimisation problem to maximise a given objective reaction such as the production of biomass defined in the combination of internal reaction and the available nutrients. Stoichiometric models are much larger than kinetic models as they require less data for construction. Large representations of an organisms metabolism have be created, described as genome scale models. The construction of genome scale metabolic model is reviewed in detail by Feist \emph{et al.} \cite{feist2009} but the process is outlined in brief here. Construction of an genome scale metabolic model begins with existing annotations of enzymes available in databases such as BRENDA \cite{chang2009} and KEGG \cite{okuda2008}, or those specific to an individual organism such as the Saccharomyces Genome Database \cite{cherry1997}. A mathematical representation of the organism is created from the derived enzyme lists and their connectivity. A biomass objective function is required to simulate the model, determined from the quantities of lipids, proteins, nucleic acids and other cofactors required to create a new cell.
+Each flux balance analysis model is represented by an $m \times n$ sized matrix names $S$. The matrix $S$ represents the reactions in the metabolism and the metabolites that participate in the reactions. The size of of $m$ is the total number of metabolites in the model, and $n$ is the total number of reactions. The position $S_{ij}$ is the participation of metabolic $i$ in reaction $j$. Positive values of $S_{ij}$ indicate the metabolite is produced by the reaction, negative values mean the metabolite is consumed by the reaction. A zero value indicates the metabolite does not participate in the reaction.
+
+Flux balance analysis is performed by solving the value of $v$ for the equation $S \bullet v = 0$ where $v$ represents the a vector of flux values for each reaction in $S$ and is of the size $n$. Using flux balance analysis, a value $v_{i}$ is optimised for the solution of $S \bullet v = 0$, where $v_{i}$ represents a reaction of interest. For example if $v_{i}$ represents the conversion of metabolites to the production of a new unit of biomass, then solving $v$ for the maximisation of $v_{i}$ represents maximum growth rate. Additional constraints can be placed on the optimisation of the flux balance analysis model, such as upper an lower boundaries at for reaction fluxes. By constraining a reaction to be $\geq 0$ the reaction may only proceed in the forward direction in the optimised solution.
+
+Stoichiometric models on the other hand do not require kinetic data but instead only the connectivity between reactions, the participating metabolites and the \emph{in vivo} direction of the reaction. The growth rate of the model is simulated through of linear optimisation problem to maximise a given objective reaction such as the production of biomass defined in the combination of internal reaction and the available nutrients. Stoichiometric models are much larger than kinetic models as they require less data for construction. Large representations of an organisms metabolism have be created, described as genome scale models. The construction of genome scale metabolic model is reviewed in detail by Feist \emph{et al.} \cite{feist2009} but the process is outlined in brief here. Construction of an genome scale metabolic model begins with existing annotations of enzymes available in databases such as BRENDA \cite{chang2009} and KEGG \cite{okuda2008}, or those specific to an individual organism such as the Saccharomyces Genome Database \cite{cherry1997}. A mathematical representation of the organism is created from the derived enzyme lists and their connectivity. A biomass objective function is required to simulate the model, determined from the quantities of lipids, proteins, nucleic acids and other cofactors required to create a new cell.
 
 The initial stages of a genome scale model construction can be automated computationally but simulation and validation of the model will require manually curation to identify gaps in the model network. Domain specific knowledge of the organism in question aid questions of the specific existence of metabolic reactions that are expected in metabolism, but may not appear in an enzyme database. This particularly the case for organisms with extreme growth environments \cite{sun2009}. The final step in the construction of a metabolic model requires validation against \emph{in vivo} phenotypes, where \emph{in silico} predictions should mimic that of \emph{in vivo} observations as closely as possible \cite{famili2003}.
 
@@ -38,7 +42,7 @@ Simulation of a genome scale model for a given objective function, the solution 
 
 TODO: read MOMA, MOMA update, and ROOM
 
-\subsubsection{Control in genome scale models}
+\subsubsection{Predicting essential genes using genome scale models}
 
 The first section of this introduction described the importance of quantitative metabolic control analysis in determining the points of control in biological systems. The larger size of genome scale models would mean that quantitative analysis of this type would yield much greater datasets than similar analysis in smaller kinetic models.
 
@@ -48,9 +52,7 @@ Using gene deletion as an estimate of gene control depends on the interpretation
 
 The work described above focused on estimating the importance of a reaction to a biological objective function, such as growth. The use of genome scale metabolic models can also be used to estimate the importance of metabolites to an objective function based on the use of shadow prices. In economics the shadow price, for example of a sold product, characterises the size of the  effect of a change product price on the market in which it is sold. Varma \emph{et al.} \cite{varma1993} simulation this approach in the estimation of the shadow price of oxygen on a stoichiometric model of \emph{E. coli} energy metabolism. Through simulating a decrease in the availability of oxygen the researchers identified how the shadow prices of the redox carriers changed with the availability of oxygen. With the decreasing availability of oxygen and the corresponding rise in its price, the price of ethanol for energy production decreases as it becomes the cheapest electron acceptor for eliminating redox.
 
-\subsection{Estimating the cost of amino acids}
-
-\subsubsection{Energetic cost}
+\subsection{Estimating amino acid biosynthetic cost}
 
 The article by Varma \emph{et al.} highlights how systems biology models can be used to estimate the importance of a set of metabolites to cell growth. Related to this is the question of how much it costs the cell to synthesise and use amino acids. Craig \& Weber \cite{craig1998} estimated the cost of the twenty amino acids as the sum of how many high energy phosphate bonds (e.g. ATP) and reducing molecules (e.g. NADPH) are diverted from the available energy pool in the synthesis of each amino acid from glucose. The aim of deriving these costs was to estimate the importance of amino acid cost the evolution of a set of \emph{E. coli} proteins.
 
@@ -94,7 +96,7 @@ TODO: How is Wagner's cost different
 \label{table:literature_costs}
 \end{table}
 
-\subsection{Summary of results}
+\subsection{Results summary}
 
 The results presented in this chapter are split into two sections. The first describes an approach to estimating amino acid cost focusing on the \emph{S. cerevisiae} genome scale metabolic model. The approach used to estimate amino acid cost is similar to that described by Varma \emph{et al.} in their estimation of the shadow prices in \emph{E.coli} energy metabolism. The estimated costs are compared to the other estimates of amino acid cost that appear in the literature described above.
 
@@ -104,37 +106,31 @@ The second part of results section describes an experimental approach to estimat
 
 \section{Materials and Methods}
 
-\subsection{Genome scale metabolic models}
+\subsection{Flux balance analysis}
 
 The genome scale models used in this work were \emph{S.cerevisiae} iND750 \cite{duarte2004a} and \emph{E.coli} iJR904 \cite{reed2003}. Flux balance analysis was performed using the COBRA toolbox \cite{becker2007} using the lpsolve optimisation library \cite{lpsolve}.
 
-Each flux balance analysis model is represented by an $m \times n$ sized matrix names $S$. The matrix $S$ represents the reactions in the metabolism and the metabolites that participate in the reactions. The size of of $m$ is the total number of metabolites in the model, and $n$ is the total number of reactions. The position $S_{ij}$ is the participation of metabolic $i$ in reaction $j$. Positive values of $S_{ij}$ indicate the metabolite is produced by the reaction, negative values mean the metabolite is consumed by the reaction. A zero value indicates the metabolite does not participate in the reaction.
-
-Flux balance analysis is performed by solving the value of $v$ for the equation $S \bullet v = 0$ where $v$ represents the a vector of flux values for each reaction in $S$ and is of the size $n$. Using flux balance analysis, a value $v_{i}$ is optimised for the solution of $S \bullet v = 0$, where $v_{i}$ represents a reaction of interest. For example if $v_{i}$ represents the conversion of metabolites to the production of a new unit of biomass, then solving $v$ for the maximisation of $v_{i}$ represents maximum growth rate. Additional constraints can be placed on the optimisation of the flux balance analysis model, such as upper an lower boundaries at for reaction fluxes. By constraining a reaction to be $\geq 0$ the reaction may only proceed in the forward direction in the optimised solution.
-
-\subsubsection{Simulation of environmental limitation}
-
 The biomass reaction was fixed at a constant value through constraining the upper and lower boundaries to the same value. When optimising the model the objective function was the minimisation of the given nutrient flux entering the cell. Performing all flux balance analysis with a fixed growth rate allows are results to be scaled to the same growth rate. Minimisation of a given nutrient flux can be used to simulate starvation of the nutrient, where the nutrient is the limiting factor for growth.
 
-\subsubsection{Simulation of fermentation}
-
-Fermentation was simulated by first optimising the model for the minimal oxygen uptake for the given nutrient condition. The upper boundary on oxygen entering the cell was then fixed at this value. The model was then optimised using MOMA, where a respiratory model with unlimited oxygen was optimised, followed by optimisation the oxygen limited model. MOMA optimises the model for the given objective function, and minimises the Euclidean difference in flux distributions between the two models.
-
-The original implementation of MOMA relies on quadratic optimisation of both the objective function and the minimisation of flux difference \cite{segre2002}. The COBRA implementation of MOMA instead uses linear optimisation, using a bilevel optimisation procedure of the two objective functions proposed by Burgard \emph{et al.} \cite{burgard2003,becker2007}.
-
-\subsection{Calculation of amino acid cost}
+\subsection{Flux balance analysis estimation of amino acid cost}
 
 Estimation of amino acid cost was performed by making a percentage change to the requirement of amino acid at position $S_{ij}$ in the model matrix, where $i$ is the amino acid and $j$ is the biomass reaction. When the model is optimised each change in $S_{ij}$ results in a corresponding change in the nutrient uptake flux for which the model is being optimised. The slope between the change in amino acid requirements and the corresponding change nutrient uptake flux was taken as the relative cost of the amino acid. Division of the absolute cost by the original requirement results in an absolute estimate of amino acid cost.
 
-\subsection{Estimation of gene cost}
+\subsection{Flux balance analysis estimation of gene cost}
+
+\subsubsection{Determination of gene to reaction association}
 
 A subset of the reactions in the \emph{S. cerevisiae} metabolic model have a gene association. This annotation defines if there is one or genes known to encode an enzyme which catalyses the reaction. This association can include multimeric enzymes where multiple gene products form an enzyme complex. The relationship of gene to reaction is not always 1-to-1 where multiple genes products catalyse the same reaction, or a single gene product catalyses multiple reactions. 
 
 The COBRA toolbox used in the analysis defines a matrix specifying which genes are associated with which reactions. The matrix is size 750 by 1266, where there are 750 annotated genes and 1266 reactions. The matrix is sparse as not all reactions have an associated gene. This matrix was parsed to determine rows which contain only a single 1 value indicating that only a single gene catalyses the reaction. The matrix was also parsed to determine if this value was also the only value appearing in the corresponding column, indicating the gene catalyses no other reactions. This method was used to determine a list of reactions that have a 1:1 gene annotation.
 
+\subsubsection{Analysis of reaction variability}
+
 The yeast model was then optimised for the given set of conditions. Each condition solution was examined to determine if the reaction participated in the solution, i.e. a non zero flux. Reactions at the maximum allowable flux in solution i.e. -1000 or 1000 were also determined. The cost of either of these types of reactions was not determined as they do not participate, or are at the edge of the solution space.
 
 The flux variability of each of the remaining reactions was assessed. The aim was to determine if the reaction could vary in the solution space give the fixed growth rate requirement. To determine the variability of each of the remaining reactions, in each case the model was re-optimised with the objective function to minimise the absolute reaction flux. If the reaction could not be minimised, this indicated the reaction was constrained in the solution space, and no cost measure could be estimated.
+
+\subsubsection{Reaction cost estimation}
 
 To estimate the gene cost of the remaining reactions, the flux through each reaction was fixed at the original flux value in the initial optimisation but reduced by a small constant. The model was then optimised for a given nutrient limitation. Optimisation was performed using minimisation of metabolic adjustment (MOMA). The log change in the objective flux was divided by the log change in reaction flux to give the cost for the reaction in question.
 
@@ -145,9 +141,9 @@ TODO: what units?
 
 \section{Results}
 
-\subsection{Properties of genome scale models}
+\subsection{The \emph{S. cerevisiae} iND750 genome scale model}
 
-\subsubsection{Reactions and genes}
+\subsubsection{Numbers of reactions and genes}
 
 The \emph{S.cerevisiae} iND750 model contains 1266 reactions and is annotated with 750 genes. Figure~\vref{figure:gene_associations} illustrates the number and types of associations of genes to reactions in the model. Each reaction in the model can be categorised based on the type gene associations.
 
@@ -176,7 +172,7 @@ The \emph{S.cerevisiae} iND750 model contains 1266 reactions and is annotated wi
 
 Category A describes reactions with many-to-many gene associations, where one gene may may be associated with multiple reactions, and one reaction may be associated with multiple genes. This category includes reactions that may be catalysed by paralogs and/or multimeric enzymes, and genes that are associated with multiple reactions. Category B one-to-many gene associations where one one may associated with many reactions, but each reaction has only one gene association. This category excludes paralogs and multimeric enzymes, but still includes enzymes associated with multiple reactions. Category C represents one-to-one gene associations, where each gene is associated with a single reaction, and each reaction has only a single gene association. This category represents 262 genes which have only a single point of the effect defined in the model.
 
-\subsubsection{Biomass requirement}
+\subsubsection{Compostion of biomass requirement}
 
 The biomass equation is estimated requirement of metabolites for growth. In flux balance analysis the biomass equation can be used objective function to simulate the level of growth given the available basic input nutrients. The quantities of nutrients in the biomass reaction are organism specific and determined from millimole quantities of each quantities per gram of dry weight biomass (mmol $^-1$ gDW $^-1$).
  
@@ -237,7 +233,7 @@ Table \vref{table:biomass_requirements} outlines the required molecule for the \
   \label{table:biomass_requirements}
 \end{table}
 
-\subsection{Amino acid cost estimation}\label{section:amino_acid_cost_estimation}
+\subsection{A novel approach using genome scale models to estimating amino acid cost}\label{section:amino_acid_cost_estimation}
 
 As discussed, metabolic control analysis can be used to estimate the importance of an object in a kinetic model. In this section I will show similar principles of can be used to estimate the sensitivity of growth rate to the changes in amino acid requirements in biomass. The biomass equation in a flux balance analysis model describes the estimated requirements and stoichiometry of metabolites required for the production of a biomass, which is equivalent to growth. For instance in the biomass reaction in the \emph{S. cerevisiae} model, the requirements include fats such as triglyceride and ergosterol, sugars such as glucose and mannose, as well as smaller metabolites such as sulphate and water. The stoichiometry of the biomass equation is derived from the dry weight biomass of the \emph{S. cerevisiae} cell \cite{duarte2004a}. The protein content of a yeast cell is also included in the biomass equation as the twenty individual amino acids that make up protein, with the inclusion of theses amino acids in the biomass equation, the reaction stoichiometries of each can be manipulated to estimate the effect on biomass production.
 
@@ -266,8 +262,6 @@ As discussed, metabolic control analysis can be used to estimate the importance 
   \label{figure:curve_estimation}
 \end{figure}
 
-\subsubsection{Method for estimating cost}
-
 Figure~\vref{figure:curve_estimation} illustrates the method used to estimate the cost of an amino acid with a genome scale metabolic model. Figure~\ref{figure:curve_estimation:schematic} illustrates the genome scale model usage to estimate amino acid cost in a glucose limited environment. The minimal and maximal boundary on the production of biomass is fixed at a constant value, for example 0.3 hr$^{-1}$. Using a constant growth rate value for amino acid estimation means that all amino acid cost estimations are scaled by the same growth rate. The objective function of the model is then set to be the minimisation of cellular entry of the nutrient for which the amino acid costs are being estimated, which in Figure~\ref{figure:curve_estimation:schematic} is glucose. All all other nutrient exchange fluxes were set to have a however boundary of -10000 mmol$^{-1}$ gDW$^{-1}$ hr$^{-1}$, the aim of this is to set all other nutrients to be non limiting on simulated growth. For the \emph{S. cerevisiae} iND750 \cite{duarte2004a} genome scale model the default exchange reactions when simulating growth are glucose, ammonium, sulphate, phosphate, oxygen and water. Each exchange flux represented the only source for an essential nutrient, and therefore when estimating the glucose cost of an amino acid there were no other high energy sugars available, or when estimating the ammonium cost there were no other nitrogen sources entering the cell. Model optimisation then found what the minimum required amount of nutrient intake flux was required to maintain the growth rate at which the model was fixed. Four nutrients were considered in the analysis: glucose, ammonium, sulphate, and phosphate. 
 
 Figure~\ref{figure:curve_estimation:acids} illustrates the structure of the amino acid tryptophan. Tryptophan has a double ring side chain which is large and complex relative to other amino acids. This side chain also has two nitrogen atoms. Figure~\ref{figure:curve_estimation:curve} shows the slope for supply and demand elasticity for tryptophan in glucose and ammonium limiting conditions. The slope for each environment is produced by altering the requirement of tryptophan in model biomass reaction. The stoichiometry of tryptophan is changed with a slight increase or small decrease in requirement of the range of $\pm$0.0002\%. The result of this change is then measured in the effect on the uptake flux in question. 
@@ -280,7 +274,7 @@ Figure~\ref{figure:curve_estimation:costs} compares the estimated absolute costs
 
 The relative costs are derived from the slope in the unitless percentage change in the amino acid requirement, and the corresponding mmol$^{-1}$ gDW$^{-1}$ hr$^{-1}$ response in nutrient intake flux. When divided by the hr$^{-1}$ growth rate at which the cost was estimated, the units are mmol$^{-1}$ gDW$^{-1}$. This represents the change in nutrient uptake flux given the factional change in amino acid requirement in biomass. The absolute cost is derived from the relative cost by division by the original mmol$^{-1}$ gDW$^{-1}$ requirement of the amino acid. The absolute amino acid is therefore unitless and represents what a mmol$^{-1}$ gDW$^{-1}$ increase in amino acid requirement has the mmol$^{-1}$ gDW$^{-1}$ uptake flux of the given nutrient.
 
-\subsubsection{Estimated costs}
+\subsubsection{Estimated amino acid costs in glucose, ammonium, and sulphate limitation}
 
 Relative and absolute amino acid costs where estimated for all twenty amino acids in four simulated nutrient limiting conditions: glucose, ammonium, sulphate, and phosphate. For clarity costs are described as either $R_{nutrient}$ or $A_{nutrient}$ for relative and absolute costs respectively. The relative and absolute estimated costs for each of these amino acids is illustrated in Figure~\vref{figure:costs_dendrogram_dotplot} along with amino acid costs described in the literature. The estimated amino acid cost are provided in Table~\vref{table:estimated_costs}.
 
@@ -326,7 +320,7 @@ The $A_{glucose}$ costs is highly correlated with previous measures of amino aci
 
 The $R_{glucose}$ cost shows little correlation with previous measures of amino acid cost. The cost that it is most correlated with is the Wagner fermentative growth (Spearman R = -0.16). The $R_{glucose}$ and $R_{ammonium}$ costs are however correlated with each other (Spearman R = 0.63). Comparing the derived relative and absolute costs, the absolute costs reflect the per molecule biosynthetic, while the relative costs reflect the absolute cost scaled by the use of the amino acid in the genome. For example, the $A_{sulphate}$ costs of methionine and cysteine are both 1, which reflects the single sulphur atom in each amino acid. The $R_{sulphate}$ cost for methionine is however much greater than that of cysteine, as methionine is used proportionally more in the proteome.
 
-\subsubsection{Comparison between species}
+\subsubsection{Comparison of amino acid costs in \emph{S. cerevisiae} and \emph{E. coli}}
 
 $A_{glucose}$ and $R_{glucose}$ were calculated for comparison using the \emph{Escherichia coli iJR904} genome scale model. Figure~\vref{figure:amino_acid_costs_scatterplot} compares both relative and absolute costs for \emph{E. coli} and \emph{S. cerevisiae} models with two costs described in the literature: molecular weight \cite{seligmann2003} and number of ATP and NAPH molecules \cite{akashi2002}.
 
@@ -342,87 +336,9 @@ Figure~\ref{figure:amino_acid_costs_scatterplot} shows that the both the absolut
 
 The comparison of relative measures of cost illustrates the small degree of correlation with previous estimates of cost. For the both the molecular weight and ATP+NADH cost estimates, neither \emph{E. coli} or \emph{S. cerevisiae} relative cost estimates show any relationship, and furthermore the figure illustrates the disparity in estimated costs between the species models.
 
-\subsection{Gene cost estimation}
+\subsection{A novel approach to estimating gene cost}
 
-\subsubsection{Simulating model growth}
-
-\emph{S. cerevisiae} is known to use fermentative energy production over that of oxidation of respiration. At high levels of glucose \emph{S. cerevisiae} will use a high flux glycolytic metabolism resulting in the production of ethanol. At very low glucose levels yeast under goes a diauxic shift, or Crabtree effect, where metabolism is readjusted to perform oxidative respiration through the tricarboxilic acid cycle using oxygen as the electron acceptor \cite{kolkman2005,kolkman2006}.
-
-Naive optimisation the yeast model results in a flux distribution using respiratory over fermentative energy production, because respiratory metabolism provides the most optimal solution. Previous attempts to simulate fermentation using the yeast genome scale model have focused on the use of oxygen as the electron acceptor. Methods of \emph{in silico} fermentation include minimal oxygen use as the objective function \cite{cakir2007}, or a growth rate dependent maximum on the oxygen update by the model \cite{famili2003}.
-
-In this analysis fermentative growth was simulated through fixing the oxygen uptake at the lowest allowable value. This requires a prior model optimisation to determine the minimal amount of oxygen for the given growth conditions. The upper boundary for oxygen entry into cell was set at this level. When simulating fermentation three reactions were discovered that allowed additional energy sources into the cell. The reactions were malate, oxoglutarate, and alpha-ketoglutarate. These reactions were closed to prevent their entry into the cell and providing additional energy, outside that of the restricted energy sources, e.g. glucose.
-
-Using simple model optimisation for fermentative growth resulted in large scale metabolic readjustment when comparing the flux distribution of respiratory and fermentative growth. Figure~\vref{figure:fermentation_density} shows the difference in flux between the two energy uses, dependent on the method used. The method optimisation method MOMA \cite{segre2002} minimises the difference in flux distribution between to stoichiometric model. Using MOMA to optimise the fermentative solution based on minimising the euclidean flux distance to the respiratory solution reduces the level of metabolic flux change between the two solutions.
-
-\begin{figure}
-  \centering
-  \includegraphics*[width=10cm]{fermentation_density.eps}
-  \caption[Flux changes between respiratory and fermentative growth]{Density plot of flux changes between respiratory and fermentative growth. The $x$ is the log$_2$ change in reaction flux between the same reaction in fermentative and respiratory growth. The original method of producing \emph{in silico} fermentation was simulated by fixing oxygen uptake at the lowest allowable value and optimising the model (dotted line). Simulation of fermentation was updated by closing intake reactions for malate, oxoglutarate, and alpha-ketoglutarate (dashed line). The final method used for simulating fermentation closed the previous reactions, and optimised the model using the minimisation of metabolic adjustment MOMA (continuous line) \cite{segre2002}. } 
-  \label{figure:fermentation_density}
-\end{figure}
-
-Figure~\ref{figure:fermentation_density} shows a bimodal distribution of flux changes between the two growth strategies. The peak on the left corresponds to tiny flux differences between reactions, for example fatty acyl ACP hydrolase is unused in the respiratory solution but has a tiny flux (< 10$^{-12}$) in the fermentative solution. The peak on the right indicates the substantial changes that define the changes of interest between the solutions. Figure~\ref{figure:fermentation_density} illustrates that using MOMA minimises both the minor and major changes in flux between the respiratory and fermentative growth solutions.
-
-Figure~\vref{figure:most_changing_reactions} illustrates the most changing reactions between fermentative and respiratory solutions. The when using MOMA the change in flux are more representative of fermentative growth with increases in glycolytic glycolysis and ethanol secretion, and decreases in TCA cycle flux. This provides a realistic expectation of the changes that occur in fermentation when compared with the other larger changes associated with amino acid and nucleic acid metabolism.
-
-TODO: Is PGM a TCA cycle step?
-
-TODO: Are the transport reactions still being used?
-
-\begin{figure}
-  \centering
-  \subfloat[Original]{
-    \label{figure:most_changing_reactions:a}
-    \includegraphics*[width=6cm]{changing_reactions_1.eps}
-  }
-  \hfill
-  \subfloat[Closed Reactions]{
-    \label{figure:most_changing_reactions:b}
-    \includegraphics*[width=6cm]{changing_reactions_2.eps}
-  }
-  \subfloat[Closed Reactions + MOMA]{
-    \label{figure:most_changing_reactions:c}
-    \includegraphics*[width=6cm]{changing_reactions_3.eps}
-  }
-  \caption[Reaction changes between respiratory and fermentative growth]{Summary of five largest changes in reaction flux between respiratory and fermentative growth. Each bar represents the change in the reaction between the optimised (fermentative) model, and the minimal oxygen (pseudo-fermentative) model. Reactions at identical flux in both solutions are ignored. Dark bars represent a decrease in reaction rate, and pale an increase. The first figure the first case where oxygen is minimised at smallest allowable level, and the two models are compared. In the second figure transport reactions into the cell for malate, oxoglutarate, and alpha-ketoglutarate are blocked. In the third figure MOMA \cite{segre2002} is used to generate the pseudo-fermentative solution from the optimised model.}
-  \label{figure:most_changing_reactions}
-\end{figure}
-
-\begin{figure}
-  \ContinuedFloat
-  \centering
-  \subfloat[Reaction descriptions]{
-    \label{figure:most_changing_reactions:key}
-    \begin{footnotesize}
-    \begin{tabular}{l l l}
-                                                                                       \toprule
-      Reaction & Reaction                             & Function                    \\ \midrule
-      TYRTA    & Tyrosine transaminase                & Tyrosine metabolism         \\
-      TYRTAi   & Tyrosine transaminase                & Tyrosine metabolism         \\
-      OAAt2m   & Malateoxaloacetate shuttle           & Peroxisomal transport       \\
-      ASPTA    & Aspartate transaminase               & Aspartate metabolism        \\
-      34HPPt2m & Hydroxyphenylpyruvate oxidoreductase & Tyrosine metabolism         \\
-      TYRTAm   & Tyrosine transaminase                & Tyrosine metabolism         \\ \midrule
-      AKGMAL   & Ketoglutaratemalate transport        & Extracellular transport     \\
-      AKGt2r   & Oxoglutarate nuclear transport       & Nuclear transport           \\
-      MALt2r   & Malate transport                     & Extracellular transport     \\
-      TYRTA    & Tyrosine transaminase                & Tyrosine metabolism         \\
-      ADK1     & Adenylate kinase                     & Nucleotide salvage          \\
-      ADK4     & Adentylate kinase                    & Nucleotide salvage          \\ \midrule
-      H2Otm    & H$_2$O mitochondrial transport       & Mitochondrial transport     \\
-      PYK      & Pyruvate kinase                      & Glycolysis, gluconeogenesis \\
-      ENO      & Enolase                              & Glycolysis, gluconeogenesis \\
-      PGM      & Phosphoglycerate mutase              & Glycolysis, gluconeogenesis \\
-      ETOHt    & Ethanol transport                    & Extracellular transport     \\
-      ALCD2x   & Alcohol dehydrogenase                & Pyruvate metabolism         \\ \bottomrule
-    \end{tabular}
-    \end{footnotesize}
-  }
-  \caption[Reaction changes between respiratory and fermentative growth]{Continued}
-  \label{figure:most_changing_reactions}
-\end{figure}
-
-\subsubsection{Gene use}
+\subsubsection{Estimated reaction constraint in glucose and ammonium limitation}
 
 The above described 262 single-gene encoded reactions was assessed in various solutions spaces. The simulations used were glucose and ammonia nutrient limitations in using either a respiratory or fermentative growth model. All simulations were performed at a fixed growth rate of 0.3$hr^{-1}$. The use of each gene in the resulting model optimised solution space can be divided in four types based on the flux distribution in the model. Figure~\vref{figure:reaction_constraints} illustrates these types.
 
@@ -455,17 +371,17 @@ This type of reaction was not used in the solution and had a reaction rate of ze
 
 This chapter illustrated the methods used to estimate amino acid cost, and further showed the correspondence of these amino acid costs with previously described measures of amino acid cost.
 
-\subsection{Metabolic modelling predicts amino acid cost}
+\subsection{Flux balance analysis predicts amino acid cost}
 
 The absolute amino acid costs estimated using using the genome scale model are as expected. The $A_{ammonium}$ and $A_{sulphate}$ costs are directly proportional to the content nitrogen and sulphur in the molecule. This indicates, as expected, when either of these two nutrients are limiting the cost of the amino acid is the quantity of the limiting nutrient. The estimated $A_{glucose}$ cost is slightly different as glucose is the source of both carbon atoms and energy. When compared with literature reported cost measures the $A_{glucose}$ cost is most correlated with the Akashi and Gojobori energetic cost. Similar to both these measures of amino acid cost, small less complex amino acids such as glycine and alanine are cheaper, which larger more complex amino acids such as tryptophan and tyrosine are energetically more expensive.
 
 The relative amino acid cost estimations represent the absolute cost of an amino acid scaled by the quantity measured in $S. cerevisiae$ biomass. The relative measures of amino acid cost show little correlation with previous measures of amino acid cost. Furthermore amino acids that are expensive based on their absolute cost, are cheaper for a relative cost. For example tryptophan has a high $A_{glucose}$ cost, but is instead much cheaper when the $R_{glucose}$ cost is considered. This reflects that expensive amino acids may have their use in the genome minimised. On the other hand lysine has one of the most expensive $R_{glucose}$ costs amino acids, but is relative inexpensive in it's $A_{glucose}$ cost. This means that a proportional increase in the requirement of lysine would have a greater effect than of tryptophan, since lysine is used more in the genome.
 
-\subsubsection{Correlation between relative costs}
+\subsubsection{Correlation $R_{glucose}$ and $R_{ammonium}$ indicates genome optimisation}
 
 An interesting point is that the $R_{glucose}$ and $R_{ammonium}$ costs have a high correlation (Spearman R = 0.63). This leads to the possibility that optimisation of energy/carbon based costs in the proteome also results in optimisation of the nitrogen cost. The benefits of this are intuitive where selective advantages for the optimisation of a given amino acid in carbon limitation will have advantages for nitrogen limitation. If there was little or negative correlation between carbon and nitrogen based costs, then optimisation of a protein for carbon, could result in the unoptimisation for nitrogen.
 
-\subsubsection{Additional importance of atomic content}
+\subsubsection{Atomic material content as a biosynthetic cost}
 
 Amino acid synthesis will require energy to power each step in the metabolic network, in addition to the energetic cost the molecules part of the amino acid structure may also be considered a cost of synthesis. Mazel \& Marliere \cite{mazel1989} showed that \emph{Calothrix} proteins expressed in sulphur limiting conditions are depleted for sulphur containing cysteine and methionine amino acids. This work indicating the atomic content of an amino acid should also be taken into consideration when attempting to define a measure of cost. Work by both Baudoin-Cornu \emph{et al.} \cite{baudoin2001} and Bragg \emph{et al.}	\cite{bragg2006} used atomic content as a measure of amino acid cost when examining protein content. When considering the evolution role of an amino acid cost, the role of energy should also be coupled with the availability of nutrients. Any limitation on a specific nutrient will play as an important role as that of energetic limitation.
 
@@ -473,15 +389,7 @@ Amino acid synthesis will require energy to power each step in the metabolic net
 
 The number of enzyme parameter needed to produce a kinetic model mean that the number of reactions included can be a magnitude smaller than that of genome scale models. The small number of reactions therefore means that the estimation of  control coefficients are limited to the small number of available reactions. For instance, at the time of writing this thesis, there exists no model where it would be possible to derive control coefficients for reactions across different parts of the cell metabolism such as both energy metabolism and amino acid. Existing genome scale models contain reactions contain the majority of the central metabolism for the organism they describe, which solves the problem of limited model size. The restriction of genome scale models is that they do not contain enzyme kinetic data, and so it is not possible to estimate metabolic control coefficients in the same way as kinetic models.
 
-\subsubsection{Simulating fermentation}
-
-Making \emph{in silico} predictions of \emph{in vivo} \emph{S. cerevisiae} behaviour is problematic as yeast prefer a less optimal energy strategy. The use or fermentation over respiration may a better evolutionary strategy as the secretion of ethanol may act as an antibiotic: a less efficient metabolism of sugar provides a more efficient competitive advantage.
-
-More accurate \emph{in silico} predictions are made when a genome scale model better predicts \emph{in vivo} behaviour. Previous approaches to simulating fermentation focus on the availability of oxygen as the electron acceptor in electron transport chain. Reducing the availability of oxygen forces the use of less efficient electron acceptors such as ethanol. Cakir \emph{et al.} \cite{cakir2007} used minimal oxygen production as the objective function, while Famili \emph{et al.} \cite{famili2003} used a growth rate proportional upper boundary on oxygen uptake. In this analysis oxygen uptake was set an upper boundary based on a prior optimisation of the model for minimal oxygen uptake. The analysis results showed minimising oxygen alone does not necessarily provide a realistic simulation of expected flux distribution of yeast where unusual changes in flux associated with amino acid synthesis were observed.
-
-Using the minimisation of metabolic adjustment technique (MOMA) more realistic flux changes associated with the use of fermentation. The increased fluxes included reactions associated with glycolysis and ethanol production, the decreased fluxes included TCA cycle associated fluxes and mitochondrial water transport. MOMA may provide a more realistic simulation of fermentation as the optimisation process prevents the large scale metabolic changes in fluxes associated with finding a fermentative solution which distant from the solution using respiration. Instead a MOMA derived fermentative solution more closely mimics the \emph{in vivo} changes where reactions may under go smaller changes in steady state flux.
-
-\subsubsection{Determining gene associations}
+\subsubsection{Determining associations between genes and encoded metabolic reactions}
 
 Estimating the cost of a gene on metabolism first requires determining the points of effect the gene has on the metabolic network. This analysis aimed to first determine which reactions have a single effect on metabolism, and thereby allowing a simpler analysis of their cost. The focus on 1:1 associations of gene to reactions excluded 488 genes but did allow a much simpler analysis of gene cost, where any effect on the gene may be expected to have a direct effect on single reaction which can then be analysed in through the effect on the corresponding phenotype.
 
@@ -491,7 +399,7 @@ TODO: Any other knockout studies can be cited?
 
 TODO: How did other knockout studies treat paralogs?
 
-\subsubsection{Estimation of reaction constraints}
+\subsubsection{Different constraints on reaction flux in glucose and ammonium limitation}
 
 The reactions at maximum flux represent edges in solution space, where any reaction cannot exceed an absolute flux of 1000 mmol$^{-1}$ gDW$^{-1}$ hr$^{-1}$. If the artificial constraint of reaction flux is increased the likely outcome is that the flux of these reactions would also increase, and the flux through the reactions is of an artificial limit imposed by the model optimisation, rather than because of the simulation of a biological phenotype. Therefore these reactions are not considered further in the analysis. The number of reactions at the limit is low, six across all conditions, and removal from the gene cost data set is not a significant impact on the size.
 
