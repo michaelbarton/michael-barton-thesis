@@ -12,6 +12,9 @@
 \usepackage{varioref}
 \usepackage{appendix}
 \usepackage{booktabs}
+\usepackage{nomencl}
+
+\makenomenclature
 
 \begin{document}
 
@@ -20,13 +23,16 @@
 \principaladviser{Casey M. Bergman}
 
 \beforeabstract
+
+\printnomenclature[3cm]
+
 \prefacesection{Abstract}
 \input{abstract}
 \afterabstract
+
 \prefacesection{Acknowledgements}
 I would like to thank...
 \afterpreface
-
 
 \chapter{Introduction}
 \input{1_introduction}
