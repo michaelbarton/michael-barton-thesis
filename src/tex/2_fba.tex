@@ -118,6 +118,9 @@ The second part of results section describes an experimental approach to estimat
 \subsection{Flux balance analysis}
 
 The genome scale models used in this work were \emph{S.cerevisiae} iND750 \cite{duarte2004a} and \emph{E.coli} iJR904 \cite{reed2003}. Flux balance analysis was performed using the COBRA toolbox \cite{becker2007} using the lpsolve optimisation library \cite{lpsolve}.
+\nomenclature{COBRA}{Flux balance analysis toolbox for Matlab (see \cite{becker2007})}
+\nomenclature{iND750}{\emph{Saccharomyces cerevisiae} genome scale model (see \cite{duarte2004a})}
+\nomenclature{iJR904}{\emph{Esherichia coli} genome scale model (see \cite{reed2003})}
 
 The biomass reaction was fixed at a constant value through constraining the upper and lower boundaries to the same value. When optimising the model the objective function was the minimisation of the given nutrient flux entering the cell. Performing all flux balance analysis with a fixed growth rate allows are results to be scaled to the same growth rate and simulates experimental chemostat conditons where growth is fixed and the entry of a given nutrient is restricted (see Castrillo \emph{et al.} \cite{castrillo2007}). The minimisation of a given nutrient as the \emph{in silico} objective mimics this condition where the nutrient is the limiting factor for growth.
 
