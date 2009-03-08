@@ -13,10 +13,12 @@ Early enzymology assumed the existence of rate limiting steps in biological path
 The theory of metabolic control analysis \cite{fell1992,fell1997} states that there are no rate limiting steps in biological systems, but instead that each part of the system shares a measure of more or less control. The control reaction $x$ has on any other reaction in the system can determined by measuring the effect of an up or down in reaction $x$ has on reaction $y$. In metabolic control analysis this is described as the flux control of reaction $x$ on reaction $y$. The coefficient of this control uses the symbol $C_{x}^{y}$, is described in Equation~\vref{fcc}.
 
 \begin{equation}\label{fcc}
-C_{x}^{y} = \frac{dx}{x}\div\frac{dy}{y}
+C_{x}^{y} = \frac{ \delta \ln x / \ln x}{\delta \ln y / \ln y}
 \end{equation}
 
-The function $\frac{dx}{x}$ represents the effect of a small change in the reaction flux through reaction $x$, given the original flux. The function $\frac{dy}{y}$ represents the corresponding change in $y$ resulting from the change in $x$, given the original flux of $y$. Larger values of $C_{x}^{y}$ indicate that reaction $x$ has a high degree of control on reaction $y$. Smaller values indicate that reaction $y$ experiences only small change in flux in response to changes in $x$.
+The function $\delta \ln x / \ln x$ represents the unitless effect of a small change in the reaction flux through $x$, given the original flux. The function $\delta \ln y / \ln y$ represents the corresponding unitless response in $y$ resulting from the change in $x$, given the original flux of $y$. Larger values of $C_{x}^{y}$ indicate that reaction $x$ has a high degree of control on reaction $y$. Smaller values indicate that reaction $y$ experiences only small change in flux in response to changes in $x$.
+
+\nomenclature{$C_{x}^{y}$}{Flux control coefficient of reaction $x$ on reaction $y$}
 
 Determining a numeric value for the relationships between reactions in a metabolic network allows properties of biological systems to be explored. In addition to increasing the secretion of commercial by products \cite{niederberger1992}, understanding the quantitative control at points in a metabolic network can lead to the development of drugs targeting the combinations of reactions with a high degree of control in the network \cite{lehar2008,hopkins2008}. Furthermore understanding the control exerted by corresponding orthologs in both the host-pathogen can allow the difference in control coefficients to be compared so that specific reactions may be targeted in host with minimal impact in the host \cite{hornberg2007}. Outside the development of commercial products or identification of drug targets, the determination of which steps are controlled through substrate concentration or changes in enzyme activity predictions can be made of the the role of gene expression in the control metabolic systems \cite{rossell2006,daran-lapujade2007}.
 
