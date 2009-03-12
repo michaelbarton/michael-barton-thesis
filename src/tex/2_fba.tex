@@ -72,16 +72,9 @@ The use of genome scale metabolic models is not limited to estimating the contro
 
 \subsection{Estimating amino acid biosynthetic cost}
 
-The article by Varma \emph{et al.} highlights how systems biology models can be used to estimate the importance of a set of metabolites to cell growth. Related to this is the question of how much it costs the cell to synthesise and use amino acids. Craig \& Weber \cite{craig1998} estimated the cost of the twenty amino acids as the sum of how many high energy phosphate bonds (e.g. ATP) and reducing molecules (e.g. NADPH) are diverted from the available energy pool in the synthesis of each amino acid from glucose. The aim of deriving these costs was to estimate the importance of amino acid cost the evolution of a set of \emph{E. coli} proteins.
+Craig \& Weber \cite{craig1998} estimated the cost of an amino acid as the sum of how many high energy phosphate bonds (e.g. ATP) and reducing molecules (e.g. NADPH) are diverted from the available energy pool for the synthesis of each amino acid from glucose. The aim of deriving these costs was to estimate the importance of amino acid cost on the evolution of a set of \emph{E. coli} proteins.
 
-
-Akashi \& Gojobori \cite{akashi2002} explored a similar approach calculating cost on a range different energy sources to estimate the importance of amino acid cost in predicted \emph{E. coli} and \emph{B. subtilis} gene expression. Heizer \emph{et al.} \cite{heizer2006} expanded this estimating amino acid cost for inorganic sources in their analysis of the genomes of four prokaryotic species including photoautotrophs. These estimates of cost are based on the curation of the metabolic network to account for the expenditure of high energy molecules during synthesis. Seligmann argued \cite{seligmann2003} that the cost of amino acid biosynthesis must take into account more than just the energy required for synthesis. Seligmann used molecular weight as a proxy amino acid cost arguing that this may take into account investments in synthesising larger more complex amino acids. Using molecular weight also has the advantage where the metabolic network in not required to curate the number of high energy molecules used during synthesis. Table~\ref{table:literature_costs} highlights the various measures of amino acid cost.
-
-%TODO: Check Akashi paper re energy sources
-
-%TODO: Add wager costs to intro
-
-%TODO: How is Wagner's cost different
+Akashi \& Gojobori \cite{akashi2002} explored a similar approach calculating cost on a range of different energy sources to estimate the role of amino acid cost in predicted \emph{E. coli} and \emph{B. subtilis} gene expression. Heizer \emph{et al.} \cite{heizer2006} expanded this estimating amino acid cost for inorganic sources in their analysis of the genomes of four prokaryotic species including photoautotrophs. Wagner considered the cost in \emph{S. cerevisiae} using a similar approach but considering both respiratory and fermentative energy metabolism. These estimates of cost are based on the curation of the metabolic network to account for the expenditure of high energy molecules during synthesis. Seligmann argued \cite{seligmann2003} that the cost of amino acid biosynthesis must take into account more than just the energy required for synthesis. Seligmann used molecular weight as a proxy for amino acid cost arguing that this may take into account investments involved in additional complexity associated with larger amino acids. Using molecular weight also has the advantage where the metabolic network is not required to count the number of high energy molecules used during synthesis. Table~\ref{table:literature_costs} summarises the various measures of amino acid cost.
 
 \begin{table}
 \begin{footnotesize}
@@ -115,11 +108,13 @@ Akashi \& Gojobori \cite{akashi2002} explored a similar approach calculating cos
 \label{table:literature_costs}
 \end{table}
 
+These studies however require manual examination of a metabolic network to determine the number of energy molecules expended in the synthesis of each amino acid. This is a time-consuming activity and susceptible to human error. No approaches to estimating amino acid cost have considered the using genome scale models is similar approach to Varma \emph{et al.} to determine the cost of an amino in varying considering taking into account the complete metabolic network of the organism.
+
 \subsection{Results summary}
 
-The results presented in this chapter are split into two sections. The first describes an approach to estimating amino acid cost focusing on the \emph{S. cerevisiae} genome scale metabolic model. The approach used to estimate amino acid cost is similar to that described by Varma \emph{et al.} in their estimation of the shadow prices in \emph{E.coli} energy metabolism. The estimated costs are compared to the other estimates of amino acid cost that appear in the literature described above.
+The results presented in this chapter are split into two sections. The first describes an approach to estimating amino acid cost focusing on the \emph{S. cerevisiae} genome scale metabolic model. The approach used to estimate amino acid cost is similar to that described by Varma \emph{et al.} in their estimation of the shadow prices in \emph{E.coli} energy metabolism. The estimated costs are compared to the further estimates of amino acid cost that appear in the literature described above.
 
-The second part of results section describes an experimental approach to estimate the cost of a gene. This is again in \emph{S. cerevisiae} using the genome scale metabolic model. This approach performs a type of robustness analysis on the gene encoded metabolic function. This analysis produces a robustness distribution describing how increasing and decreasing metabolic rate for an function affect the \emph{in silico} model fitness.
+The second part of results section describes an related approach to estimate the cost of a gene. This is again in \emph{S. cerevisiae} using the genome scale metabolic model. This approach performs robustness analysis of the encoded metabolic function of the gene. This analysis produces a robustness distribution describing how increasing and decreasing metabolic rate for a gene-encoded function affects the \emph{in silico} model fitness.
 
 \clearpage
 
