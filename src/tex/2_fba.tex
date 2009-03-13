@@ -125,16 +125,26 @@ The second part of results section describes an related approach to estimate the
 
 \subsection{Flux balance analysis}
 
-The genome scale models used in this work were \emph{S.cerevisiae} iND750 \cite{duarte2004a} and \emph{E.coli} iJR904 \cite{reed2003}. Flux balance analysis was performed using the COBRA toolbox \cite{becker2007} using the lpsolve optimisation library \cite{lpsolve}.
-\nomenclature{COBRA}{Flux balance analysis toolbox for Matlab (see \cite{becker2007})}
+The genome scale models used in this work were \emph{S.cerevisiae} iND750 \cite{duarte2004a} and \emph{E.coli} iJR904 \cite{reed2003}. Flux balance analysis was performed using the COBRA toolbox \cite{becker2007} and the lpsolve optimisation library \cite{lpsolve}.
+\nomenclature{COBRA}{Flux balance analysis toolbox for MATLAB (see \cite{becker2007})}
 \nomenclature{iND750}{\emph{Saccharomyces cerevisiae} genome scale model (see \cite{duarte2004a})}
-\nomenclature{iJR904}{\emph{Esherichia coli} genome scale model (see \cite{reed2003})}
+\nomenclature{iJR904}{\emph{Escherichia coli} genome scale model (see \cite{reed2003})}
 
-The biomass reaction was fixed at a constant value through constraining the upper and lower boundaries to the same value. When optimising the model the objective function was the minimisation of the given nutrient flux entering the cell. Performing all flux balance analysis with a fixed growth rate allows are results to be scaled to the same growth rate and simulates experimental chemostat conditons where growth is fixed and the entry of a given nutrient is restricted (see Castrillo \emph{et al.} \cite{castrillo2007}). The minimisation of a given nutrient as the \emph{in silico} objective mimics this condition where the nutrient is the limiting factor for growth.
+Nutrient limitation was simulated by fixing the upper and lower bounds of the biomass production reaction to 0.3$^-1$, and changing the objective function to minimise the entry of given nutrient into the cell. All other nutrient exchange fluxes were set to have bounds of -10000 mmol$^{-1}$ gDW$^{-1}$ hr$^{-1}$, the aim of this is to set all other nutrients to be non limiting on simulated growth. Model optimisation therefore finds the minimum required amount of a given nutrient intake flux to maintain cellular growth rate at 0.3 hr$^{-1}$.
+
+For the \emph{S. cerevisiae} iND750 \cite{duarte2004a} genome scale model the default reactions allowing entry of nutrients into the cell are glucose, ammonium, sulphate, phosphate, oxygen and water. Each exchange flux represents the only source for an essential nutrient, and therefore when estimating the glucose cost of an amino acid there were no other high energy sugars available, or when estimating the ammonium cost there were no other nitrogen sources entering the cell. The FBA simulations do however allow a variety of molecules to exit the cell. In the simulations outlined here only glucose, ammonium and sulphate limiting conditions were simulated.
+
+Fixing growth rate all \emph{in silico} also simulates experimental conditions of using continuous culture of microorganisms in the chemostat (see Castrillo \emph{et al.} \cite{castrillo2007}). The minimisation of a given nutrient as the \emph{in silico} objective mimics this condition where the nutrient is the limiting factor for growth and all other nutrient uptake fluxes are unbounded.
 
 \subsection{Flux balance analysis estimation of amino acid cost}
 
-Estimation of amino acid cost was performed by making a percentage change to the requirement of amino acid at position $S_{ij}$ in the model matrix, where $i$ is the amino acid and $j$ is the biomass reaction. When the model is optimised each change in $S_{ij}$ results in a corresponding change in the nutrient uptake flux for which the model is being optimised. The slope between the change in amino acid requirements and the corresponding change nutrient uptake flux was taken as the relative cost of the amino acid. Division of the absolute cost by the original requirement results in an absolute estimate of amino acid cost.
+Estimation of amino acid cost was performed by making a percentage change (0.0002\%) to the requirement of amino acid at position $S_{ij}$ in the stoichiometric matrix $S$, where $i$ is the amino acid and $j$ is the biomass reaction. When the model is optimised each change in $S_{ij}$ results in a corresponding change in the limiting nutrient uptake. Larger effects in nutrient uptake indicate a greater nutrient cost for the amino acid.  The slope between the change in amino acid requirements and the corresponding change in nutrient uptake flux was taken as the relative cost of the amino acid in that nutrient limiting condition. Division of the absolute cost by the original requirement results in an absolute estimate of amino acid cost. For each nutrient this results in a relative and absolute cost of each amino acid. Each cost was divided by the growth rate at which it was estimated (0.3 hr$^{-1}$) to give an estimate of cost independent of growth. The nomenclature used for these cost definitions is $R_{nutrient}$ and $A_{nutrient}$ respectively.
+\nomenclature{$A_{nutrient}$}{Amino acid absolute nutrient cost}
+\nomenclature{$R_{nutrient}$}{Amino acid relative nutrient cost}
+
+%TODO: LaTeX plus/minus sign for percentage
+
+The relative costs are derived from the slope in the unitless percentage change in the amino acid requirement, and the corresponding mmol$^{-1}$ gDW$^{-1}$ hr$^{-1}$ response in nutrient intake flux. When divided by the hr$^{-1}$ growth rate at which the cost was estimated, the units are mmol$^{-1}$ gDW$^{-1}$. This represents the change in nutrient uptake flux given the fractional change in amino acid requirement in biomass. The absolute cost is derived from the relative cost by division by the original mmol$^{-1}$ gDW$^{-1}$ requirement of the amino acid. The absolute amino acid is therefore unitless and represents what a mmol$^{-1}$ gDW$^{-1}$ increase in amino acid requirement has the mmol$^{-1}$ gDW$^{-1}$ uptake flux of the given nutrient.
 
 \subsection{Flux balance analysis estimation of gene cost}
 
