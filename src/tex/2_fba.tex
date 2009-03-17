@@ -26,7 +26,7 @@ The numerator ($\delta \ln x / \ln x$) represents the dimensionless effect of a 
 
 Determining a numeric value for the relationships between reactions in a metabolic network allows quantitative exploration of biological systems. For example Rossell \emph{et al.} described the control of metabolism in terms of reactions whose rates are increased by changes in their substrate concentration or the reactions whose activity is instead controlled through changes in enzyme quantity and therefore via gene expression \cite{rossell2006,daran-lapujade2007}.
 
-An example of the application MCA is engineering an increase in the production of commercial biomolecules \cite{niederberger1992}. MCA can also be used to identify possible drugs targets through the combination of reactions knock-downs which have the greatest effect on the metabolic network \cite{lehar2008,hopkins2008}. This can be further expanded in developing anitibiotic drugs for human pathogens such as trypanosome parasites, where drug targets are those reactions with a significant effect on metabolism in the pathogen but where the orthologous human reaction has a much decreased effect. This difference in metabolic control for the same reaction in both species translates into lethal drug effect in the parasite with minimal impact on the host \cite{hornberg2007}.
+An example of the application MCA is engineering an increase in the production of commercial biomolecules \cite{niederberger1992}. MCA can also be used to identify possible drugs targets through the combination of reactions knock-downs which have the greatest effect on the metabolic network \cite{lehar2008,hopkins2008}. This can be further expanded in developing antibiotic drugs for human pathogens such as trypanosome parasites, where drug targets are those reactions with a significant effect on metabolism in the pathogen but where the orthologous human reaction has a much decreased effect. This difference in metabolic control for the same reaction in both species translates into lethal drug effect in the parasite with minimal impact on the host \cite{hornberg2007}.
 
 %TODO: read Hopkins, Lehar papers
 
@@ -144,7 +144,7 @@ Estimation of amino acid cost was performed by making a percentage change ($\pm$
 
 \subsubsection{Units of absolute and relative measures of amino acid cost}
 
-The relative costs are calculated value of $m$ in the linear relationship $y = mx + c$ where $x$ is the unitless percentage change in the amino acid requirement, and $y$ is corresponding mmol$^{-1}$ gDW$^{-1}$ hr$^{-1}$ response in nutrient intake flux. When divided by the hr$^{-1}$ growth rate at which the cost was estimated, the units of the relative cost are mmol$^{-1}$ gDW$^{-1}$. This represents the change in nutrient uptake flux given the fractional change in amino acid requirement in biomass. The absolute cost is derived from the relative cost by division by the original mmol$^{-1}$ gDW$^{-1}$ requirement of the amino acid. The absolute amino acid is therefore unitless and represents what a mmol$^{-1}$ gDW$^{-1}$ increase in amino acid requirement has the mmol$^{-1}$ gDW$^{-1}$ uptake flux of the given nutrient.
+The relative costs are calculated value of $m$ in the linear relationship $y = mx + c$ where $x$ is the unit less percentage change in the amino acid requirement, and $y$ is corresponding mmol$^{-1}$ gDW$^{-1}$ hr$^{-1}$ response in nutrient intake flux. When divided by the hr$^{-1}$ growth rate at which the cost was estimated, the units of the relative cost are mmol$^{-1}$ gDW$^{-1}$. This represents the change in nutrient uptake flux given the fractional change in amino acid requirement in biomass. The absolute cost is derived from the relative cost by division by the original mmol$^{-1}$ gDW$^{-1}$ requirement of the amino acid. The absolute amino acid is therefore unit less and represents what a mmol$^{-1}$ gDW$^{-1}$ increase in amino acid requirement has the mmol$^{-1}$ gDW$^{-1}$ uptake flux of the given nutrient.
 
 \subsection{Flux balance analysis estimation of gene cost}
 
@@ -319,7 +319,7 @@ Using the above described method relative and absolute amino acid costs were est
       val & 0.96 & 1 & 0 & 0.25 & 0.26 & 0.00 \\ \bottomrule
   \end{tabular}
 \end{footnotesize}
-\caption[\emph{S. cerevisiae} estimated absolute and relative amino acid costs]{The units of the relative costs ($R_{uptake}$) are mmol of uptake nutrient per gram dry weight biomass (mmol$^{-1}$ gDW$^{-1}$). The absolute costs ($A_{uptake}$) are unitless. All costs are estimated in the iND750 \emph{S. cerevisiae} model using the COBRA toolbox and are rounded to two decimal places.} 
+\caption[\emph{S. cerevisiae} estimated absolute and relative amino acid costs]{The units of the relative costs ($R_{uptake}$) are mmol of uptake nutrient per gram dry weight biomass (mmol$^{-1}$ gDW$^{-1}$). The absolute costs ($A_{uptake}$) are unit less. All costs are estimated in the iND750 \emph{S. cerevisiae} model using the COBRA toolbox and are rounded to two decimal places.} 
 \label{table:estimated_costs}
 \end{table}
 
@@ -365,7 +365,7 @@ Summarising both the relative and absolute cost types, the absolute costs reflec
 
 \subsubsection{Comparison of amino acid costs across species in \emph{S. cerevisiae} and \emph{E. coli}}
 
-The relative ease at which amino acid costs can be calculated for species where there is a genome scale model, compared with previous manual curation of cost, allowed comparison of estimated amino acid costs in \emph{S. cerevisiae} and \emph{E. coli}. Figure~\vref{figure:amino_acid_costs_scatterplot} compares both $R_{glucose}$ and $A_{glucose}$ costs for \emph{E. coli} and \emph{S. cerevisiae} with two costs described in the literature: molecular weight \cite{seligmann2003} and number of ATP and NAPH molecules \cite{akashi2002}.
+The relative ease at which amino acid costs can be calculated for species where there is a genome scale model, compared with previous manual curation of cost, allowed comparison of estimated amino acid costs in \emph{S. cerevisiae} and \emph{E. coli}. Figure~\vref{figure:amino_acid_costs_scatterplot} compares both $R_{glucose}$ and $A_{glucose}$ costs for \emph{E. coli} and \emph{S. cerevisiae} with two costs described in the literature: molecular weight \cite{seligmann2003} and number of ATP and NADH molecules \cite{akashi2002}.
 
 \begin{figure}
 \centering
