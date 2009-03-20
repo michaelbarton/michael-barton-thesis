@@ -187,6 +187,7 @@ To estimate the reaction control on nutrient uptake, the flux through each react
 The slope of the regresion in change in the nutrient uptake flux as a response in to changes in reaction flux was the cost for the reaction in that nutrient limitation.
 
 %TODO: what units?
+%TODO: independent of growth?
 
 \clearpage
 
@@ -301,8 +302,8 @@ The introduction described how metabolic control analysis can be used to estimat
 
 Figure~\vref{figure:curve_estimation} illustrates the method used to estimate the amino acid biosynthetic cost using flux balance analysis. Figure~\ref{figure:curve_estimation:schematic} demonstrates the model configuration for the simulation of a glucose limited environment, amino acid costs were also calculated for ammonium and sulphate limiting conditions.
 
-In each nutrient limiting environment the biomass requirement of each amino acid is manipulated around the original value in the range of $\pm$0.0002\%, and each time the model is re-optimised to determine the correspinding effect on the uptake flux of the limiting nutrient.  Figure~\ref{figure:curve_estimation:curve} provides an example of the relationship between changes in tryptophan requirement and the flux of either glucose and ammonium into the cell. 
- 
+In each nutrient limiting environment the biomass requirement of each amino acid is manipulated around the original value in the range of $\pm$0.0002\%, and each time the model is re-optimised to determine the correspinding effect on the uptake flux of the limiting nutrient.  Figure~\ref{figure:curve_estimation:curve} provides an example of the relationship between changes in tryptophan requirement and the flux of either glucose and ammonium into the cell.
+
 Two types of amino acid costs were estimated from changing biomass requirement. The first is described as a relative amino acid cost and is estimated from small percentage changes in requirement. This relative estimation of amino cost can be rescaled to estimate a cost based on absolute changes in amino acid requirement described as an absolute measure of amino acid cost.
 
 One further consideration in estimating amino acid cost is the growth rate at which the costs were estimated. For instance the absolute cost of tryptophan estimated at 0.2 hr$^{-1}$ is twice the cost of tryptophan estimated at 0.1 hr$^{-1}$. To control for growth rate when estimating amino acid cost, the costs were estimated at a three levels of feasible yeast growth rates 0.1 hr$^{-1}$, 0.2 hr$^{-1}$ and 0.3 hr$^{-1}$. Each amino acid cost is then rescaled to be independent of the growth rate at which it was estimated. The amino acid costs presented in this work are those estimated at the 0.3 hr$^{-1}$ growth rate, where \emph{S. cerevisiae} uses respiratory energy production \cite{famili2003}.
@@ -340,7 +341,7 @@ Using the above described method relative and absolute amino acid costs were est
       val & 0.96 & 1 & 0 & 0.25 & 0.26 & 0.00 \\ \bottomrule
   \end{tabular}
 \end{footnotesize}
-\caption[\emph{S. cerevisiae} estimated absolute and relative amino acid costs]{The units of the relative costs ($R_{uptake}$) are mmol of uptake nutrient per gram dry weight biomass (mmol$^{-1}$ gDW$^{-1}$). The absolute costs ($A_{uptake}$) are unit less. All costs are estimated in the iND750 \emph{S. cerevisiae} model using the COBRA toolbox and are rounded to two decimal places.} 
+\caption[\emph{S. cerevisiae} estimated absolute and relative amino acid costs]{The units of the relative costs ($R_{uptake}$) are mmol of uptake nutrient per gram dry weight biomass (mmol$^{-1}$ gDW$^{-1}$). The absolute costs ($A_{uptake}$) are unit less. All costs are estimated in the iND750 \emph{S. cerevisiae} model using the COBRA toolbox and are rounded to two decimal places.}
 \label{table:estimated_costs}
 \end{table}
 
@@ -376,11 +377,11 @@ $R_{sul}$    & 0.37  & 0.17  & 0.27  & 0.50  & 0.24  & 0.20  & 0.26  & -0.30 & 0
   \label{table:costs_correlation}
 \end{sidewaystable}
 
-The $A_{glucose}$ cost is highly correlated with several previous measures of amino acid cost. The energetic cost derived by Akashi and Gojobori \cite{akashi2002} has the highest correlation coefficient $A_{glucose}$ (Spearman R = 0.94), but $A_{glucose}$ is also correlated (Spearman R $>$ 0.7) with Craig and Weber's energetic cost \cite{craig1998}, Wagner's respiratory cost \cite{wagner2005} and molecular weight \cite{seligmann2003}. This indicates that an systems biology approach using flux balance analysis captures the energetic cost of synthesising an amino acid. 
+The $A_{glucose}$ cost is highly correlated with several previous measures of amino acid cost. The energetic cost derived by Akashi and Gojobori \cite{akashi2002} has the highest correlation coefficient $A_{glucose}$ (Spearman R = 0.94), but $A_{glucose}$ is also correlated (Spearman R $>$ 0.7) with Craig and Weber's energetic cost \cite{craig1998}, Wagner's respiratory cost \cite{wagner2005} and molecular weight \cite{seligmann2003}. This indicates that an systems biology approach using flux balance analysis captures the energetic cost of synthesising an amino acid.
 
 The $A_{ammonium}$ costs show a weak correlation (Spearman R between 0.5 - 0.6) with some of previous described measures of cost: Akashi \& Gojobori, Wagner fermentative, and molecular weight. It should be noted that the $A_{ammonium}$ and $A_{sulphate}$ costs are proportional to that nutrient content of the amino acid.
 
-The $R_{glucose}$ and $R_{ammonium}$ costs show no correlation with previous measures of amino acid cost. The highest correlation is with Wagner fermentative growth (Spearman R = -0.16). The $R_{glucose}$ and $R_{ammonium}$ costs are however correlated with each other (Spearman R = 0.63). 
+The $R_{glucose}$ and $R_{ammonium}$ costs show no correlation with previous measures of amino acid cost. The highest correlation is with Wagner fermentative growth (Spearman R = -0.16). The $R_{glucose}$ and $R_{ammonium}$ costs are however correlated with each other (Spearman R = 0.63).
 
 Summarising both the relative and absolute cost types, the absolute costs reflect the per molecule biosynthetic cost, while the relative costs reflect the absolute cost scaled by the quantity of the amino acid in biomass. For example, the $A_{sulphate}$ costs of methionine and cysteine are both 1, which reflects the single sulphur atom in each amino acid. The $R_{sulphate}$ cost for methionine is however much greater than that of cysteine, as methionine is used proportionally more than cysteine.
 
