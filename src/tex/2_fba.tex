@@ -1,4 +1,4 @@
-\section*{Chapter summary}
+\section*{Chapter summary}%{{{1
 
 This chapter illustrates a novel approach to estimating the cost and importance of amino acids and genes \emph{Saccharomyces cerevisiae}. The methods described apply existing systems biology control frameworks to a genome scale model of the yeast metabolism to determine the biosynthetic cost of amino acid synthesis, and the constraints on the use of gene-encoded functions in different environmental conditions.
 
@@ -8,7 +8,7 @@ The results section first outlines the novel method used to estimate the biosynt
 
 \clearpage
 
-\section{Introduction}
+\section{Introduction} %{{{1
 
 \subsection{Understanding control in metabolic models}
 
@@ -123,7 +123,7 @@ The second part of results section describes an related approach to estimate the
 
 \clearpage
 
-\section{Materials and Methods}
+\section{Materials and Methods}%{{{1
 
 \subsection{Determination of gene to reaction association in \emph{S. cerevisiae} model}
 
@@ -191,15 +191,15 @@ The slope of the regresion in change in the nutrient uptake flux as a response i
 
 \clearpage
 
-\section{Results}
+\section{Results}%{{{1
 
-\subsection{The \emph{S. cerevisiae} iND750 genome scale model}
+\subsection{The \emph{S. cerevisiae} iND750 genome scale model}%{{{2
 
-\subsubsection{Numbers of reactions and genes}
+\subsubsection{Numbers of reactions and genes}%{{{3
 
 To analyse reaction function and infer characteristics of \emph{S. cerevisiae} genes the relationship between model reactions and annotated genes must first be understood. Table~\vref{table:gene_associations} illustrates the number and types of associations between genes and reactions. Each reaction in the model can be categorised based on the type of associations with annotated genes.
 
-\begin{table}[b]
+\begin{table}[b]%{{{
   \centering
   \begin{tabular}{l r}
                                                                    \toprule
@@ -212,15 +212,15 @@ To analyse reaction function and infer characteristics of \emph{S. cerevisiae} g
   \end{tabular}
   \caption[Gene associations in the \emph{S. cerevisiae} iND750 model]{Comparison of numbers and types of associations between genes and reactions in the \emph{S. cerevisiae} iND750 model. }
   \label{table:gene_associations}
-\end{table}
+\end{table}%}}}
 
 The total number genes included in the model is 750. Of the 1266 reactions, 810 are associated with one or more genes. This includes reactions that may be catalysed by paralogs, multimeric enzymes, and genes also associated other reactions. A subset of this category are the reactions associated to only a single gene containing 579 reactions. This excludes paralogs and multimeric enzymes, but still includes enzymes associated with more than one reaction. A further subset of this category are the reactions associated to a single gene, where the gene is associated with no other reactions. This comprises 262 genes which may be expected to have only a single point of effect in \emph{S. cerevisiae} metabolism are therefore useful for inferential analysis of the relationship between gene function and evolution, and corresponding metabolic effect.
 
-\subsubsection{Composition of biomass requirement}
+\subsubsection{Composition of biomass requirement}%{{{3
 
 As discussed in the introduction, the biomass equation in a stoichiometric model is an estimated requirement of essential metabolites for growth in a given organism. In flux balance analysis, the biomass equation can be used as the objective function to simulate the rate of growth given the available basic input nutrients. Table \vref{table:biomass_requirements} summarises the molecular requirement of the biomass reaction in the \emph{S. cerevisiae} iND750 model. These requirements include fats such as triglyceride and ergosterol, sugars such as glycogen and mannan, and small metabolites comprising sulphate, water, and ATP. The genome, transcriptome, and proteome content of the cell is included as the quantities of nucleotides and amino acids estimated from dry weight cellular composition.
 
-\begin{table}
+\begin{table}%{{{
   \centering
   \begin{footnotesize}
   \begin{tabular}{l l r}
@@ -273,13 +273,13 @@ As discussed in the introduction, the biomass equation in a stoichiometric model
   \end{footnotesize}
   \caption[Biomass requirements \emph{S. cerevisiae} iND750 model]{Biomass requirements of \emph{S. cerevisiae} iND750 model. Each molecule is categorised by type. The requirement of each molecule is millimoles per gram of dry weight biomass. The estimation of biomass quantities is outlined by Feist \emph{et al.} \cite{feist2009}, the \emph{S. cerevisiae} model construction is described by Duarte \emph{et al.} \cite{duarte2004a}.}
   \label{table:biomass_requirements}
-\end{table}
+\end{table}%}}}
 
-\subsection{A novel approach using genome scale models to estimating amino acid cost}\label{section:amino_acid_cost_estimation}
+\subsection{A novel approach using genome scale models to estimating amino acid cost}\label{section:amino_acid_cost_estimation}%{{{2
 
 The introduction described how metabolic control analysis can be used to estimate the importance of each reaction in a kinetic model. This section shows how similar principles can be used to estimate the sensitivity of \emph{S. cerevisiae} growth to changes in amino acid requirements. This sensitivity is interpreted as the biosynthetic cost of the amino acid in the nutrient limiting condition it is estimated.
 
-\begin{figure}
+\begin{figure}%{{{
   \centering
   \subfloat[Cost estimation in glucose limited conditions]{
     \label{figure:curve_estimation:schematic}
@@ -298,7 +298,7 @@ The introduction described how metabolic control analysis can be used to estimat
   \hfill
   \caption[Method used for estimation of amino acid cost]{Outline of the method used for the estimation of amino acid cost. Figure~\ref{figure:curve_estimation:schematic} is a schematic representation of simulating glucose limited conditions using a genome scale model. The growth rate of the model is fixed at a constant value and the objective function of the simulation minimises the cellular entry of a specific nutrient, which in the example is glucose. All other nutrient entering the model, illustrated here with ammonia, are unbounded. Figure~\ref{figure:curve_estimation:curve} shows the relationship between altered tryptophan requirement and the response in both glucose and ammonium uptake. Figure~\ref{figure:curve_estimation:costs} contrasts the estimated costs for tryptophan, glycine and histidine in glucose and ammonium limiting conditions. }
   \label{figure:curve_estimation}
-\end{figure}
+\end{figure}%}}}
 
 Figure~\vref{figure:curve_estimation} illustrates the method used to estimate the amino acid biosynthetic cost using flux balance analysis. Figure~\ref{figure:curve_estimation:schematic} demonstrates the model configuration for the simulation of a glucose limited environment, amino acid costs were also calculated for ammonium and sulphate limiting conditions.
 
@@ -310,11 +310,11 @@ One further consideration in estimating amino acid cost is the growth rate at wh
 
 Figure~\ref{figure:curve_estimation:costs} compares the estimated absolute costs for tryptophan, histidine and glycine in glucose and ammonium limitation. Tryptophan which is an expensive amino acid in glucose limitation, is cheaper in nitrogen limitation. In contrast to this histidine which is a cheap amino acid in glucose limitation is more expensive in ammonium limitation. Glycine, a small amino acid with a single hydrogen side chain is cheap in both nutrient limitations.
 
-\subsubsection{Estimated amino acid costs in glucose, ammonium, and sulphate limitation}
+\subsubsection{Estimated amino acid costs in glucose, ammonium, and sulphate limitation}%{{{3
 
 Using the above described method relative and absolute amino acid costs were estimated for all twenty amino acids in four simulated nutrient limiting conditions: glucose, ammonium, sulphate, and phosphate. For clarity costs are described as either $R_{nutrient}$ or $A_{nutrient}$ for relative and absolute costs respectively. The relative and absolute estimated costs for each of these amino acids is illustrated in Figure~\vref{figure:costs_dendrogram_dotplot} along with amino acid costs described in the literature. The estimated amino acid cost are provided in Table~\vref{table:estimated_costs} and the correlation between costs is shown in Table~\vref{table:costs_correlation}.
 
-\begin{table}
+\begin{table}%{{{
 \begin{footnotesize}
   \begin{tabular}{ p{1cm} *{6}{p{1.9cm}} }
   \toprule
@@ -343,16 +343,16 @@ Using the above described method relative and absolute amino acid costs were est
 \end{footnotesize}
 \caption[\emph{S. cerevisiae} estimated absolute and relative amino acid costs]{The units of the relative costs ($R_{uptake}$) are mmol of uptake nutrient per gram dry weight biomass (mmol$^{-1}$ gDW$^{-1}$). The absolute costs ($A_{uptake}$) are unit less. All costs are estimated in the iND750 \emph{S. cerevisiae} model using the COBRA toolbox and are rounded to two decimal places.}
 \label{table:estimated_costs}
-\end{table}
+\end{table}%}}}
 
-\begin{sidewaysfigure}
+\begin{sidewaysfigure}%{{{
 \centering
 \includegraphics*[angle=0,height=13cm]{costs_dendrogram_dotplot.eps}
 \caption[Comparison of amino acid cost estimates]{Amino acid cost estimates are shown as bar charts on the left hand side. Each bar chart axis shows the minimum and maximum value of each cost type. The correlations between costs are compared in a dendrogram on the right hand side computed by complete agglomerative clustering using Spearman's Rank correlation distance between data sets. The cost values are shown in Table~\vref{table:literature_costs} and the correlation between costs are given in Table~\vref{table:costs_correlation}}
 \label{figure:costs_dendrogram_dotplot}
-\end{sidewaysfigure}
+\end{sidewaysfigure}%}}}
 
-\begin{sidewaystable}
+\begin{sidewaystable}%{{{
   \centering
   \begin{footnotesize}
     \begin{tabular}{p{2.2cm} *{12}{p{1.2cm}} }
@@ -375,7 +375,7 @@ $R_{sul}$    & 0.37  & 0.17  & 0.27  & 0.50  & 0.24  & 0.20  & 0.26  & -0.30 & 0
   \end{footnotesize}
   \caption[Correlations coefficients between amino acid cost estimates]{Spearman's Rank correlation coefficients between estimated and literature described amino acid costs. }
   \label{table:costs_correlation}
-\end{sidewaystable}
+\end{sidewaystable}%}}}
 
 The $A_{glucose}$ cost is highly correlated with several previous measures of amino acid cost. The energetic cost derived by Akashi and Gojobori \cite{akashi2002} has the highest correlation coefficient $A_{glucose}$ (Spearman R = 0.94), but $A_{glucose}$ is also correlated (Spearman R $>$ 0.7) with Craig and Weber's energetic cost \cite{craig1998}, Wagner's respiratory cost \cite{wagner2005} and molecular weight \cite{seligmann2003}. This indicates that an systems biology approach using flux balance analysis captures the energetic cost of synthesising an amino acid.
 
@@ -385,35 +385,39 @@ The $R_{glucose}$ and $R_{ammonium}$ costs show no correlation with previous mea
 
 Summarising both the relative and absolute cost types, the absolute costs reflect the per molecule biosynthetic cost, while the relative costs reflect the absolute cost scaled by the quantity of the amino acid in biomass. For example, the $A_{sulphate}$ costs of methionine and cysteine are both 1, which reflects the single sulphur atom in each amino acid. The $R_{sulphate}$ cost for methionine is however much greater than that of cysteine, as methionine is used proportionally more than cysteine.
 
-\subsubsection{Comparison of amino acid costs across species in \emph{S. cerevisiae} and \emph{E. coli}}
+\subsubsection{Comparison of amino acid costs across species in \emph{S. cerevisiae} and \emph{E. coli}}%{{{3
 
 The relative ease at which amino acid costs can be calculated for species where there is a genome scale model, compared with previous manual curation of cost, allowed comparison of estimated amino acid costs in \emph{S. cerevisiae} and \emph{E. coli}. Figure~\vref{figure:amino_acid_costs_scatterplot} compares both $R_{glucose}$ and $A_{glucose}$ costs for \emph{E. coli} and \emph{S. cerevisiae} with two costs described in the literature: molecular weight \cite{seligmann2003} and number of ATP and NADH molecules \cite{akashi2002}.
 
-\begin{figure}
+\begin{figure}%{{{
 \centering
 \includegraphics*[width=13cm]{amino_acid_costs_scatterplot.eps}
 \caption[Comparison of the genome scale model derived cost data sets.]{Comparison of estimated amino acid cost with number of ATP and NADPH molecules used in synthesis (left), and molecular weight (right). On the y axis are the amino acid costs estimated using flux balance analysis. Both \emph{S. cerevisiae} and \emph{E. coli} measures are included to illustrate correlation of cost estimates between species. Estimated cost values have been been rescaled around their mean value to allow comparisons across species. The trends in each plot are drawn using `loess' smoothing.}
 \label{figure:amino_acid_costs_scatterplot}
-\end{figure}
+\end{figure}%}}}
 
 Figure~\ref{figure:amino_acid_costs_scatterplot} shows that the both the absolute costs show a small amount of variance in their correlation with the example literature described cost measures. Both \emph{E. coli} and \emph{S. cerevisiae} absolute costs measures are particularly well correlated with the Akashi and Gojobori described measure of cost \cite{akashi2002}. Comparing the variation between species the \emph{E. coli} $A_{glucose}$ cost is better correlated with this measure than the \emph{S. cerevisiae } equivalent (Spearman R = 0.99 vs. 0.94). This may be expected given the Akashi and Gojobori measures of cost were estimated for \emph{E. coli}. In comparison molecular weight shows a linear relationship with the absolute measures of costs, but shows a greater degree of variation with the costs from both species. Overall the species difference between the two $A_{glucose}$ cost measures is marginal and they are highly correlated (Spearman R = 0.94).
 
 The comparison of relative measures of cost illustrates the small degree of correlation with previous estimates of cost. For the both molecular weight and ATP+NADH cost estimates, neither \emph{E. coli} or \emph{S. cerevisiae} relative cost estimates show any relationship, and furthermore the figure illustrates the disparity in relative costs between species (Spearman R = 0.74) relative to that of the absolute costs.
 
-\subsection{A novel approach to estimating gene cost}
+\subsection{A novel approach to estimating gene cost}%{{{2
 
 %TODO: Why do this analysis?
 
-\subsubsection{Estimated reaction constraint in glucose and ammonium limitation}
+\subsubsection{Estimation of reaction flux in in glucose, ammonium and sulphate limitation}%{{{3
+
+Reactions less $\pm0.001$ flux in all three conditions were ignored, as were reactions with identical flux in all three environments. This resulted in a set of 40 single gene-associated reactions which exhibited different fluxes between glucose, ammonium, and sulphate limiting environments.
+
+\subsubsection{Estimated reaction constraint in glucose and ammonium limitation}%{{{3
 
 The above described 262 single-gene encoded reactions was assessed in various solutions spaces. The simulations used were glucose and ammonia nutrient limitations in using either a respiratory or fermentative growth model. All simulations were performed at a fixed growth rate of 0.3 hr$^{-1}$. The use of each gene in the resulting model optimised solution space can be divided in four types based on the flux distribution in the model. Figure~\vref{figure:reaction_constraints} illustrates these types.
 
-\begin{figure}
+\begin{figure}%{{{
 \centering
 \includegraphics*[width=10cm]{reaction_constraints.eps}
 \caption[Gene use in model optimised solution space]{The use of 1:1 gene associated reactions in four environmental solution spaces. Two types of nutrient limitation are shown: glucose and ammonia. Each limitation is explored using either a yeast respiratory, or fermentative growth. Four types of reaction uses are described: at maximum, constrained, variable, or zero flux. Maximum reactions are at the positive or negative limit of the allowable flux for the model optimisation. Constrained reactions are fixed at the current flux and absolute flux cannot be reduced to satisfy the model growth rate. Variable reactions' flux rate can be reduced whilst still maintaining the model growth rate. Zero flux reactions are not used in the given solution. All reaction estimates are performed at a fixed growth rate of 0.3 hr$^{-1}$. }
 \label{figure:reaction_constraints}
-\end{figure}
+\end{figure}%}}}
 
 \paragraph{Reaction rate at maximum}
 
@@ -433,7 +437,7 @@ This type of reaction was not used in the solution and had a reaction rate of ze
 
 \clearpage
 
-\section{Discussion}
+\section{Discussion}%{{{1
 
 This chapter illustrated the methods used to estimate amino acid cost, and further showed the correspondence of these amino acid costs with previously described measures of amino acid cost.
 
@@ -475,3 +479,4 @@ The variable reactions whose flux can be reduced and still maintain a viable mod
 
 The zero flux reactions are unused in the solution space and represent the majority of reactions. These reactions could be removed from the model without any effect on the model solution. These reactions could represent environment or nutrient specific reactions, required only when a specific nutrient is present.
 
+% vim:foldmethod=marker
