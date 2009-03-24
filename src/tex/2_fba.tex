@@ -166,11 +166,9 @@ This solution was then used to find a suboptimal solution for the same nutrient 
 
 The model was re-optimised to determine the less optimal solution and corresponding distribution of internal reaction fluxes. This aim of approach is to simulate \emph{in vivo} flux distributions whereby the cellular state is very close to an optimum growth rate while still maintaining a measure of variability in the metabolic network \cite{mahadevan2003}.
 
-\subsubsection{Determination of reaction flux in glucose, ammonium, and sulphate limitation}
+\subsubsection{Determination of reaction variability in glucose, ammonium, and sulphate limitation}
 
 The fluxes for all reactions with a single gene association were estimated for glucose, ammonium, and sulphate limited suboptimal flux balance analysis solutions in the yeast model. Reactions at zero flux in all three conditions were ignored. To identify changes in reaction fluxes between environments each reaction flux was scaled by subtracting the median value across all three environments.
-
-\subsubsection{Determination of reaction variability in glucose, ammonium, and sulphate limitation}
 
 In each nutrient limited condition, each reaction was classified based on use in the suboptimal solution space.  The first two categories were based on whether the reaction flux was zero (`zero flux'), or at the maximum allowable flux of $\pm$1000 mmol$^{-1}$ gDW$^{-1}$ hr$^{-1}$ (`at maximum').
 
@@ -184,7 +182,7 @@ The degree of control for each variable-type reaction was estimated for glucose,
 
 To estimate the reaction control on nutrient uptake, the flux through each reaction was fixed at one of five points in the range of 100\% - 95\% of original reaction flux in the initial suboptimal solution. For each point change in the the model was re-optimised using MOMA resulting in a corresponding reponse in the nutrient uptake flux, given the change in reaction flux.
 
-The slope of the regresion in change in the nutrient uptake flux as a response in to changes in reaction flux was the cost for the reaction in that nutrient limitation.
+The slope of the regression in change in the nutrient uptake flux as a response in to changes in reaction flux was the cost for the reaction in that nutrient limitation.
 
 %TODO: what units?
 %TODO: independent of growth?
