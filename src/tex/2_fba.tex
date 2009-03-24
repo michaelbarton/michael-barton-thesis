@@ -404,18 +404,23 @@ The previous section show how genome scale models can be used to estimate measur
 
 \subsubsection{Estimation of reaction flux in in glucose, ammonium and sulphate limitation}%{{{3
 
-Reactions less $\pm0.001$ flux in all three conditions were ignored, as were reactions with identical flux in all three environments. This resulted in a set of 40 single gene-associated reactions which exhibited different fluxes between glucose, ammonium, and sulphate limiting environments.
+The \emph{in silico} flux for each single gene-associated reaction was calculated for glucose, ammonium and sulphate limiting conditions. Each flux was estimated for an optimal and suboptimal solutions. An optimal solution simulates cellular flux distribution for the minimum amount of the specific nutrient entering the cell. The suboptimal solution finds the flux distribution of a 5\% increase on the minimum amout nutrient entry into the cell.
 
-\subsubsection{Estimated reaction constraint in glucose and ammonium limitation}%{{{3
+After simulation reactions with flux less than $\pm0.001$ in all three conditions were ignored, as were reactions with identical flux across all conditions. This identified the set of reactions which exhibited non-trivial flux differences between glucose, ammonium, and sulphate limiting simulations. The optimal and suboptimal solutions contained XXX and XXX of these reactions respectively.
 
-The above described 262 single-gene encoded reactions was assessed in various solutions spaces. The simulations used were glucose and ammonia nutrient limitations in using either a respiratory or fermentative growth model. All simulations were performed at a fixed growth rate of 0.3 hr$^{-1}$. The use of each gene in the resulting model optimised solution space can be divided in four types based on the flux distribution in the model. Figure~\vref{figure:reaction_constraints} illustrates these types.
+%TODO: Count optimal and suboptimal reactions
+%TODO: Insert table of excluded reaction numbers to produce subset of fluxing reactions
 
 \begin{figure}%{{{
   \centering
-  \includegraphics*[width=10cm]{reaction_flux_density.eps}
+  \includegraphics*[width=14cm]{reaction_flux_density.eps}
   \caption[Single gene reaction use in glucose, ammonium and sulphate limitation]{Single gene reaction use in glucose, ammonium and sulphate limiting optimal and suboptimal conditions. The $x$-axis is the absolute reaction flux on a log. 2 scale. }
   \label{figure:flux_distribution}
 \end{figure}%}}}
+
+The distribution of reaction fluxes in these conditions is illustrated in Figure~\vref{figure:flux_distribution}. In the optimal flux distribution the set of ammonium and sulphate reactions have identical flux distributions (the ammonium distribution covers the sulphur distribution). The ammonium and sulphate flux distributions are trimodel and skewed towards reactions with a high flux value, where the leftmost peak corresponds to unused reactions with zero flux. The glucose optimal flux distribution is also trimodal but is more distributed between reactions with flux and those reactions which are unused. In suboptimal simulation therefore indicates that single gene reactions carry more flux and are more likely to be used in ammonium or sulphate limitation, that compared with glucose limitation. Furthermore these use of flux in ammonium and sulphate limitation is identical.
+
+The right plot of Figure~\ref{figure:flux_distribution} illustrates the use of fluxes in the suboptimal simulation.In this instance all three distributions are again trimodel, but the use of flux in ammonium and sulphate limitation are no longer identical. The distribution of ammonium and sulphate limitation fluxes both show a utlilisation of of high flux reactions compared with glucose limitation. As in the optimal simulation the glucose flux distribution has the greatest number of zero flux reactions, though the ammonium and sulphate limiting environments have greater number of unused reactions in the suboptimal simulation compared with the optimal. Overall the glucose flux distribution appears relatively invariant between the optimal and suboptimal solutions, but the ammonium and sulphate limited suboptimal solutions show a noticable difference.
 
 \begin{figure}%{{{
   \centering
@@ -423,6 +428,10 @@ The above described 262 single-gene encoded reactions was assessed in various so
   \caption[Comparison of reaction use in glucose, ammonium and sulphate limitation]{Comparison of reaction use in glucose, ammonium and sulphate limiting optimal and suboptimal conditions. The optimal solution flux is shown int he pale grey, the suboptimal reaction flux is shown in the dark grey. Each axis is the absolute reaction flux on a log. 2 scale. }
   \label{figure:flux_comparison}
 \end{figure}%}}}
+
+Figure \vref{figure:flux_comparison} compares the distribution of the same set of reaction fluxes between the glucose, ammonium, and sulphate limiting environments for both the optimal and subptimal conditions. In the optimal simulation, as seen in the previous result, the ammonium and sulphate flux distributions are perfectly correlated. The glucose limited suboptimal simulation is weakly correlated with both these two distributions. In the suboptimal simulations the ammonium and sulphate limiting conditions show no correlation, as is also the case for the glucose limited flux distribution with either other flux distribution. The overall picture is that the non-trival fluxs in each simulation show little correlation with the exception of the ammonium and sulphate limitation which are identical in the optimal solution.
+
+%TODO: Insert correlation values between flux distributions.
 
 \subsubsection{Estimated reaction constraint in glucose and ammonium limitation}%{{{3
 
