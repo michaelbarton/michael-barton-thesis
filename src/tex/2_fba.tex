@@ -436,6 +436,28 @@ The use of each of the single-gene encoded reactions was assessed in all three o
 
 \paragraph{Reaction unused} This type of reaction was not used in the solution and had a reaction rate of zero. This is the largest proportion of reactions across all simulations ranging from 163 to 166.
 
+\begin{table}%{{{
+  \centering
+  \begin{tabular}{l l r r}
+                                                       \toprule
+    type        & limitation & optimal & suboptimal \\ \midrule
+    at maximum  & glucose    &       3 &          3 \\
+                & ammonium   &       4 &          4 \\
+                & sulphate   &       4 &          4 \\
+    constrained & glucose    &      60 &         58 \\
+                & ammonium   &      58 &         59 \\
+                & sulphate   &      58 &         59 \\
+    variable    & glucose    &      25 &         27 \\
+                & ammonium   &      30 &         33 \\
+                & sulphate   &      30 &         34 \\
+    zero flux   & glucose    &     174 &        174 \\
+                & ammonium   &     170 &        166 \\
+                & sulphate   &     170 &        165 \\ \bottomrule
+  \end{tabular}
+  \caption[Types of reaction in glucose, ammonium and sulphate limitation]{Single gene reaction use in glucose, ammonium and sulphate limiting optimal and suboptimal solutions. Reactions at maximum are at 1000 mmol$^{-1}$ gDW$^{-1}$ hr$^{-1}$ in the solution. Constrained reactions cannot be decreased in the solution whilst variable reactions can. Zero flux reactions are unused in the solution. The optimal solution is the solution finding the minimum entry of the nutrient into the cell, the suboptimal solution finds the entry of nutrient into the cell that is 5\% greater than the minimum entry. }
+  \label{table:reaction_use}
+\end{table}%}}}
+
 \begin{figure}%{{{
   \centering
   \includegraphics*[width=12cm]{reaction_sensitivity_density.eps}
