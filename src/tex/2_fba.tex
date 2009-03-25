@@ -480,7 +480,7 @@ The overlap of reaction types between limiting conditions is illustrated for the
 
 \subsubsection{Reaction control on glucose, ammonium, and sulphate uptake}%{{{3
 
-%TODO: Text here
+Metabolic control analysis, described in the introduction, showed how the derivative of the changes in reaction rate can be used to measure reaction sensitivity. In this section, in a similar vein to MCA, perturbations are applied a reaction to estimate the effect of the reaction on nutrient uptake. This analysis was applied to all the single gene-associated reactions in glucose, ammonium and sulphate limitation, and compared in both optimal and suboptimal solutions.
 
 \begin{figure}%{{{
   \centering
@@ -489,12 +489,26 @@ The overlap of reaction types between limiting conditions is illustrated for the
   \label{figure:sensitivity_density}
 \end{figure}%}}}
 
+%TODO: Insert table of reaction sensitivity counts
+
+Figure~\vref{figure:sensitivity_density} shows the distribution of reaction sensitivities for all environments for both the optimal and suboptimal FBA solutions. In the optimal solution, glucose limitation is the environment with the most sensitive reactions. Ammonium limitation exhibits one highly sensitive reaction while all other reactions are relatively insensitive. Sulphate limitation shows bimodal distribution of reaction sensitivities in the mid range of reaction sensitivities. 
+
+%TODO: Insert median sensitivity levels
+
+The suboptimal distribution of reaction sensitivities shows a lesser level of overall sensitivity than that of the optimal estimation of sensitivity. Glucose and sulphate limitation show a limited number of highly sensitive reactions while the remainder of the reactions are relatively insensitive.
+
 \begin{figure}%{{{
   \centering
   \includegraphics*[width=8cm]{sensitivity_scatterplot.eps}
   \caption[Comparison of reaction sensitivity between optimal and suboptimal solutions]{Comparison of reaction sensitivity between optimal and suboptimal solutions. }
   \label{figure:sensitivity_scatterplot}
 \end{figure}%}}}
+
+%TODO: Insert correlation between optimal/suboptimal values
+%TODO: Reorder environments in comparison optimal/suboptimal scatter plots
+%TODO: Not all values have a corresponding value in the other sub/optimal solution (Figure)
+
+Figure~\vref{figure:sensitivity_scatterplot} compares suboptimal and optimal reaction sensitivity estimation. The glucose sensitivity estimates are poorly correlated and show a group of reactions which are highly sensitive in the optimal solution, but with limited sensitivity in the suboptimal solution. This indicates these reactions are particularly constrained in the optimal solution space. The ammonium and sulphate reaction sensitivities are are relatively correlated between the optimal and suboptimal solutions, but do display non-linearity in the relationship.
 
 \clearpage
 
