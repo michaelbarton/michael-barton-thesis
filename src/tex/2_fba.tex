@@ -406,10 +406,20 @@ The previous section show how genome scale models can be used to estimate measur
 
 The \emph{in silico} flux for each single gene-associated reaction was calculated for glucose, ammonium and sulphate limiting conditions. Each flux was estimated for an optimal and suboptimal solutions. An optimal solution simulates cellular flux distribution for the minimum amount of the specific nutrient entering the cell. The suboptimal solution finds the flux distribution of a 5\% increase on the minimum amout nutrient entry into the cell.
 
-After simulation reactions with flux less than $\pm0.001$ in all three conditions were ignored, as were reactions with identical flux across all conditions. This identified the set of reactions which exhibited non-trivial flux differences between glucose, ammonium, and sulphate limiting simulations. The optimal and suboptimal solutions contained XXX and XXX of these reactions respectively.
+\begin{table}%{{{
+  \centering
+  \begin{tabular}{l r r}
+                                          \toprule
+    Type        & Optimal & Suboptimal \\ \midrule
+    Near zero   & 176     & 171        \\
+    Identical   & 61      & 51         \\
+    Significant & 25      & 40         \\ \bottomrule
+  \end{tabular}
+  \caption[Reaction flux frequency across environments]{Reaction flux frequency in glucose, ammonium, sulphate optimal and suboptimal solutions. Near zero indicates the flux for the reactions is close to zero in all three environments. Identical reactions have the same flux in all three environments. Significant are the remaining reactions in neither of the previous two categories. }
+  \label{table:reaction_frequency}
+\end{table}%}}}
 
-%TODO: Count optimal and suboptimal reactions
-%TODO: Insert table of excluded reaction numbers to produce subset of fluxing reactions
+After simulation reactions with flux less than $\pm0.001$ in all three conditions were ignored, as were reactions with identical flux across all conditions. This identified the set of reactions which exhibited non-trivial flux differences between glucose, ammonium, and sulphate limiting simulations. The frequency of each type of these reactions is shown if Table~\vref{table:reaction_frequency}
 
 \begin{figure}%{{{
   \centering
