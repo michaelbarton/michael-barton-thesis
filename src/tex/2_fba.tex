@@ -526,8 +526,19 @@ The suboptimal distribution of reaction sensitivities shows a lesser level of ov
   \label{figure:sensitivity_scatterplot}
 \end{figure}%}}}
 
-%TODO: Insert correlation between optimal/suboptimal values
-%TODO: Reorder environments in comparison optimal/suboptimal scatter plots
+\begin{table}%{{{
+  \centering
+  \begin{tabular}{l r}
+                                             \toprule
+    Environment & Spearman's rank & Count \\ \midrule
+    glucose     & 0.367           & 23    \\
+    ammonium    & 0.291           & 20    \\
+    sulphate    & 0.243           & 22    \\ \bottomrule
+  \end{tabular}
+  \caption[Spearman's Rank between optimal and suboptimal solutions]{Spearman's Rank between optimal and suboptimal solutions. The count is the number of reactions with a calculated sensitivity for the same environment in both the optimal and suboptimal FBA solution. }
+  \label{table:sensitivity_correlation}
+\end{table}%}}}
+
 %TODO: Not all values have a corresponding value in the other sub/optimal solution (Figure)
 
 Figure~\vref{figure:sensitivity_scatterplot} compares suboptimal and optimal reaction sensitivity estimation. The glucose sensitivity estimates are poorly correlated and show a group of reactions which are highly sensitive in the optimal solution, but with limited sensitivity in the suboptimal solution. This indicates these reactions are particularly constrained in the optimal solution space. The ammonium and sulphate reaction sensitivities are are relatively correlated between the optimal and suboptimal solutions, but do display non-linearity in the relationship.
