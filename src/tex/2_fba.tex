@@ -499,11 +499,23 @@ Metabolic control analysis, described in the introduction, showed how the deriva
   \label{figure:sensitivity_density}
 \end{figure}%}}}
 
-%TODO: Insert table of reaction sensitivity counts
+\begin{table}%{{{
+  \centering
+  \begin{tabular}{l l r}
+                                                  \toprule
+    Environment & Solution   & Median (log.10) \\ \midrule
+    glucose     & optimal    &  -9.34          \\
+                & suboptimal & -10.35          \\
+    ammonium    & optimal    & -11.53          \\
+                & suboptimal &  -8.11          \\
+    sulphate    & optimal    &  -7.73          \\
+                & suboptimal &  -7.10          \\ \bottomrule
+  \end{tabular}
+  \caption[Median reaction sensitivities]{Median reaction sensitivity in each environment. }
+  \label{table:median_sensitivity}
+\end{table}%}}}
 
 Figure~\vref{figure:sensitivity_density} shows the distribution of reaction sensitivities for all environments for both the optimal and suboptimal FBA solutions. In the optimal solution, glucose limitation is the environment with the most sensitive reactions. Ammonium limitation exhibits one highly sensitive reaction while all other reactions are relatively insensitive. Sulphate limitation shows bimodal distribution of reaction sensitivities in the mid range of reaction sensitivities. 
-
-%TODO: Insert median sensitivity levels
 
 The suboptimal distribution of reaction sensitivities shows a lesser level of overall sensitivity than that of the optimal estimation of sensitivity. Glucose and sulphate limitation show a limited number of highly sensitive reactions while the remainder of the reactions are relatively insensitive.
 
