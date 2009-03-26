@@ -549,25 +549,25 @@ Figure~\vref{figure:sensitivity_scatterplot} compares suboptimal and optimal rea
 
 This chapter illustrated the methods used to estimate amino acid cost, and further showed the correspondence of these amino acid costs with previously described measures of amino acid cost.
 
-\subsection{Flux balance analysis predicts amino acid cost}
+\subsection{Flux balance analysis predicts amino acid cost}%{{{2
 
 The absolute amino acid costs estimated using the genome scale model are as might expected. The $A_{ammonium}$ and $A_{sulphate}$ costs are directly proportional to the nitrogen and sulphur content of the molecule. This indicates, when either of these two nutrients are limiting the cost of the amino acid is the material quantity of the limiting nutrient. The estimated $A_{glucose}$ cost is different as glucose is the source of both carbon atoms and energy to the cell. When compared with literature reported cost measures the $A_{glucose}$ cost is most correlated with the Akashi and Gojobori energetic cost. For both these measures of amino acid cost, as is also shown in the literature, small less complex amino acids such as glycine and alanine are cheaper while larger more complex amino acids such as tryptophan and tyrosine are biosynthetically more expensive.
 
 The relative amino acid cost estimations represent the absolute cost of an amino acid scaled by the quantity measured in \emph{S. cerevisiae} biomass. The relative measures of amino acid cost show little correlation with previous measures of amino acid cost. Furthermore amino acids that are expensive based on their absolute cost, are cheaper in terms of relative cost. For example tryptophan has a high $A_{glucose}$ cost, but is instead much cheaper when the $R_{glucose}$ cost is considered. This reflects that expensive amino acids may be minimised in biomass composition. On the other hand lysine has one of the most expensive $R_{glucose}$ costs, but is relative inexpensive in $A_{glucose}$. This means that a proportional increase in the requirement of lysine would have a greater effect than of tryptophan, since lysine appears at greater quantities in biomass.
 
-\subsubsection{Correlation $R_{glucose}$ and $R_{ammonium}$ indicates genome optimisation}
+\subsubsection{Correlation $R_{glucose}$ and $R_{ammonium}$ indicates genome optimisation}%{{{3
 
 An interesting point is that the $R_{glucose}$ and $R_{ammonium}$ costs have a high correlation (Spearman R = 0.63). This leads to the possibility that optimisation of energy/carbon based costs in the proteome also results in optimisation of the nitrogen cost. The benefits of this are intuitive where selective advantages for the optimisation of a given amino acid in carbon limitation will have advantages for nitrogen limitation. If there was little or negative correlation between carbon and nitrogen based costs, then optimisation of a protein for carbon limitation, could result in a non-optimisation of the protein under nitrogen limitation.
 
-\subsubsection{Atomic material content as a biosynthetic cost}
+\subsubsection{Atomic material content as a biosynthetic cost}%{{{3
 
 Amino acid synthesis will require energy to power each step in the metabolic network. In addition to these costs the atomic material content of the amino acid structure may also be considered a cost of synthesis. Mazel \& Marliere \cite{mazel1989} showed that \emph{Calothrix} proteins expressed in sulphur limiting conditions are depleted for the sulphur containing amino acids cysteine and methionine. This work indicating the atomic content of an amino acid should also be taken into consideration when attempting to define a measure of cost. Work by both Baudoin-Cornu \emph{et al.} \cite{baudoin2001} and Bragg \emph{et al.} \cite{bragg2006} used atomic content as a measure of amino acid cost when examining protein content, when considering the evolution role of an amino acid cost, the role of energy should also be coupled with the availability of nutrients. Any limitation on a specific nutrient may play as an important role as that of energetic limitation.
 
-\subsection{Predicting the cost of a gene}
+\subsection{Predicting the cost of a gene}%{{{2
 
 The number of enzyme parameter needed to produce a kinetic model mean that the number of reactions included can be a magnitude smaller than that of genome scale models. The small number of reactions therefore means that the estimation of control coefficients are limited to the small number of available reactions. For instance, at the time of writing this thesis, there exists no model where it would be possible to derive control coefficients for reactions across different parts of the cell metabolism such as both energy metabolism and amino acid. Existing genome scale models contain reactions contain the majority of the central metabolism for the organism they describe, which solves the problem of limited model size. The restriction of genome scale models is that they do not contain enzyme kinetic data, and so it is not possible to estimate metabolic control coefficients in the same way as kinetic models.
 
-\subsubsection{Determining associations between genes and encoded metabolic reactions}
+\subsubsection{Determining associations between genes and encoded metabolic reactions}%{{{3
 
 Estimating the cost of a gene on metabolism first requires determining the points of effect the gene has on the metabolic network. This analysis aimed to first determine which reactions have a single effect on metabolism, and thereby allowing a simpler analysis of their cost. The focus on 1:1 associations of gene to reactions excluded 488 genes but did allow a much simpler analysis of gene cost, where any effect on the gene may be expected to have a direct effect on single reaction which can then be analysed in through the effect on the corresponding phenotype.
 
@@ -577,7 +577,7 @@ Alternative approaches used in gene knockout studies have treated the reaction a
 
 %TODO: How did other knockout studies treat paralogs?
 
-\subsubsection{Different constraints on reaction flux in glucose and ammonium limitation}
+\subsubsection{Different constraints on reaction flux in glucose and ammonium limitation}%{{{3
 
 The reactions at maximum flux represent edges in solution space, where any reaction cannot exceed an absolute flux of 1000 mmol$^{-1}$ gDW$^{-1}$ hr$^{-1}$. If the artificial constraint of reaction flux is increased the likely outcome is that the flux of these reactions would also increase, and the flux through the reactions is of an artificial limit imposed by the model optimisation, rather than because of the simulation of a biological phenotype. Therefore these reactions are not considered further in the analysis. The number of reactions at the limit is low, six across all conditions, and removal from the gene cost data set is not a significant impact on the size.
 
@@ -587,4 +587,4 @@ The variable reactions whose flux can be reduced and still maintain a viable mod
 
 The zero flux reactions are unused in the solution space and represent the majority of reactions. These reactions could be removed from the model without any effect on the model solution. These reactions could represent environment or nutrient specific reactions, required only when a specific nutrient is present.
 
-% vim:foldmethod=marker
+% vim:foldmethod=marker {{{1
