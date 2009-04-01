@@ -121,64 +121,56 @@ The second part of results is a related approach to estimate the fitness effect 
 
 \section{Materials and Methods}%{{{1
 
-\subsection{Determination of gene to reaction association in \emph{S. cerevisiae} model}
-
-Only a subset of the reactions in the \emph{S. cerevisiae} metabolic model have a direct gene association. This annotation of the model defines if there is one or more genes known to encode an enzyme catalysing one of the reactions in the model stoichiometric matrix. This association can include multimeric enzymes where multiple gene products form an enzyme complex or are isoenzymes where multiple gene encode enzymes for the same reactions.
-
-The COBRA toolbox used in the analysis defines a sparse matrix specifying which \emph{S. cerevisiae} genes are associated with which model reactions. The matrix is sparse as not all reactions have an associated gene. This matrix was parsed to determine the reactions catalysed by only a single gene, where the gene is not associated with any other reactions.
-
-\subsection{Flux balance analysis}
+\subsection{Determination of gene to reaction association in \emph{S. cerevisiae} model}%{{{2
 
 The genome scale models used in this work were \emph{S.cerevisiae} iND750 \cite{duarte2004a} and \emph{E.coli} iJR904 \cite{reed2003}. Flux balance analysis was performed using the COBRA toolbox \cite{becker2007} and the lpsolve optimisation library \cite{lpsolve}.
 \nomenclature{COBRA}{Flux balance analysis toolbox for MATLAB (see \cite{becker2007})}
 \nomenclature{iND750}{\emph{Saccharomyces cerevisiae} genome scale model (see \cite{duarte2004a})}
 \nomenclature{iJR904}{\emph{Escherichia coli} genome scale model (see \cite{reed2003})}
 
-Nutrient limitation was simulated by fixing the upper and lower bounds of the biomass production reaction to 0.3$^{-1}$ an optimising to minimise the entry of a specific nutrient into the cell. All other nutrient exchange fluxes were set to have bounds of -10000 mmol$^{-1}$ gDW$^{-1}$ hr$^{-1}$, effectively setting all other nutrients to be non-limiting on simulated growth. The flux balance analysis configuration therefore finds the minimum required amount of a specific nutrient to maintain cellular growth rate at 0.3 hr$^{-1}$.
+The COBRA toolbox for manipulating genome scale models and performing flux balance analysis defines a sparse matrix specifying which genes encode which reactions in the model. This annotation of the model defines if there is one or more genes known to encode an enzyme catalysing one of the reactions in the model stoichiometric matrix. This association can include multimeric enzymes where multiple gene products form an enzyme complex or are isoenzymes where multiple gene encode enzymes for the same reactions. Only a subset of the reactions in the \emph{S. cerevisiae} metabolic model are associated with a single gene, where the gene is also not associated with any other reactions. This gene association matrix was parsed to determine the reactions catalysed by only a single gene, where the gene is not associated with any other reactions.
 
-For the \emph{S. cerevisiae} iND750 \cite{duarte2004a} genome scale model the reactions allowing entry of nutrients into the cell are for glucose, ammonium, sulphate, phosphate, oxygen and water. Each of these reactions represents the only external source for an essential nutrient and, for example, when simulating the glucose limitation there are no other high energy sugars available. The FBA simulations does however allow a variety of molecules to exit the cell, these are in the majority metabolic by products such as carbon dioxide or ethanol.
+\subsection{Flux balance analysis}%{{{2
 
-Fixing \emph{in silico} growth rate also simulates experimental conditions using continuous culture of microorganisms in the chemostat (see Castrillo \emph{et al.} \cite{castrillo2007}) where the minimisation of a specific nutrient as the \emph{in silico} objective mimics chemostat conditions where one nutrient is the limiting factor for growth and all other nutrient are available in excess.
+Nutrient limitation was simulated by fixing the upper and lower bounds of the biomass production reaction to 0.3$^{-1}$ and optimising an objective function to minimise the entry of a specific nutrient into the cell. All other nutrient entry fluxes were set to have bounds of -10000 mmol$^{-1}$ gDW$^{-1}$ hr$^{-1}$, effectively non-limiting on simulated growth. This flux balance analysis configuration finds the minimum required amount of a specific nutrient to maintain cellular growth rate at 0.3 hr$^{-1}$.
 
-\subsection{Flux balance analysis estimation of amino acid cost}
+For the \emph{S. cerevisiae} iND750 \cite{duarte2004a} genome scale model the reactions allowing entry of nutrients into the cell are glucose, ammonium, sulphate, phosphate, oxygen and water. Each of these reactions represents the only external source for an essential nutrient, for example, when simulating the glucose limitation there are no other high energy sugars available. The FBA simulations does however allow a variety of molecules to exit the cell, these are in the majority metabolic by products such as carbon dioxide or ethanol.
 
-Estimation of amino acid cost was performed by making a percentage change ($\pm$0.0002\%) to the requirement of amino acid at position $S_{ij}$ in the model stoichiometric matrix, where $i$ is the amino acid and $j$ is the biomass reaction. When the model is optimised each change in $S_{ij}$ results in a corresponding change in the limiting nutrient uptake. Larger effects in nutrient uptake indicate a greater nutrient cost for the amino acid.  The slope between the change in amino acid requirement and the corresponding change in nutrient uptake flux was taken as the cost of the amino acid for that nutrient. This cost is a relative cost as it is derived from a percentage changes in amino acid requirement rather than constant changes in requirement. Division of the relative cost by the original amino acid requirement does however result in an absolute estimate of amino acid cost. Both relative and absolute amino costs were calculated for glucose, ammonium, and sulphate limitation. Finally each cost was divided by the growth rate at which it was estimated (0.3 hr$^{-1}$) to give an estimate of cost independent of growth. The nomenclature used for relative and absolute cost definitions is $R_{nutrient}$ and $A_{nutrient}$ respectively.
+\subsection{Flux balance analysis estimation of amino acid cost}%{{{2
+
+Estimation of amino acid cost was performed by making a percentage change ($\pm$0.0002\%) to the requirement of amino acid at position $S_{ij}$ in the model stoichiometric matrix, where $i$ is the amino acid and $j$ is the biomass reaction. When the model is optimised each change in $S_{ij}$ results in a corresponding change in the limiting nutrient uptake. Larger effects in nutrient uptake indicate a greater nutrient cost for the amino acid.  The slope between the change in amino acid requirement and the corresponding change in nutrient uptake flux was taken as the cost of the amino acid for that nutrient. This cost is a relative cost as it is derived from a percentage changes in amino acid requirement rather than using a constant value to make to all amino acid requirements. Division of the relative cost by the original amino acid requirement does however result in an absolute estimate of amino acid cost equivalent to estimating the slope from a fixed valune change in amino acid requirement. Both relative and absolute amino costs were calculated for glucose, ammonium, and sulphate limitation. Each cost was divided by the growth rate at which it was estimated (0.3 hr$^{-1}$) to give an estimate of cost independent of growth rate. The nomenclature used for relative and absolute costs defined in a given nutrient limitation is $R_{nutrient}$ and $A_{nutrient}$ respectively.
 \nomenclature{$A_{nutrient}$}{Amino acid absolute nutrient cost}
 \nomenclature{$R_{nutrient}$}{Amino acid relative nutrient cost}
 
-The additional optimisation techniques described in the introduction, such as MOMA or suboptimal solutions, were not used in the estimation of amino acid cost. These techniques focus on the realistic \emph{in vivo} simulation reaction fluxes, while instead this analysis focused on the corresponding change in nutrient uptake flux given the change in amino acid stoichiometry.
+\subsubsection{Units of absolute and relative measures of amino acid cost}%{{{3
 
-\subsubsection{Units of absolute and relative measures of amino acid cost}
+The relative costs are the value of $m$ in the linear relationship $y = mx + c$ where $x$ is the unitless percentage change in the amino acid requirement, and $y$ is corresponding mmol$^{-1}$ gDW$^{-1}$ hr$^{-1}$ response in nutrient intake flux. When divided by the hr$^{-1}$ growth rate at which the cost was estimated, the units of the relative cost are mmol$^{-1}$ gDW$^{-1}$. This represents the change in nutrient uptake flux given the fractional change in amino acid requirement in biomass.
 
-The relative costs are calculated value of $m$ in the linear relationship $y = mx + c$ where $x$ is the unit less percentage change in the amino acid requirement, and $y$ is corresponding mmol$^{-1}$ gDW$^{-1}$ hr$^{-1}$ response in nutrient intake flux. When divided by the hr$^{-1}$ growth rate at which the cost was estimated, the units of the relative cost are mmol$^{-1}$ gDW$^{-1}$. This represents the change in nutrient uptake flux given the fractional change in amino acid requirement in biomass. The absolute cost is derived from the relative cost by division by the original mmol$^{-1}$ gDW$^{-1}$ requirement of the amino acid. The absolute amino acid is therefore unit less and represents what a mmol$^{-1}$ gDW$^{-1}$ increase in amino acid requirement has the mmol$^{-1}$ gDW$^{-1}$ uptake flux of the given nutrient.
+The absolute cost is derived from the relative cost by division by the original mmol$^{-1}$ gDW$^{-1}$ requirement of the amino acid. The absolute amino acid is therefore unitless and represents what a mmol$^{-1}$ gDW$^{-1}$ increase in amino acid requirement has on the mmol$^{-1}$ gDW$^{-1}$ uptake flux of the given nutrient.
 
-\subsection{Flux balance analysis estimation of gene cost}
+\subsection{Flux balance analysis estimation of gene cost}%{{{2
 
-\subsubsection{Estimation of \emph{in vivo} flux distributions using suboptimal flux balance solutions}
+\subsubsection{Estimation of \emph{in vivo} flux distributions using suboptimal flux balance solutions}%{{{3
 
-The distribution reaction flux in the \emph{S. cerevisiae} model in of each three nutrient limited conditions, glucose, ammonium, and sulphate, was estimated as above where growth rate is fixed at 0.3 hr$^{-1}$ and the model optimised for the minimum intake of the given nutrient.
+The flux for each reaction in the \emph{S. cerevisiae} model for three nutrient limited conditions, glucose, ammonium, and sulphate, was estimated as above where growth rate is fixed at 0.3 hr$^{-1}$ and the model optimised for the minimum intake of one of the three nutrients.
 
-This solution was then used to find a suboptimal solution for the same nutrient limiting condition by a setting a lower boundary on the minimum flux of nutrient into the cell at 5\% of the minimum allowable flux. For example if the minimum glucose flux into the cell at growth rate 0.3 hr $^{-1}$ is $x$, then the lower boundary of glucose into the cell was set at 1.05$x$, where the amount of glucose entering the cell may increase, but not decrease below this value.
+A suboptimal solution for the same nutrient limiting condition was also found by a setting a lower boundary on the flux of nutrient into the cell at a 5\% increase of the minimum required nutrient entry. For example if the minimum glucose flux into the cell at growth rate 0.3 hr $^{-1}$ is $x$, then the lower boundary of glucose into the cell was increased to 1.05$x$, where the amount of glucose entering the cell may be more than this value but not less. This effectively relaxes the constraints on the use of the limiting nutrient, and allows a flux solution that uses more of the nutriehnt than is required \cite{mahadevan2003}.
 
-The model was re-optimised to determine the less optimal solution and corresponding distribution of internal reaction fluxes. This aim of approach is to simulate \emph{in vivo} flux distributions whereby the cellular state is very close to an optimum growth rate while still maintaining a measure of variability in the metabolic network \cite{mahadevan2003}.
+The flux for each single gene associated reaction was recorded for all three nutrient limiting conditions for both optimal and suboptimal solutions. Reactions identical of near zero flux ($\pm$0.001 mmol$^{-1}$ gDW$^{-1}$ hr$^{-1}$) in all three conditions were ignored.
 
-\subsubsection{Determination of reaction variability in glucose, ammonium, and sulphate limitation}
+\subsubsection{Determination of reaction variability in glucose, ammonium, and sulphate limitation}%{{{3
 
-The fluxes for all reactions with a single gene association were estimated for glucose, ammonium, and sulphate limited suboptimal flux balance analysis solutions in the yeast model. Reactions at zero flux in all three conditions were ignored. To identify changes in reaction fluxes between environments each reaction flux was scaled by subtracting the median value across all three environments.
+The use of flux for single gene associated reactions in the three nutrient limited simulations from the use of flux in each conditions. The first two categories were based on whether the reaction flux was zero (`zero flux'), or at the maximum allowable flux in the FBA solution of $\pm$1000 mmol$^{-1}$ gDW$^{-1}$ hr$^{-1}$ (`at maximum'). If the reaction did not fall into either of these two categories the reaction was classified on whether the flux could vary in the FBA solution given the cell growth rate and nutrient limitation. For each remaining reaction, the model was re-optimised using MOMA to minimise the absolute flux through the reaction. If the reaction could not be reduced, this indicated the reaction was constrained in the solution space (`constrained'), otherwise the reaction flux could be reduced and was classified as variable (`variable').
 
-In each nutrient limited condition, each reaction was classified based on use in the suboptimal solution space.  The first two categories were based on whether the reaction flux was zero (`zero flux'), or at the maximum allowable flux of $\pm$1000 mmol$^{-1}$ gDW$^{-1}$ hr$^{-1}$ (`at maximum').
+This resulted in one of four classifications for each single gene-associated reaction in each of the three nutrient limitations for both optimal and suboptimal solution estimation.
 
-If the reaction did not fall into either of these two categories it was then classified on whether the flux could vary in the FBA solution given the cell growth rate and nutrient limitation. For each remaining reaction, the model was re-optimised using MOMA to minimise the absolute flux through the reaction. If the reaction could not be reduced whilst maintaining the same growth and nutrient uptake flux, this indicated the reaction was constrained in the solution space (`constrained'), otherwise the the reaction was classified as variable (`variable').
+\subsubsection{Determination of reaction flux control on in glucose, ammonium, and sulphate uptake}%{{{3
 
-This resulted in one of four classifications for each single gene-associated reaction in each of the three nutrient limitations considered.
+The degree of control for each of the variable flux reactions was estimated for glucose, ammonium, and sulphate limiting conditions, in both the optimal and suboptimal solution.
 
-\subsubsection{Determination of reaction flux control on in glucose, ammonium, and sulphate uptake}
+To estimate the reaction control on nutrient uptake flux, the flux through each reaction was fixed over five points in the range of 100\% - 95\% of the original reaction flux in the initial solution. For each point change in reaction flux the model was re-optimised using MOMA, to identify the corresponding change in the nutrient uptake flux.
 
-The degree of control for each variable-type reaction was estimated for glucose, ammonium, and sulphate limiting conditions.
-
-To estimate the reaction control on nutrient uptake, the flux through each reaction was fixed at one of five points in the range of 100\% - 95\% of original reaction flux in the initial suboptimal solution. For each point change in the the model was re-optimised using MOMA resulting in a corresponding reponse in the nutrient uptake flux, given the change in reaction flux.
-
-The slope of the regression in change in the nutrient uptake flux as a response in to changes in reaction flux was the cost for the reaction in that nutrient limitation.
+The slope of the change in the nutrient uptake flux as a response in to changes in reaction flux was the control, or fitness effect, for that reaction in that nutrient limitation. This was performed in both optimal and suboptimal FBA solutions.
 
 %TODO: what units?
 %TODO: independent of growth?
