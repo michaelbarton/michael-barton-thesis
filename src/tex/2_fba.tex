@@ -183,7 +183,7 @@ The slope of the change in the nutrient uptake flux as a response in to changes 
 
 \subsubsection{Numbers of reactions and genes}%{{{3
 
-To analyse reaction function and infer characteristics of \emph{S. cerevisiae} genes the relationship between model reactions and annotated genes must first be understood. Table~\vref{table:gene_associations} illustrates the number and types of associations between genes and reactions. Each reaction in the model can be categorised based on the type of associations with annotated genes.
+Each reaction in the \emph{S. cerevisiae} model may be associated with one or more genes. Each gene may also be associated with multiple reactions. Table~\vref{table:gene_associations} illustrates the number and types of associations between genes and reactions. Each reaction in the model can be categorised based on the type of associations with known \emph{S. cerevisiae} genes.
 
 \begin{table}[b]%{{{
   \centering
@@ -200,11 +200,11 @@ To analyse reaction function and infer characteristics of \emph{S. cerevisiae} g
   \label{table:gene_associations}
 \end{table}%}}}
 
-The total number genes included in the model is 750. Of the 1266 reactions, 810 are associated with one or more genes. This includes reactions that may be catalysed by paralogs, multimeric enzymes, and genes also associated other reactions. A subset of this category are the reactions associated to only a single gene containing 579 reactions. This excludes paralogs and multimeric enzymes, but still includes enzymes associated with more than one reaction. A further subset of this category are the reactions associated to a single gene, where the gene is associated with no other reactions. This comprises 262 genes which may be expected to have only a single point of effect in \emph{S. cerevisiae} metabolism are therefore useful for inferential analysis of the relationship between gene function and evolution, and corresponding metabolic effect.
+The total number genes included in the model is 750. Of the 1266 reactions, 810 are associated with one or more genes. This includes reactions that may be catalysed by paralogs, multimeric enzymes, and genes that are associated with multiple other reactions. A subset of this category are 579 reactions associated to only a single gene. This excludes paralogs and multimeric genes, but still includes enzymes associated with more than one reaction. A further subset of this category are the reactions associated to a single gene, where the gene is associated with no other reactions. These genes may be expected to have only a single point of effect in \emph{S. cerevisiae} metabolism, and are therefore useful for analysis of the relationship between gene sequence and function, and corresponding metabolic effect.
 
 \subsubsection{Composition of biomass requirement}%{{{3
 
-As discussed in the introduction, the biomass equation in a stoichiometric model is an estimated requirement of essential metabolites for growth in a given organism. In flux balance analysis, the biomass equation can be used as the objective function to simulate the rate of growth given the available basic input nutrients. Table \vref{table:biomass_requirements} summarises the molecular requirement of the biomass reaction in the \emph{S. cerevisiae} iND750 model. These requirements include fats such as triglyceride and ergosterol, sugars such as glycogen and mannan, and small metabolites comprising sulphate, water, and ATP. The genome, transcriptome, and proteome content of the cell is included as the quantities of nucleotides and amino acids estimated from dry weight cellular composition.
+As discussed in the introduction, the biomass equation in a stoichiometric model is an estimated requirement of the metabolites needed to produce new cellular biomass. In flux balance analysis, the biomass equation can be used as the objective function to optimise the \emph{in silico} model growth rate for the available input nutrients. Table \vref{table:biomass_requirements} summarises the molecular requirement of the biomass reaction in the \emph{S. cerevisiae} iND750 model. These requirements include fats such as triglyceride and ergosterol, sugars such as glycogen and mannan, and small metabolites comprising sulphate, water, and ATP. The genome, transcriptome, and proteome content of the cell is included as the quantities of nucleotides and amino acids estimated from dry weight cellular composition. The biomass requirements of the twenty amino acids were used to estimate the cost of each amino acid. This method is described in the following section.
 
 \begin{table}%{{{
   \centering
@@ -257,13 +257,13 @@ As discussed in the introduction, the biomass equation in a stoichiometric model
                    & Sulphate                       &  0.02000                             \\ \bottomrule
   \end{tabular}
   \end{footnotesize}
-  \caption[Biomass requirements \emph{S. cerevisiae} iND750 model]{Biomass requirements of \emph{S. cerevisiae} iND750 model. Each molecule is categorised by type. The requirement of each molecule is millimoles per gram of dry weight biomass. The estimation of biomass quantities is outlined by Feist \emph{et al.} \cite{feist2009}, the \emph{S. cerevisiae} model construction is described by Duarte \emph{et al.} \cite{duarte2004a}.}
+  \caption[Biomass requirements \emph{S. cerevisiae} iND750 model]{Biomass requirements of \emph{S. cerevisiae} iND750 model. The requirement of each molecule is millimoles per gram of dry weight biomass. The estimation of biomass quantities for genome scale models is outlined by Feist \emph{et al.} \cite{feist2009}, the \emph{S. cerevisiae} model construction is described by Duarte \emph{et al.} \cite{duarte2004a}.}
   \label{table:biomass_requirements}
 \end{table}%}}}
 
 \subsection{A novel approach using genome scale models to estimating amino acid cost}\label{section:amino_acid_cost_estimation}%{{{2
 
-The introduction described how metabolic control analysis can be used to estimate the importance of each reaction in a kinetic model. This section shows how similar principles can be used to estimate the sensitivity of \emph{S. cerevisiae} growth to changes in amino acid requirements. This sensitivity is interpreted as the biosynthetic cost of the amino acid in the nutrient limiting condition it is estimated.
+The introduction described how metabolic control analysis can be used to estimate the importance of each reaction in a kinetic model. This section shows how similar principles can be used to estimate the sensitivity of \emph{S. cerevisiae} growth to changes in amino acid requirements. This sensitivity can be interpreted as the biosynthetic cost of the amino acid in the limiting nutrient.
 
 \begin{figure}%{{{
   \centering
@@ -282,23 +282,23 @@ The introduction described how metabolic control analysis can be used to estimat
     \includegraphics*[width=7cm]{comparison_of_costs.eps}
   }
   \hfill
-  \caption[Method used for estimation of amino acid cost]{Outline of the method used for the estimation of amino acid cost. Figure~\ref{figure:curve_estimation:schematic} is a schematic representation of simulating glucose limited conditions using a genome scale model. The growth rate of the model is fixed at a constant value and the objective function of the simulation minimises the cellular entry of a specific nutrient, which in the example is glucose. All other nutrient entering the model, illustrated here with ammonia, are unbounded. Figure~\ref{figure:curve_estimation:curve} shows the relationship between altered tryptophan requirement and the response in both glucose and ammonium uptake. Figure~\ref{figure:curve_estimation:costs} contrasts the estimated costs for tryptophan, glycine and histidine in glucose and ammonium limiting conditions. }
+  \caption[Method used for estimation of amino acid cost]{Outline of the method used for the estimation of amino acid cost. Figure~\ref{figure:curve_estimation:schematic} is a schematic representation of simulating glucose limited conditions using a genome scale model and flux balance analysis. The growth rate of the model is fixed at a constant value and the objective function of the simulation minimises the cellular entry of a specific nutrient, which in the example is glucose. All other nutrient entering the model, illustrated here with ammonia, are unbounded. Figure~\ref{figure:curve_estimation:curve} shows the relationship between altered tryptophan requirement and the response in either glucose and ammonium uptake. Figure~\ref{figure:curve_estimation:costs} contrasts the estimated costs for tryptophan, glycine and histidine in glucose and ammonium limiting conditions. }
   \label{figure:curve_estimation}
 \end{figure}%}}}
 
-Figure~\vref{figure:curve_estimation} illustrates the method used to estimate the amino acid biosynthetic cost using flux balance analysis. Figure~\ref{figure:curve_estimation:schematic} demonstrates the model configuration for the simulation of a glucose limited environment, amino acid costs were also calculated for ammonium and sulphate limiting conditions.
+Figure~\vref{figure:curve_estimation} the method used to estimate the amino acid biosynthetic cost using flux balance analysis. Figure~\ref{figure:curve_estimation:schematic} demonstrates the model configuration for the simulation of a glucose limited environment, here the growth rate is fixed, and glucose entry is minimised as the objective function. The entry of other nutrients, shown in the figure by ammonium, is unbounded and therefore ammonium is assumed to be non-limiting on growth.
 
-In each nutrient limiting environment the biomass requirement of each amino acid is manipulated around the original value in the range of $\pm$0.0002\%, and each time the model is re-optimised to determine the correspinding effect on the uptake flux of the limiting nutrient.  Figure~\ref{figure:curve_estimation:curve} provides an example of the relationship between changes in tryptophan requirement and the flux of either glucose and ammonium into the cell.
+In each nutrient limiting environment the biomass requirement of each amino acid is manipulated around the original value in the range of $\pm$0.0002\%, and the model is re-optimised to determine the corresponding effect on the uptake flux of the limiting nutrient.  Figure~\ref{figure:curve_estimation:curve} provides examples of the slopes in  changes in tryptophan requirement and the corresponding response in flux of either glucose and ammonium entry, depending on which nutrient entry is minimised.
 
-Two types of amino acid costs were estimated from changing biomass requirement. The first is described as a relative amino acid cost and is estimated from small percentage changes in requirement. This relative estimation of amino cost can be rescaled to estimate a cost based on absolute changes in amino acid requirement described as an absolute measure of amino acid cost.
+Two types of amino acid costs were estimated from changing biomass requirement. The first is described as an amino acid cost relative to biomass composition and is estimated from small percentage changes in requirement. This relative estimation of amino cost can be rescaled to estimate a per molecule cost based on absolute changes in amino acid requirement described as an absolute measure of amino acid cost.
 
-One further consideration in estimating amino acid cost is the growth rate at which the costs were estimated. For instance the absolute cost of tryptophan estimated at 0.2 hr$^{-1}$ is twice the cost of tryptophan estimated at 0.1 hr$^{-1}$. To control for growth rate when estimating amino acid cost, the costs were estimated at a three levels of feasible yeast growth rates 0.1 hr$^{-1}$, 0.2 hr$^{-1}$ and 0.3 hr$^{-1}$. Each amino acid cost is then rescaled to be independent of the growth rate at which it was estimated. The amino acid costs presented in this work are those estimated at the 0.3 hr$^{-1}$ growth rate, where \emph{S. cerevisiae} uses respiratory energy production \cite{famili2003}.
+One further consideration in estimating amino acid cost is the growth rate at which the costs were estimated. For instance the absolute cost of tryptophan estimated at 0.2 hr$^{-1}$ is twice the cost of tryptophan estimated at 0.1 hr$^{-1}$. To control for growth rate when estimating amino acid cost, the costs were estimated at a three levels of feasible yeast growth rates 0.1 hr$^{-1}$, 0.2 hr$^{-1}$ and 0.3 hr$^{-1}$. Each amino acid cost is then rescaled to be independent of the growth rate at which it was estimated. The amino acid costs presented in this work are those estimated at the 0.3 hr$^{-1}$ growth rate.
 
-Figure~\ref{figure:curve_estimation:costs} compares the estimated absolute costs for tryptophan, histidine and glycine in glucose and ammonium limitation. Tryptophan which is an expensive amino acid in glucose limitation, is cheaper in nitrogen limitation. In contrast to this histidine which is a cheap amino acid in glucose limitation is more expensive in ammonium limitation. Glycine, a small amino acid with a single hydrogen side chain is cheap in both nutrient limitations.
+Figure~\ref{figure:curve_estimation:costs} shows absolute costs for tryptophan, histidine and glycine in glucose and ammonium limitation. Tryptophan which is a biosynthetically expensive amino acid in glucose limitation, is cheaper in nitrogen limitation. In contrast, histidine which is a cheap amino acid in glucose limitation is more expensive in ammonium limitation illustrating how biosynthetic costs may vary depending on which nutrient is limiting. Glycine, a small amino acid with a single hydrogen side chain is cheap in both nutrient limitations.
 
 \subsubsection{Estimated amino acid costs in glucose, ammonium, and sulphate limitation}%{{{3
 
-Using the above described method relative and absolute amino acid costs were estimated for all twenty amino acids in four simulated nutrient limiting conditions: glucose, ammonium, sulphate, and phosphate. For clarity costs are described as either $R_{nutrient}$ or $A_{nutrient}$ for relative and absolute costs respectively. The relative and absolute estimated costs for each of these amino acids is illustrated in Figure~\vref{figure:costs_dendrogram_dotplot} along with amino acid costs described in the literature. The estimated amino acid cost are provided in Table~\vref{table:estimated_costs} and the correlation between costs is shown in Table~\vref{table:costs_correlation}.
+Using the above described method, relative and absolute amino acid costs were estimated for all twenty amino acids in three simulated nutrient limiting conditions: glucose, ammonium, and sulphate. For clarity costs are described as either $R_{nutrient}$ or $A_{nutrient}$ for relative and absolute costs respectively. The relative and absolute estimated costs for each of amino acid is illustrated in Figure~\vref{figure:costs_dendrogram_dotplot} along with amino acid costs described in the literature. The estimated amino acid cost are provided in Table~\vref{table:estimated_costs} and the correlation between the estimated costs and those described in the literature is shown in Table~\vref{table:costs_correlation}.
 
 \begin{table}%{{{
 \begin{footnotesize}
@@ -327,7 +327,7 @@ Using the above described method relative and absolute amino acid costs were est
       val & 0.96 & 1 & 0 & 0.25 & 0.26 & 0.00 \\ \bottomrule
   \end{tabular}
 \end{footnotesize}
-\caption[\emph{S. cerevisiae} estimated absolute and relative amino acid costs]{The units of the relative costs ($R_{uptake}$) are mmol of uptake nutrient per gram dry weight biomass (mmol$^{-1}$ gDW$^{-1}$). The absolute costs ($A_{uptake}$) are unit less. All costs are estimated in the iND750 \emph{S. cerevisiae} model using the COBRA toolbox and are rounded to two decimal places.}
+\caption[\emph{S. cerevisiae} estimated absolute and relative amino acid costs]{The units of the relative costs ($R_{uptake}$) are millimoles of nutrient per gram dry weight biomass (mmol$^{-1}$ gDW$^{-1}$). The absolute costs ($A_{uptake}$) are unitless. All costs are estimated in the iND750 \emph{S. cerevisiae} model using the COBRA toolbox and are rounded to two decimal places.}
 \label{table:estimated_costs}
 \end{table}%}}}
 
@@ -359,86 +359,85 @@ $A_{sul}$    & 0.62  & 0.36  & 0.38  & 0.68  & 0.42  & 0.46  & 0.54  & -0.55 & 0
 $R_{sul}$    & 0.37  & 0.17  & 0.27  & 0.50  & 0.24  & 0.20  & 0.26  & -0.30 & 0.09  & -0.50 & 0.76  & 1.00  \\ \bottomrule
     \end{tabular}
   \end{footnotesize}
-  \caption[Correlations coefficients between amino acid cost estimates]{Spearman's Rank correlation coefficients between estimated and literature described amino acid costs. }
+  \caption[Correlations coefficients between amino acid cost estimates]{Spearman's Rank correlation coefficients between estimated and literature described amino acid costs. The abbreviations for each cost estimate are as follows: A\&G Akashi and Gojobori \cite{akashi2002}}, C\&W Craig and Weber \cite{craig1998}, Wagner fermentative and respiratory \cite{wagner2005}. Molecular weight was used by Seligmann \cite{seligmann2003}.
   \label{table:costs_correlation}
 \end{sidewaystable}%}}}
 
-The $A_{glucose}$ cost is highly correlated with several previous measures of amino acid cost. The energetic cost derived by Akashi and Gojobori \cite{akashi2002} has the highest correlation coefficient $A_{glucose}$ (Spearman R = 0.94), but $A_{glucose}$ is also correlated (Spearman R $>$ 0.7) with Craig and Weber's energetic cost \cite{craig1998}, Wagner's respiratory cost \cite{wagner2005} and molecular weight \cite{seligmann2003}. This indicates that an systems biology approach using flux balance analysis captures the energetic cost of synthesising an amino acid.
+The $A_{glucose}$ cost is highly correlated with several previous measures of amino acid cost. The energetic cost derived by Akashi and Gojobori \cite{akashi2002} has the highest correlation coefficient (Spearman R = 0.94), but $A_{glucose}$ is also correlated (Spearman R $>$ 0.7) with Craig and Weber's energetic cost \cite{craig1998}, Wagner's respiratory cost \cite{wagner2005} and molecular weight \cite{seligmann2003}. This validates a systems biology approach using flux balance analysis to capture the energetic cost of synthesising an amino acid.
 
-The $A_{ammonium}$ costs show a weak correlation (Spearman R between 0.5 - 0.6) with some of previous described measures of cost: Akashi \& Gojobori, Wagner fermentative, and molecular weight. It should be noted that the $A_{ammonium}$ and $A_{sulphate}$ costs are proportional to that nutrient content of the amino acid.
+The $A_{ammonium}$ costs show a weak correlation (Spearman R between 0.5 - 0.6) with three previous measures of cost: Akashi \& Gojobori, Wagner fermentative, and molecular weight. The absolute costs $A_{ammonium}$ and $A_{sulphate}$ are proportional to the corresponding nitrogen and sulphur content of the amino acid. This suggests the biosynthetic costs in these two limitations can be measured as the material requirements of the limited atoms.
 
 The $R_{glucose}$ and $R_{ammonium}$ costs show no correlation with previous measures of amino acid cost. The highest correlation is with Wagner fermentative growth (Spearman R = -0.16). The $R_{glucose}$ and $R_{ammonium}$ costs are however correlated with each other (Spearman R = 0.63).
 
-Summarising both the relative and absolute cost types, the absolute costs reflect the per molecule biosynthetic cost, while the relative costs reflect the absolute cost scaled by the quantity of the amino acid in biomass. For example, the $A_{sulphate}$ costs of methionine and cysteine are both 1, which reflects the single sulphur atom in each amino acid. The $R_{sulphate}$ cost for methionine is however much greater than that of cysteine, as methionine is used proportionally more than cysteine.
+Summarising both the relative and absolute estimates of amino acid cost, the absolute costs reflect the per molecule biosynthetic cost, while the relative costs reflect the absolute cost scaled by the quantity of the amino acid in biomass. For example, the $A_{sulphate}$ costs of methionine and cysteine are both 1, which reflects the single sulphur atom in each amino acid. The $R_{sulphate}$ cost for methionine is however much greater than that of cysteine, as methionine is used proportionally more than cysteine.
 
 \subsubsection{Comparison of amino acid costs across species in \emph{S. cerevisiae} and \emph{E. coli}}%{{{3
 
-The relative ease at which amino acid costs can be calculated for species where there is a genome scale model, compared with previous manual curation of cost, allowed comparison of estimated amino acid costs in \emph{S. cerevisiae} and \emph{E. coli}. Figure~\vref{figure:amino_acid_costs_scatterplot} compares both $R_{glucose}$ and $A_{glucose}$ costs for \emph{E. coli} and \emph{S. cerevisiae} with two costs described in the literature: molecular weight \cite{seligmann2003} and number of ATP and NADH molecules \cite{akashi2002}.
+The relative ease at which amino acid costs can be calculated for species where there is a genome scale model, compared with previous manual curation of cost, allowed comparison of estimated amino acid costs in \emph{S. cerevisiae} and \emph{E. coli}. Figure~\vref{figure:amino_acid_costs_scatterplot} compares both $R_{glucose}$ and $A_{glucose}$ costs for \emph{E. coli} and \emph{S. cerevisiae} with two costs described in the literature: molecular weight \cite{seligmann2003} and number of high energy phosphate bonds from ATP and NADH molecules \cite{akashi2002}.
 
 \begin{figure}%{{{
 \centering
 \includegraphics*[width=13cm]{amino_acid_costs_scatterplot.eps}
-\caption[Comparison of the genome scale model derived cost data sets.]{Comparison of estimated amino acid cost with number of ATP and NADPH molecules used in synthesis (left), and molecular weight (right). On the y axis are the amino acid costs estimated using flux balance analysis. Both \emph{S. cerevisiae} and \emph{E. coli} measures are included to illustrate correlation of cost estimates between species. Estimated cost values have been been rescaled around their mean value to allow comparisons across species. The trends in each plot are drawn using `loess' smoothing.}
+\caption[Comparison of the genome scale model derived cost data sets.]{Comparison of estimated amino acid cost with number of ATP and NADPH molecules used in synthesis \cite{akashi2002} (left), and molecular weight \cite{seligmann2003} (right). On the $y$ axis are the amino acid costs estimated using flux balance analysis. Both \emph{S. cerevisiae} and \emph{E. coli} measures are included to illustrate correlation of cost estimates between species. Estimated cost values have been been rescaled around their mean value to allow comparisons across species. The trends in each plot are drawn using `loess' smoothing.}
 \label{figure:amino_acid_costs_scatterplot}
 \end{figure}%}}}
 
-Figure~\ref{figure:amino_acid_costs_scatterplot} shows that the both the absolute costs show a small amount of variance in their correlation with the example literature described cost measures. Both \emph{E. coli} and \emph{S. cerevisiae} absolute costs measures are particularly well correlated with the Akashi and Gojobori described measure of cost \cite{akashi2002}. Comparing the variation between species the \emph{E. coli} $A_{glucose}$ cost is better correlated with this measure than the \emph{S. cerevisiae } equivalent (Spearman R = 0.99 vs. 0.94). This may be expected given the Akashi and Gojobori measures of cost were estimated for \emph{E. coli}. In comparison molecular weight shows a linear relationship with the absolute measures of costs, but shows a greater degree of variation with the costs from both species. Overall the species difference between the two $A_{glucose}$ cost measures is marginal and they are highly correlated (Spearman R = 0.94).
+Figure~\ref{figure:amino_acid_costs_scatterplot} shows that the both the absolute costs show a small amount of variance in their correlation with the example literature described cost measures. Both \emph{E. coli} and \emph{S. cerevisiae} absolute costs measures are particularly well correlated with the Akashi and Gojobori high energy phosphate bond measure of cost \cite{akashi2002}. Comparing the variation between species the \emph{E. coli} $A_{glucose}$ cost is better correlated with the phosphate bond measure than the \emph{S. cerevisiae } equivalent (Spearman R = 0.99 vs. 0.94). This may be expected given the Akashi and Gojobori measures of cost were estimated for \emph{E. coli}. In comparison molecular weight shows a linear relationship with the absolute measures of costs, but shows a greater degree of variation with the costs from both species. Overall the species difference between the two $A_{glucose}$ cost measures is marginal and they are highly correlated (Spearman R = 0.94).
 
-The comparison of relative measures of cost illustrates the small degree of correlation with previous estimates of cost. For the both molecular weight and ATP+NADH cost estimates, neither \emph{E. coli} or \emph{S. cerevisiae} relative cost estimates show any relationship, and furthermore the figure illustrates the disparity in relative costs between species (Spearman R = 0.74) relative to that of the absolute costs.
+The comparison of relative measures of cost illustrates the small degree of correlation with previous estimates of cost. For the both molecular weight and ATP+NADH cost estimates, neither \emph{E. coli} or \emph{S. cerevisiae} relative glucose cost estimates show any correlation, and furthermore the figure illustrates the disparity in relative costs between species (Spearman R = 0.74) relative to that of the absolute costs. This indicates absolute costs are relatively invariant of the species in which they were estimated, while relative costs are species specific.
 
 \subsection{A novel approach to estimating gene cost}%{{{2
 
-The previous section described how genome scale models can be used to estimate biological cost in the context of amino acid synthesis. This section extends this analysis to estimate the fitness cost of a gene via examination of the corresponding \emph{in silico} enzymatic reaction. Gene dispensability has already been explored explored extensively in the literature through deletion of reactions in genome scale models \cite{deleted_reaction_studies}. In this section genome scale models are used to assess the fitness of a reaction in terms of flux, constraints on changes in flux, and how changes in flux produce the corresponding negative effects on the objective function. The aim of each of these analyses is determine a single value for reaction which may then be used to understand the control and impact of the encoding gene on \emph{S. cerevisiae} metabolism.
+The previous section described how genome scale models can be used to estimate biological cost in amino acid synthesis. This section extends this approach to estimate the fitness cost of a gene via examination of the corresponding enzymatic reaction. Gene dispensability has already been explored explored extensively in the literature through deletion of reactions in genome scale models \cite{pal2006,becker2008,papp2004,wang2009}. In this section gene fitness is examined in terms of reaction flux, constraints on changes in reaction flux, and how changes in reaction flux. The aim of each of these is to determine a single value for each reaction which may then be used to understand the control and impact of the encoding gene on \emph{S. cerevisiae} metabolism.
 
-\subsubsection{Estimation of reaction flux in in glucose, ammonium and sulphate limitation}%{{{3
+\subsubsection{Reaction flux}%{{{3
 
-The first result examines reactions in terms of the differences in flux between three nutrient limiting conditions. The \emph{in silico} flux for of the each single gene-associated reaction, shown in Table~\vref{table:reaction_frequency}, was calculated for glucose, ammonium and sulphate limiting conditions. Each flux was estimated for the optimal and suboptimal flux balance analysis solutions for each nutrient limited environment. The optimal solution simulates the flux distribution across reaction for the minimum amount of the specific nutrient entering the cell. The suboptimal solution finds the flux distribution of a 5\% increase on the minimum amout nutrient entry into the cell, effectively a less optimal use of nutrients.
+The \emph{in silico} flux for of the each single gene-associated reaction, described in Table~\vref{table:gene_associations}, was calculated for glucose, ammonium and sulphate limiting conditions. Each flux was estimated for the optimal and suboptimal flux balance analysis solutions for each nutrient limited environment.
 
-\begin{table}%{{{
+\begin{table}[b]%{{{
   \centering
   \begin{tabular}{l r r}
-                                                                  \toprule
-    Reaction Type                       & Optimal & Suboptimal \\ \midrule
-    Near zero flux in all conditions    & 176     & 171        \\
-    Identical flux in all conditions    & 61      & 51         \\
-    Non-trivial flux between conditions & 25      & 40         \\ \bottomrule
+                                                                              \toprule
+    Reaction Type                                   & Optimal & Suboptimal \\ \midrule
+    Near zero flux in all conditions                & 176     & 171        \\
+    Identical flux in all conditions                & 61      & 51         \\
+    Non-trivial flux differences between conditions & 25      & 40         \\ \bottomrule
   \end{tabular}
   \caption[Comparison of reaction flux across environments]{Comparison of reaction flux in glucose, ammonium, and sulphate limiting conditions. The total number of reactions assessed was 262 and comprises all reactions in the \emph{S. cerevisiae} genome scale model with single gene-association. }
   \label{table:reaction_frequency}
 \end{table}%}}}
 
-For each optimal or suboptimal solution reactions with flux less than $\pm0.001$ mmol$^{-1}$ gDW$^{-1}$ hr$^{-1}$ in all three nutrient limiting conditions were ignored, as were reactions with identical flux across all conditions. This identified the set of reactions which exhibited non-trivial flux differences between glucose, ammonium, and sulphate limiting conditions. These reactions are summarised in Table~\vref{table:reaction_frequency} The distribution of reaction fluxes for the three nutrient limiting conditions in optimal and suboptimal FBA solutions is illustrated in Figure~\vref{figure:flux_distribution}.
+For each optimal or suboptimal solution, reactions with a flux less than $\pm0.001$ mmol$^{-1}$ gDW$^{-1}$ hr$^{-1}$ in all three nutrient limiting conditions were ignored, as were reactions with identical flux in all three conditions. This identified the set of reactions which exhibited non-trivial flux differences between glucose, ammonium, and sulphate limiting conditions. The of reactions is summarised in Table~\vref{table:reaction_frequency}. The distribution of reaction fluxes for the three nutrient limiting conditions in optimal and suboptimal FBA solutions is illustrated in Figure~\vref{figure:flux_distribution}.
 
 \begin{figure}%{{{
   \centering
   \includegraphics*[width=14cm]{reaction_flux_density.eps}
-  \caption[Reaction flux in glucose, ammonium and sulphate limitation]{Reaction flux in glucose, ammonium and sulphate limiting conditions. The reactions shown have non-trivial flux differences between conditions. The $x$-axis is the absolute reaction flux on a log$_2$ scale. The leftmost peak in each plot corresponds to reactions with zero flux. }
+  \caption[Reaction flux in glucose, ammonium and sulphate limitation]{Reaction flux in glucose, ammonium and sulphate limiting conditions. The reactions shown have non-trivial flux differences between conditions. The $x$-axis is the absolute mmol$^{-1}$ gDW$^{-1}$ hr$^{-1}$ reaction flux on a log$_2$ scale. The leftmost peak in each plot corresponds to the small coefficient added to reactions with zero flux. }
   \label{figure:flux_distribution}
 \end{figure}%}}}
 
-In the optimal solution the ammonium and sulphate limiting have identical flux distributions (the ammonium distribution covers the sulphur distribution in the figure). The shape of the ammonium and sulphate flux distributions is trimodal and skewed towards reactions with a high flux value. The leftmost peak corresponds to unused reactions with zero flux where a small coefficient was added. The middle peak corresponds to reactions with a flux less than 1 while the rightmost peak indicates reactions with a greater flux. The ammonium an sulphate limiting condition have a number of reactions whose flux is greater than 1 in optimal conditions. The glucose optimal flux distribution is also trimodal but is more distributed towards reactions with a low flux or reactions which are unused.
+In the optimal solution the ammonium and sulphate limiting have identical flux distributions (the solid line of the ammonium distribution covers dotted line of the sulphur distribution). In both figures the leftmost peak corresponds to unused reactions with zero flux where a small coefficient was added. The middle peak corresponds to reactions with a flux ~ 1 mmol$^{-1}$ gDW$^{-1}$ hr$^{-1}$ while the rightmost peak indicates reactions with a relatively larger flux. The shape of the ammonium and sulphate flux distributions is trimodal and skewed towards reactions with a high flux value. The ammonium and sulphate limiting condition have a larger number of reactions whose flux is greater than 1 in optimal conditions. The glucose optimal flux distribution is more distributed towards reactions with a low flux or reactions which are unused.
 
-This indicates that single gene reactions carry more flux and are more likely to be used in ammonium or sulphate limitation, when contrasted with glucose limitation. Furthermore the flux distribution in ammonium and sulphate limitation are identical indicating these reactions are used in the same way.
-
-The right plot of Figure~\ref{figure:flux_distribution} illustrates reaction flux in the suboptimal FBA simulation. All three distributions are again trimodal, but in this instance use of flux in ammonium and sulphate limitation are no longer identical. The distribution of flux in ammonium limitation is still skewed towards high flux reactions but exhibit larger numbers of unused reactions. Sulphate limitation maintains a large numbers of both low and high flux reactions with few unused reactions, the glucose flux distribution remains relatively unchanged in the suboptimal solution. Comparing the optimal and suboptimal flux distributions, the number of high flux reactions i reduced in the suboptimal simulation of ammonium and sulphate limitation. Ammonium limitation shows a greater number of unused fluxes in the suboptimal solution. The indicates that sulphate and ammonium require overall less flux in the suboptimal simulation, glucose limitation on the other hand requires very similar flux distribution.
+The right plot of Figure~\ref{figure:flux_distribution} illustrates reaction flux in the suboptimal FBA simulation. All three distributions are again trimodal, but in this instance the use of flux in ammonium and sulphate limitation are no longer identical. The distribution of flux in ammonium limitation is still skewed towards high flux reactions but exhibit larger numbers of unused reactions than compared with the optimal solution. Sulphate limitation maintains a large numbers of both low and high flux reactions with few unused reactions. Of all three nutrient limitations the glucose flux distribution remains relatively unchanged between optimal and suboptimal FBA solutions. Comparing both optimal and suboptimal solutions, single gene associated reactions tend to have a higher flux in ammonium and sulphate limitation.  This indicates that single gene reactions carry more flux and are more likely to be used in ammonium or sulphate limitation, when contrasted with glucose limitation. Furthermore the flux distribution in ammonium and sulphate limitation are identical indicating these reactions are used in the same way.
 
 %TODO: Insert correlation values between flux distributions
 %TODO: Change color points in flux scatter plot. Pale/Dark grey
 
+
 \begin{figure}%{{{
   \centering
   \includegraphics*[width=14cm]{flux_scatterplot.eps}
-  \caption[Reaction flux in glucose, ammonium and sulphate limitation]{Reaction flux in glucose, ammonium and sulphate limitation. The optimal FBA solution is shown in the pale grey, the suboptimal solution in dark grey. Each axis shows the absolute reaction flux on a log$_2$ scale. }
+  \caption[Reaction flux in glucose, ammonium and sulphate limitation]{Reaction flux in glucose, ammonium and sulphate limitation. The optimal FBA solution is shown in the pale grey, the suboptimal solution in dark grey. Each axis shows the absolute mmol$^{-1}$ gDW$^{-1}$ hr$^{-1}$ reaction flux on a log$_2$ scale. }
   \label{figure:flux_comparison}
 \end{figure}%}}}
 
-Figure \vref{figure:flux_comparison} compares the reaction fluxes each of the three limiting environments for both the optimal and suboptimal FBA solutions. In the optimal simulation, as expected given the previous result, the ammonium and sulphate flux distributions are perfectly correlated. The glucose limited optimal simulation is weakly correlated with these identical distributions. In the suboptimal simulations the ammonium and sulphate limiting conditions show no correlation, as is also the case for the glucose limited flux distribution with either other flux distribution. The overall picture is that the non-trivial fluxes in each simulation show little correlation with the exception of the ammonium and sulphate limitation which are identical in the optimal solution.
+Figure \vref{figure:flux_comparison} compares the reaction fluxes each of the three limiting environments for either optimal or suboptimal FBA solutions. In the optimal simulation, as expected given the above overlap in distribution, the ammonium and sulphate flux distributions are perfectly correlated. The glucose limited optimal flux simulation is weakly correlated with these identical ammonium and sulphate flux distributions (Spearman R = XXX, $p$ = XXX). In the suboptimal simulations the ammonium and sulphate limiting conditions show no correlation (Spearman R = XXX, $p$ = XXX), as is also the case for the glucose limited flux distribution with either other flux distribution (Spearman R = XXX, $p$ = XXX). The non-trivial fluxes in each nutrient limitation show little correlation with the exception of the ammonium and sulphate limitation which are identical in the more constrained optimal FBA solution.
 
-%TODO: Flux distributions cant be correlated, missing values
+%TODO: Insert Spearman R values
 
-\subsubsection{Constraints on changes in reaction flux in glucose, ammonium  and sulphate limitation}%{{{3
+\subsubsection{Constraints on changes in reaction flux}%{{{3
 
-The variability in flux for each of the single-gene encoded reactions was assessed in all three of the optimal and suboptimal nutrient limiting solutions. Each reaction was categorised based on whether the reaction was used in the solution and whether the reaction flux could be decreased whilst still maintaining the biomass growth rate. The reaction categories are summarised in Table~\vref{table:reaction_use}. Each reaction category is as follows.
+The variability in flux for each single-gene encoded reaction was assessed in each nutrient limiting condition. Each reaction was categorised based on the activity in a condition and whether the flux could be decreased whilst still maintaining the biomass growth rate. Each reaction category is described as follows.
 
 \begin{table}%{{{
   \centering
@@ -458,39 +457,43 @@ The variability in flux for each of the single-gene encoded reactions was assess
                   & ammonium   &     170 &        166 \\
                   & sulphate   &     170 &        165 \\ \bottomrule
   \end{tabular}
-  \caption[Types of reaction constraints in glucose, ammonium and sulphate limitation]{Types of reaction constraints in glucose, ammonium and sulphate limiting simulations. Reactions at maximum are at $\pm$1000 mmol$^{-1}$ gDW$^{-1}$ hr$^{-1}$ flux. Flux through constrained reactions cannot be decreased in the FBA solution whilst flux through variable reactions can. Zero flux reactions have no flux and are unused in the given condition. The optimal solution find the minimum entry of the nutrient into the cell, the suboptimal solution finds the entry of nutrient into the cell that is 5\% more than required in the minimum entry. }
+  \caption[Types of reaction constraints in glucose, ammonium and sulphate limitation]{Types of reaction constraints in glucose, ammonium and sulphate limiting simulations. Reactions at maximum are at $\pm$1000 mmol$^{-1}$ gDW$^{-1}$ hr$^{-1}$ flux. Flux through constrained reactions cannot be decreased in the FBA solution whilst flux through variable reactions can. Zero flux reactions have no flux and are unused in the given condition. }
   \label{table:reaction_use}
 \end{table}%}}}
 
-\paragraph{Reaction rate at maximum.} Reactions at the allowable limit ($\pm$1000 mmol$^{-1}$ gDW$^{-1}$ hr$^{-1}$) for any reaction in the FBA solution. These represent the boundaries of the FBA solution for each reaction. The numbers of these reactions was limited and no more than four in any condition.
+\paragraph{Reaction rate at maximum.} The reaction is at the allowable limit ($\pm$1000 mmol$^{-1}$ gDW$^{-1}$ hr$^{-1}$) for flux in the FBA solution. These represent artificial boundaries placed on the model solution when performing linear optimisation. The numbers of these reactions was limited and no more than four were observed in any condition.
 
-\paragraph{Constrained reaction rate.} The flux through the reactions is constrained in the solution and cannot be reduced whilst still maintaining the FBA objective function. These represent fixed reactions in producing biomass. The numbers of these reactions was relatively invariant between all considered FBA solutions ranging from 58 to 60.
+\paragraph{Constrained reaction rate.} The flux through the reactions is constrained in the solution and cannot be reduced. The flux through this reaction is essential to producing biomass in the given nutrient limitation. The numbers of these reactions was relatively invariant between all considered FBA solutions ranging from 58 to 60.
 
-\paragraph{Variable reaction rate.} These reactions are used in the solution, and the absolute reaction flux can be reduced toward zero whilst still maintaining a viable FBA solution. These reactions represent flexibility in the flux phenotypes of the metabolic network. The number of these reactions type varied between solutions ranging from 25 to 34.
+\paragraph{Variable reaction rate.} These reactions are used in the solution, and the absolute reaction flux can be reduced toward zero. These reactions represent flexibility in the flux phenotypes of the metabolic network. The number of these reactions type varied between solutions ranging from 25 to 34.
 
 \paragraph{Reaction unused.} These reactions have zero flux and are unused in the FBA solution. This is the largest proportion of reactions across all simulations ranging from 165 to 174.
 
-There is little difference between reaction categories when comparing the optimal and suboptimal FBA simulations. The only visible trend is for greater numbers of variable reactions in the suboptimal simulations compared with the optimal simulation. This is as might be expected given that the suboptimal solution is less constrained in determining the flux distribution.
+\par
+
+As Table~\vref{table:reaction_use} shows there is little difference in reaction categories between the optimal and suboptimal FBA simulations. The only visible trend is for greater numbers of variable reactions in the suboptimal simulations compared with the optimal simulation. This might be expected given that the suboptimal solution is less constrained in solving the flux phenotype for the 5\% excess of nutrient entering the cell.
 
 \begin{figure}%{{{
   \centering
   \includegraphics*[width=15cm]{reaction_constraints.eps}
-  \caption[Overlap of reaction type between glucose, ammonium and sulphate limiting conditions]{Overlap of single gene-associated reaction flux type between glucose, ammonium and sulphate limiting conditions in the suboptimal solution. Reactions at maximum are at $\pm$1000 mmol$^{-1}$ gDW$^{-1}$ hr$^{-1}$. Constrained reaction flux cannot be reduced whilst variable reactions can. Zero flux reactions are unused in the solution. }
+  \caption[Overlap of reaction type between glucose, ammonium and sulphate limiting conditions]{Overlap of single gene-associated reaction flux type between glucose, ammonium and sulphate limiting conditions for the suboptimal FBA solution. Reactions at maximum are at $\pm$1000 mmol$^{-1}$ gDW$^{-1}$ hr$^{-1}$. Constrained reaction flux cannot be reduced whilst variable reactions can. Zero flux reactions are unused in the solution. }
   \label{figure:reaction_constraints}
 \end{figure}%}}}
 
-The overlap of reaction categories between the suboptimal solution is illustrated in Figure~\vref{figure:reaction_constraints}. The reactions at maximum rate are not included given the limited number across conditions. The figure highlights that the majority of reactions display the same flux characteristics across all limiting environments. This is visible as the largest bar in each of the three subplots corresponds to reaction categories the same across all environments.
+The overlap of reaction categories between the suboptimal solution is illustrated in Figure~\vref{figure:reaction_constraints}. The reactions at maximum rate are not included given the small number of these across conditions.
 
-For the constrained reaction category there were only small numbers of reactions constrained in one environment but not the other two. There are almost no reactions constrained in two environments but not the third. In the variable reaction category the numbers of reactions specific to a single environment was almost half that of the reactions variable across all three. The numbers of reactions that were variable in two environments but not the third was almost the same as those consistently variable across all environments this indicates variable reactions constraints, in terms of relative proportions, tend to vary between environments. In the last category zero flux reactions, unused reactions across all environments was large majority. There were a limited number of reactions unused only in glucose or ammonium limitation, but almost no reactions unused only in sulphate limitation. The number of unused reactions mixed between environments was however much larger than those specific to a single limitation.
+For the constrained reaction category there were only small numbers of reactions constrained in one environment but not the other two. There are almost no reactions constrained in two environments but not the third. In the variable reaction category the numbers of reactions specific to a single environment was almost half that of the reactions variable across all three. The numbers of reactions that were variable in two environments but not the third was almost the same as those consistently variable across all environments. In the last category unused reactions tended to be unused across all three environments. There were a limited number of reactions unused only in glucose or ammonium limitation, but almost no reactions unused only in sulphate limitation. The number of unused reactions mixed between environments was however much larger than those specific to a single limitation.
 
-\subsubsection{Reaction control on glucose, ammonium, and sulphate uptake}%{{{3
+The figure highlights that the majority of reactions display the same flux characteristics across all limiting environments. This is visible as the largest bar in each of the three subplots corresponds to reaction categories which are the same across all environments.
 
-Metabolic control analysis, described in the introduction, showed how the derivative between the change in one reaction rate and the correspond response in a second reaction can be used to measure reaction sensitivity. In this section, in a similar vein to MCA, perturbations are applied to each reaction to estimate the effect of the reaction on nutrient uptake. This analysis was applied to all the single gene-associated reactions in glucose, ammonium and sulphate limitation in both optimal and suboptimal solutions. Figure~\vref{figure:sensitivity_density} shows the distribution of reaction sensitivities for all nutrient limitations in both optimal and suboptimal FBA solutions. The median reactions sensitivities are shown in Table~\vref{table:median_sensitivity}
+\subsubsection{Reaction flux control on nutrient uptake}%{{{3
+
+Metabolic control analysis, described in the introduction, showed how the derivative of the change in one reaction rate and the correspond response in a second reaction can be used to estimate measure of control of one reaction on another. In this section, in a similar vein to MCA, perturbations are applied to variable flux single gene reactions to estimate the effect on nutrient uptake flux. Figure~\vref{figure:sensitivity_density} shows the distribution of reaction sensitivities for all nutrient limitations in both the optimal and suboptimal FBA solutions. The median reactions sensitivities are shown in Table~\vref{table:median_sensitivity}. In the optimal solution the reactions with the greatest flux control are found in glucose limitation with a peak furthermost to the right.
 
 \begin{figure}%{{{
   \centering
   \includegraphics*[width=15cm]{reaction_sensitivity_density.eps}
-  \caption[Reaction sensitivity in glucose, ammonium and sulphate limitation]{Reaction sensitivity in glucose, ammonium and sulphate limiting conditions. Each sensitivity is the log$_10$ absolute value of the slope between the decrease in reaction flux, and the corresponding effect on nutrient uptake flux. }
+  \caption[Reaction sensitivity in glucose, ammonium and sulphate limitation]{Reaction sensitivity in glucose, ammonium and sulphate limiting conditions. Each sensitivity is the log$_{10}$ absolute value of the slope between the decrease in reaction flux, and the corresponding effect on nutrient uptake flux. }
   \label{figure:sensitivity_density}
 \end{figure}%}}}
 
@@ -498,7 +501,7 @@ Metabolic control analysis, described in the introduction, showed how the deriva
   \centering
   \begin{tabular}{l l r}
                                                     \toprule
-    Limitation  & Solution   & Median (log$_10$) \\ \midrule
+    Limitation  & Solution   & Median (log$_{10}$) \\ \midrule
     glucose     & optimal    &  -9.34            \\
                 & suboptimal & -10.35            \\
     ammonium    & optimal    & -11.53            \\
@@ -506,20 +509,20 @@ Metabolic control analysis, described in the introduction, showed how the deriva
     sulphate    & optimal    &  -7.73            \\
                 & suboptimal &  -7.10            \\ \bottomrule
   \end{tabular}
-  \caption[Median log$_10$ reaction sensitivities]{Median log$_10$ reaction sensitivity on nutrient uptake in each nutrient limiting FBA simulation. }
+  \caption[Median log$_10$ reaction sensitivities]{Median log$_{10}$ reaction sensitivity on nutrient uptake in each nutrient limiting FBA simulation. }
   \label{table:median_sensitivity}
 \end{table}%}}}
 
-In the optimal solution, glucose limitation is the environment with the most sensitive reactions having a peak furthermost to the right. Ammonium limitation exhibits one highly sensitive reaction while ammonium uptakes i relatively to changes in all other reactions. Sulphate limitation shows a distribution of reaction sensitivities in the mid range of reaction sensitivities. The median values of 10$^{-9}$, 10$^{-12}$, 10$^{-7}$ indicate that the reactions generally have little effect on nutrient uptake in the optimal solution.
+Ammonium limitation exhibits one highly sensitive reaction while all other reactions appear to a negligible effect on uptake flux. Sulphate limitation shows a distribution of reaction control in between the distributions for glucose and ammonium. The median reaction coefficients for glucose, ammonium, and sulphate limitations are 10$^{-9}$, 10$^{-12}$, 10$^{-7}$ respectively and indicate the reactions generally have little effect on nutrient uptake flux in the optimal solution.
 
-The suboptimal distribution of reaction sensitivities shows a lesser degree of reaction sensitivities than those estimated in optimal solution. Glucose and sulphate limitation show a small number of sensitive reactions close to 10$^0$ while the remainder of the reactions are relatively insensitive across any condition.
+The suboptimal distribution of reaction coefficients shows a lesser degree of control on uptake flux than was observed in the optimal solution. Glucose and sulphate limitation show a small number of sensitive reactions close to 10$^0$ while the remainder of the reactions exhibit a small amount of control on uptake flux in any nutrient condition.
 
 %TODO: Changes figure axis to "Reaction sensitivity in the optimal solution"
 
 \begin{figure}%{{{
   \centering
   \includegraphics*[width=8cm]{sensitivity_scatterplot.eps}
-  \caption[Comparison of reaction sensitivity between optimal and suboptimal solutions]{Comparison of reaction sensitivity between optimal and suboptimal solutions. For each sensitivity is the log$_10$ absolute value of the slope between the decrease in reaction flux, and corresponding effect on nutrient uptake flux. Loess smoothing is used to indicated trend. }
+  \caption[Comparison of reaction sensitivity between optimal and suboptimal solutions]{Comparison of reaction sensitivity between optimal and suboptimal solutions. For each sensitivity is the log$_{10}$ absolute value of the slope between the decrease in reaction flux, and corresponding effect on nutrient uptake flux. Loess smoothing is used to indicated trend. }
   \label{figure:sensitivity_scatterplot}
 \end{figure}%}}}
 
@@ -538,7 +541,7 @@ The suboptimal distribution of reaction sensitivities shows a lesser degree of r
 
 %TODO: Not all values have a corresponding value in the other sub/optimal solution (Figure)
 
-Figure~\vref{figure:sensitivity_scatterplot} compares suboptimal and optimal reaction sensitivity estimation in the same environment. The correlation between reaction sensitivities in optimal and suboptimal FBA solutions is shown in Table\vref{table:sensitivity_correlation}. The glucose sensitivity estimates are poorly correlated and show a group of reactions which are highly sensitive in the optimal solution, but with limited sensitivity in the suboptimal solution. This indicates these reactions are particularly constrained in the optimal solution space. The ammonium and sulphate reaction sensitivities are are relatively correlated between the optimal and suboptimal solutions, but do display non-linearity in the relationship.
+Figure~\vref{figure:sensitivity_scatterplot} compares reaction control coefficients for the same reactions in suboptimal and optimal FBA solutions. The correlation between reaction coefficients in both optimal and suboptimal FBA solutions is shown in Table\vref{table:sensitivity_correlation}. The glucose sensitivity estimates are poorly correlated and show a group of reactions which are highly sensitive in the optimal solution, but with limited sensitivity in the suboptimal solution. This indicates a set of reactions particularly constrained in the glucose limited optimal solution but much less so in the suboptimal solution. The ammonium and sulphate reaction sensitivities are non-linear between optimal and suboptimal conditions, and highlights how constrains on the FBA solution can affect the sensitivity on nutrient uptake to changes in individual reaction flux.
 
 \clearpage
 
