@@ -24,15 +24,11 @@ Determining a numeric value for the relationships between reactions in a metabol
 
 Example of the application MCA include engineering an increase in the production of commercial biomolecules \cite{niederberger1992}. MCA can also be used to identify possible drugs targets through the combination of reaction knock-downs which have the greatest effect on the metabolic network \cite{lehar2008,hopkins2008}. This can be further expanded in developing antibiotic drugs for human pathogens such as trypanosome parasites, where likely drug targets are the reactions with a significant effect on metabolism in the pathogen but where the orthologous human reaction has a much decreased effect in response to the drug. This difference in metabolic control for the same reaction in both species translates into lethal drug effect in the parasite with minimal impact on the host \cite{hornberg2007}.
 
-%TODO: read Hopkins, Lehar papers
-
 \subsection{Genome scale models}%{{{2
 
 Derivation of a flux control coefficient \emph{in silico} requires the construction of a kinetic model of the system including enzyme kinetic parameters. In the case of reactions exhibiting simple Michaelis-Menten kinetics only substrate affinity (K$_{m}$) and maximum enzyme reaction rate (V$_{max}$) are necessary. More complex enzymatic kinetics more larger parameter which requires further experimental effort to derive. Even with all experimentally derived kinetic parameters, a model must still be tested to determine if simulated behaviour matches expected \emph{in vivo} behaviour \cite{teusink2000}. The total experimental effort required to derive complete sets of enzyme kinetic parameters means kinetic models are relatively small compared with the anticipated size of total cellular metabolism \cite{steuer2007}.
 \nomenclature{K$_{m}$}{Substrate concentration where enzyme rate is at half maximum ($\frac{1}{2}$V$_{max}$)}
 \nomenclature{V$_{max}$}{Maximum reactions per second per mole of enzyme}
-
-%TODO: check Steuer paper
 
 In comparison with kinetic models, a stoichiometric model does not require enzyme kinetic parameters, only a list of reactions and the metabolites used in reaction. A stoichiometric model is represented by an $m \times n$ sized matrix $S$. The matrix $S$ represents the reactions in metabolism and the substrates used and products produced by each reaction. The size of $m$ in the matrix is the total number of metabolites in the model, and $n$ is the total number of reactions. The position $S_{ij}$ is the participation of metabolite $i$ in reaction $j$. Positive values of $S_{ij}$ indicate the metabolite is produced by the reaction, negative values mean the metabolite is consumed. A zero indicates the metabolite does not participate in the reaction.
 
@@ -170,10 +166,7 @@ The degree of control for each of the variable flux reactions was estimated for 
 
 To estimate the reaction control on nutrient uptake flux, the flux through each reaction was fixed over five points in the range of 100\% - 95\% of the original reaction flux in the initial solution. For each point change in reaction flux the model was re-optimised using MOMA, to identify the corresponding change in the nutrient uptake flux.
 
-The slope of the change in the nutrient uptake flux as a response in to changes in reaction flux was the control, or fitness effect, for that reaction in that nutrient limitation. This was performed in both optimal and suboptimal FBA solutions.
-
-%TODO: what units?
-%TODO: independent of growth?
+The slope of the change in the nutrient uptake flux (mmol$^{-1}$ gDW$^{-1}$ hr$^{-1}$) as a response in to changes in reaction flux (mmol$^{-1}$ gDW$^{-1}$ hr$^{-1}$) was the unitless control, or fitness effect, for that reaction in that nutrient limitation. This was performed in both optimal and suboptimal FBA solutions.
 
 \clearpage
 
@@ -420,20 +413,14 @@ In the optimal solution the ammonium and sulphate limiting have identical flux d
 
 The right plot of Figure~\ref{figure:flux_distribution} illustrates reaction flux in the suboptimal FBA simulation. All three distributions are again trimodal, but in this instance the use of flux in ammonium and sulphate limitation are no longer identical. The distribution of flux in ammonium limitation is still skewed towards high flux reactions but exhibit larger numbers of unused reactions than compared with the optimal solution. Sulphate limitation maintains a large numbers of both low and high flux reactions with few unused reactions. Of all three nutrient limitations the glucose flux distribution remains relatively unchanged between optimal and suboptimal FBA solutions. Comparing both optimal and suboptimal solutions, single gene associated reactions tend to have a higher flux in ammonium and sulphate limitation.  This indicates that single gene reactions carry more flux and are more likely to be used in ammonium or sulphate limitation, when contrasted with glucose limitation. Furthermore the flux distribution in ammonium and sulphate limitation are identical indicating these reactions are used in the same way.
 
-%TODO: Insert correlation values between flux distributions
-%TODO: Change color points in flux scatter plot. Pale/Dark grey
-
-
 \begin{figure}%{{{
   \centering
   \includegraphics*[width=14cm]{flux_scatterplot.eps}
-  \caption[Reaction flux in glucose, ammonium and sulphate limitation]{Reaction flux in glucose, ammonium and sulphate limitation. The optimal FBA solution is shown in the pale grey, the suboptimal solution in dark grey. Each axis shows the absolute mmol$^{-1}$ gDW$^{-1}$ hr$^{-1}$ reaction flux on a log$_2$ scale. }
+  \caption[Reaction flux in glucose, ammonium and sulphate limitation]{Reaction flux in glucose, ammonium and sulphate limitation. The optimal FBA solution is shown in the dark grey circles, the suboptimal solution in pale grey triangles. Each axis shows the absolute mmol$^{-1}$ gDW$^{-1}$ hr$^{-1}$ reaction flux on a log$_2$ scale. }
   \label{figure:flux_comparison}
 \end{figure}%}}}
 
-Figure \vref{figure:flux_comparison} compares the reaction fluxes each of the three limiting environments for either optimal or suboptimal FBA solutions. In the optimal simulation, as expected given the above overlap in distribution, the ammonium and sulphate flux distributions are perfectly correlated. The glucose limited optimal flux simulation is weakly correlated with these identical ammonium and sulphate flux distributions (Spearman R = XXX, $p$ = XXX). In the suboptimal simulations the ammonium and sulphate limiting conditions show no correlation (Spearman R = XXX, $p$ = XXX), as is also the case for the glucose limited flux distribution with either other flux distribution (Spearman R = XXX, $p$ = XXX). The non-trivial fluxes in each nutrient limitation show little correlation with the exception of the ammonium and sulphate limitation which are identical in the more constrained optimal FBA solution.
-
-%TODO: Insert Spearman R values
+Figure \vref{figure:flux_comparison} compares the reaction fluxes each of the three limiting environments for either optimal or suboptimal FBA solutions. In the optimal simulation, as expected given the above overlap in distribution, the ammonium and sulphate flux distributions are perfectly correlated. The glucose limited optimal flux simulation is weakly correlated with these identical ammonium and sulphate flux distributions (Spearman R = 0.455, $p$ = 0.022). In the suboptimal simulations the ammonium and sulphate limiting conditions contrastingly show limited correlation (Spearman R = 0.38, $p$ = 0.014), but a greater degree of correlation with the glucose limited flux distribution (with ammonium Spearman R = 0.424, $p$ = 0.006; with sulphate Spearman R = 0.549, $p$ = 0.0003). The non-trivial fluxes in each nutrient limitation show a moderate degree of correlation and the ammonium and sulphate limitation flux distributions are identical in the more constrained optimal FBA solution.
 
 \subsubsection{Constraints on changes in reaction flux}%{{{3
 
@@ -468,8 +455,6 @@ The variability in flux for each single-gene encoded reaction was assessed in ea
 \paragraph{Variable reaction rate.} These reactions are used in the solution, and the absolute reaction flux can be reduced toward zero. These reactions represent flexibility in the flux phenotypes of the metabolic network. The number of these reactions type varied between solutions ranging from 25 to 34.
 
 \paragraph{Reaction unused.} These reactions have zero flux and are unused in the FBA solution. This is the largest proportion of reactions across all simulations ranging from 165 to 174.
-
-\par
 
 As Table~\vref{table:reaction_use} shows there is little difference in reaction categories between the optimal and suboptimal FBA simulations. The only visible trend is for greater numbers of variable reactions in the suboptimal simulations compared with the optimal simulation. This might be expected given that the suboptimal solution is less constrained in solving the flux phenotype for the 5\% excess of nutrient entering the cell.
 
@@ -509,7 +494,7 @@ Metabolic control analysis, described in the introduction, showed how the deriva
     sulphate    & optimal    &  -7.73            \\
                 & suboptimal &  -7.10            \\ \bottomrule
   \end{tabular}
-  \caption[Median log$_10$ reaction sensitivities]{Median log$_{10}$ reaction sensitivity on nutrient uptake in each nutrient limiting FBA simulation. }
+  \caption[Median log$_{10}$ reaction sensitivities]{Median log$_{10}$ reaction sensitivity on nutrient uptake in each nutrient limiting FBA simulation. }
   \label{table:median_sensitivity}
 \end{table}%}}}
 
@@ -517,12 +502,10 @@ Ammonium limitation exhibits one highly sensitive reaction while all other react
 
 The suboptimal distribution of reaction coefficients shows a lesser degree of control on uptake flux than was observed in the optimal solution. Glucose and sulphate limitation show a small number of sensitive reactions close to 10$^0$ while the remainder of the reactions exhibit a small amount of control on uptake flux in any nutrient condition.
 
-%TODO: Changes figure axis to "Reaction sensitivity in the optimal solution"
-
 \begin{figure}%{{{
   \centering
   \includegraphics*[width=8cm]{sensitivity_scatterplot.eps}
-  \caption[Comparison of reaction sensitivity between optimal and suboptimal solutions]{Comparison of reaction sensitivity between optimal and suboptimal solutions. For each sensitivity is the log$_{10}$ absolute value of the slope between the decrease in reaction flux, and corresponding effect on nutrient uptake flux. Loess smoothing is used to indicated trend. }
+  \caption[Comparison of reaction control coefficient between optimal and suboptimal solutions]{Comparison of reaction control coefficient between optimal and suboptimal solutions. For each point is the log$_{10}$ absolute value of the slope between the decrease in reaction flux, and corresponding effect on nutrient uptake flux. Loess smoothing is used to indicated trend. }
   \label{figure:sensitivity_scatterplot}
 \end{figure}%}}}
 
@@ -539,9 +522,7 @@ The suboptimal distribution of reaction coefficients shows a lesser degree of co
   \label{table:sensitivity_correlation}
 \end{table}%}}}
 
-%TODO: Not all values have a corresponding value in the other sub/optimal solution (Figure)
-
-Figure~\vref{figure:sensitivity_scatterplot} compares reaction control coefficients for the same reactions in suboptimal and optimal FBA solutions. The correlation between reaction coefficients in both optimal and suboptimal FBA solutions is shown in Table\vref{table:sensitivity_correlation}. The glucose sensitivity estimates are poorly correlated and show a group of reactions which are highly sensitive in the optimal solution, but with limited sensitivity in the suboptimal solution. This indicates a set of reactions particularly constrained in the glucose limited optimal solution but much less so in the suboptimal solution. The ammonium and sulphate reaction sensitivities are non-linear between optimal and suboptimal conditions, and highlights how constrains on the FBA solution can affect the sensitivity on nutrient uptake to changes in individual reaction flux.
+Figure~\vref{figure:sensitivity_scatterplot} compares the control coefficients for the reactions where a coefficient could be estimated in both the suboptimal and optimal FBA solutions. The correlation between reaction coefficients in both optimal and suboptimal FBA solutions is shown in Table\vref{table:sensitivity_correlation}. The glucose sensitivity estimates are poorly correlated and show a group of reactions which are highly sensitive in the optimal solution, but with limited sensitivity in the suboptimal solution. This indicates a set of reactions particularly constrained in the glucose limited optimal solution but much less so in the suboptimal solution. The ammonium and sulphate reaction sensitivities are non-linear between optimal and suboptimal conditions, and highlights how constrains on the FBA solution can affect the sensitivity on nutrient uptake to changes in individual reaction flux.
 
 \clearpage
 
@@ -573,11 +554,11 @@ Estimating the fitness effect of a gene on \emph{in silico} phenotypes requires 
 
 \subsubsection{Gene cost using reaction flux}%{{{3
 
-Reaction flux was examined as a measure for gene cost. Mutational effects in genes encoding high flux reactions may be expected to have a greater resulting effect on fitness than reactions with low flux. Of the all the single gene-associated reactions, only 10\%-14\% exhibited non-trivial difference in flux between glucose, ammonium and sulphate limiting environments. In the optimal simulation the reaction fluxes for ammonium and sulphate linitation were identical inidicating the difference in flux distributions these two conditions must be encoded by reactions not included in the set of single gene associated reactions. The glucose limited flux distribution for single gene-associated reactions was relatively lower than than of ammonium and sulphate limitation indicating that single encoded reaction, on average, carry less flux in glucose limitation, when compared with ammonium and sulphate limitation.
+Reaction flux was examined as a measure for gene cost. Mutational effects in genes encoding high flux reactions may be expected to have a greater resulting effect on fitness than reactions with low flux. Of the all the single gene-associated reactions, only 10\%-14\% exhibited non-trivial difference in flux between glucose, ammonium and sulphate limiting environments. In the optimal simulation the reaction fluxes for ammonium and sulphate linitation were identical inidicating the difference in flux distributions these two conditions must be encoded by reactions not included in the set of single gene associated reactions. The glucose limited flux distribution for single gene-associated reactions was relatively less than than compared with ammonium and sulphate limitation indicating that single encoded reactions, on average, carry less flux in glucose limitation, when compared with ammonium and sulphate limitation.
 
 When estimating reaction flux using suboptimal simulation the glucose limited flux distribution is relatively unchanged compared with the optimal solution. The ammonium and sulphate limiting flux distributions do however vary between optimal and suboptimal flux balance solutions. This indicates that relaxing solution constraint has little effect on single gene-associated reactions in glucose limitation, but does change overall distribution of flux in sulphate and ammonium limitation.
 
-Comparing flux distributions between single gene associated reactions across nutrient limitation showed little correlation, with the exception of ammonium and sulphate limitation in optimal conditions which are identical. The compared data (seen in figure~\vref{figure:flux_comparison}) however are non-trivial flux differences between the three environments which excluded $>$85\% of the reactions identical between environments. Therefore if the whole reaction set were compared they the flux distributions would be expected to show a high correlation.
+Comparing flux distributions between single gene associated reactions across nutrient limitation showed a moderate degree of correlation, and flux distributions in ammonium and sulphate limitation in optimal conditions are identical. The compared data (seen in figure~\vref{figure:flux_comparison}) however are the non-trivial flux differences between the three environments which excluded $>$85\% of the reactions identical between environments. Therefore if the whole reaction set were compared they the flux distributions would be expected to show a much higher degree of correlation.
 
 \subsubsection{Gene cost through constraints on reaction flux}%{{{3
 
